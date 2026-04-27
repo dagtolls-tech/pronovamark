@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-black: #0A0A0A;
+    --brand-coral: #E8665A;
+    --brand-coral-dark: #C94D42;
+    --brand-cream: #FAF7F2;
+    scroll-behavior: smooth;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-brand-black text-brand-cream font-sans;
+    min-height: 100vh;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brand-coral);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: rgba(232, 102, 90, 0.3);
+    color: var(--brand-cream);
+  }
+
+  [id] {
+    scroll-margin-top: 80px;
+  }
+}
+
+@layer utilities {
+  .max-w-container {
+    max-width: 1280px;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, var(--brand-coral), #f5a49d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Grid pattern utility */
+  .grid-pattern {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .grid-pattern-coral {
+    background-image:
+      linear-gradient(rgba(232, 102, 90, 0.08) 1px, transparent 1px),
+      linear-gradient(to right, rgba(232, 102, 90, 0.08) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

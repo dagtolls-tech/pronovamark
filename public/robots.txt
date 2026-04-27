@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Bloquear páginas legales de indexación (ya tienen robots noindex en metadata)
+Disallow: /aviso-legal
+Disallow: /politica-privacidad
+Disallow: /api/
+
+Sitemap: https://www.pronovamark.com/sitemap.xml
