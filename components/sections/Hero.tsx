@@ -3,23 +3,8 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, ChevronDown } from 'lucide-react'
 import { PhoneMockup } from '@/components/shared/PhoneMockup'
-import { HERO_STATS } from '@/lib/constants'
 
 const ease = [0.22, 1, 0.36, 1]
-
-function StatItem({ value, label, delay }: { value: string; label: string; delay: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.5, ease }}
-      className="flex flex-col items-center sm:items-start"
-    >
-      <span className="text-2xl sm:text-3xl font-display font-bold text-brand-cream">{value}</span>
-      <span className="text-xs sm:text-sm text-neutral-500 font-medium mt-0.5">{label}</span>
-    </motion.div>
-  )
-}
 
 export function Hero() {
   return (
@@ -113,15 +98,25 @@ export function Hero() {
             </a>
           </motion.div>
 
-          {/* Stats */}
+          {/* Trust badges */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.55, duration: 0.6 }}
-            className="flex flex-row items-center justify-center lg:justify-start gap-8 sm:gap-12 pt-8 border-t border-white/8"
+            className="flex flex-wrap justify-center lg:justify-start gap-2.5 pt-8 border-t border-white/8"
           >
-            {HERO_STATS.map((stat, i) => (
-              <StatItem key={stat.label} {...stat} delay={0.65 + i * 0.1} />
+            {[
+              '✓ Especialistas en negocios físicos',
+              '✓ Metodología orientada a resultados',
+              '✓ Sin permanencias absurdas',
+              '✓ Respuesta en menos de 24h',
+            ].map((badge) => (
+              <span
+                key={badge}
+                className="inline-flex items-center text-xs font-medium text-neutral-400 bg-white/5 border border-white/8 rounded-full px-3 py-1.5"
+              >
+                {badge}
+              </span>
             ))}
           </motion.div>
         </div>

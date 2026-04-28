@@ -7,15 +7,15 @@ export function PhoneMockup() {
     <div className="relative flex items-center justify-center select-none">
       {/* ── Grid de fondo con efecto de profundidad ── */}
       <div
-        className="absolute inset-0 scale-125"
+        className="absolute inset-0 scale-[1.8]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(232,102,90,0.07) 1px, transparent 1px),
-            linear-gradient(to right, rgba(232,102,90,0.07) 1px, transparent 1px)
+            linear-gradient(rgba(232,102,90,0.13) 1px, transparent 1px),
+            linear-gradient(to right, rgba(232,102,90,0.13) 1px, transparent 1px)
           `,
-          backgroundSize: '44px 44px',
-          maskImage: 'radial-gradient(ellipse 75% 80% at 55% 50%, black 20%, transparent 80%)',
-          WebkitMaskImage: 'radial-gradient(ellipse 75% 80% at 55% 50%, black 20%, transparent 80%)',
+          backgroundSize: '36px 36px',
+          maskImage: 'radial-gradient(ellipse 90% 90% at 55% 50%, black 10%, transparent 75%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 90% 90% at 55% 50%, black 10%, transparent 75%)',
         }}
       />
 
