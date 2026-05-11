@@ -4,23 +4,20 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useState } from 'react'
-import { Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react'
+import { Send, CheckCircle2, AlertCircle, Loader2, User, Building2, Globe, MapPin } from 'lucide-react'
 import { AnimatedSection } from '@/components/shared/AnimatedSection'
 
 const contactSchema = z.object({
+  tipo: z.enum(['marca-personal', 'negocio'], { required_error: 'Selecciona una opción' }),
+  tipoNegocio: z.enum(['online', 'fisico']).optional(),
   nombre: z.string().min(2, 'Dinos cómo te llamas').max(80),
-  negocio: z.string().min(2, 'Cuéntanos qué negocio tienes').max(120),
-  contacto: z
-    .string()
-    .min(5, 'Necesitamos un email o móvil para llamarte')
-    .max(100),
+  negocio: z.string().min(2, 'Cuéntanos qué negocio o marca tienes').max(120),
+  contacto: z.string().min(5, 'Necesitamos un email o móvil para llamarte').max(100),
   necesidad: z.string().max(300).optional(),
-  // Campo honeypot anti-spam — debe estar vacío siempre
   website: z.string().max(0, 'Error de validación').optional(),
 })
 
 type ContactFormData = z.infer<typeof contactSchema>
-
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
 
 export function CTAFinal() {
@@ -29,27 +26,27 @@ export function CTAFinal() {
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors },
     reset,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
   })
 
+  const tipoSeleccionado = watch('tipo')
+  const tipoNegocioSeleccionado = watch('tipoNegocio')
+
   const onSubmit = async (data: ContactFormData) => {
-    // Si el honeypot está relleno, es spam — no hacer nada
     if (data.website) return
-
     setStatus('loading')
-
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       })
-
       if (!res.ok) throw new Error('Error al enviar')
-
       setStatus('success')
       reset()
     } catch {
@@ -57,9 +54,12 @@ export function CTAFinal() {
     }
   }
 
+  const placeholderNegocio = tipoSeleccionado === 'marca-personal'
+    ? 'Tu nombre o nombre de tu marca'
+    : 'Restaurante La Marina, Clínica Belleza...'
+
   return (
     <section id="contacto" className="bg-[#0F0F0F] py-20 lg:py-28 relative overflow-hidden" aria-labelledby="cta-heading">
-      {/* Decoración de fondo */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-coral/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-coral/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
@@ -79,12 +79,10 @@ export function CTAFinal() {
             <p className="text-neutral-400 text-lg leading-relaxed mb-8">
               En 30 minutos te decimos exactamente qué está fallando en tu presencia digital y qué haríamos para solucionarlo. Sin rodeos, sin compromisos.
             </p>
-
-            {/* Promesas de la llamada */}
             <ul className="space-y-3">
               {[
                 'Análisis de tu situación actual en redes',
-                'Plan de acción personalizado para tu negocio',
+                'Plan de acción personalizado para ti',
                 'Estimación de resultados realista',
                 'Sin compromiso ni presión de venta',
               ].map((item) => (
@@ -116,14 +114,93 @@ export function CTAFinal() {
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} noValidate>
                   <h3 className="font-display font-bold text-brand-cream text-xl mb-1">
-                    Cuéntanos sobre tu negocio
+                    Cuéntanos sobre ti
                   </h3>
-                  <p className="text-neutral-500 text-sm mb-6">
+                  <p className="text-neutral-500 text-sm mb-5">
                     Sin compromiso. Te llamamos en menos de 24h.
                   </p>
 
+                  {/* Selector tipo — Marca Personal / Negocio */}
+                  <div className="mb-5">
+                    <p className="text-sm font-medium text-neutral-400 mb-2.5">¿Qué describes mejor tu caso? *</p>
+                    <div className="grid grid-cols-2 gap-3">
+                      {/* Marca Personal */}
+                      <button
+                        type="button"
+                        onClick={() => { setValue('tipo', 'marca-personal', { shouldValidate: true }); setValue('tipoNegocio', undefined) }}
+                        className={`flex flex-col items-center gap-2 rounded-2xl p-4 border transition-all duration-200 text-center ${
+                          tipoSeleccionado === 'marca-personal'
+                            ? 'border-brand-coral bg-brand-coral/10 text-brand-cream'
+                            : 'border-white/10 bg-white/3 text-neutral-400 hover:border-white/20 hover:text-neutral-300'
+                        }`}
+                      >
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-200 ${tipoSeleccionado === 'marca-personal' ? 'bg-brand-coral/20' : 'bg-white/6'}`}>
+                          <User className={`w-5 h-5 ${tipoSeleccionado === 'marca-personal' ? 'text-brand-coral' : 'text-neutral-500'}`} />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold leading-tight">Marca Personal</p>
+                          <p className="text-xs text-neutral-500 mt-0.5 leading-tight">Creador, coach, freelance...</p>
+                        </div>
+                      </button>
+
+                      {/* Negocio */}
+                      <button
+                        type="button"
+                        onClick={() => setValue('tipo', 'negocio', { shouldValidate: true })}
+                        className={`flex flex-col items-center gap-2 rounded-2xl p-4 border transition-all duration-200 text-center ${
+                          tipoSeleccionado === 'negocio'
+                            ? 'border-brand-coral bg-brand-coral/10 text-brand-cream'
+                            : 'border-white/10 bg-white/3 text-neutral-400 hover:border-white/20 hover:text-neutral-300'
+                        }`}
+                      >
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-200 ${tipoSeleccionado === 'negocio' ? 'bg-brand-coral/20' : 'bg-white/6'}`}>
+                          <Building2 className={`w-5 h-5 ${tipoSeleccionado === 'negocio' ? 'text-brand-coral' : 'text-neutral-500'}`} />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold leading-tight">Negocio</p>
+                          <p className="text-xs text-neutral-500 mt-0.5 leading-tight">Empresa, local, servicio...</p>
+                        </div>
+                      </button>
+                    </div>
+                    {errors.tipo && (
+                      <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1">
+                        <AlertCircle className="w-3 h-3" /> {errors.tipo.message}
+                      </p>
+                    )}
+
+                    {/* Sub-opción online / físico — solo si eligió Negocio */}
+                    {tipoSeleccionado === 'negocio' && (
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setValue('tipoNegocio', 'online', { shouldValidate: true })}
+                          className={`flex items-center justify-center gap-2 rounded-xl px-3 py-2.5 border text-xs font-medium transition-all duration-200 ${
+                            tipoNegocioSeleccionado === 'online'
+                              ? 'border-brand-coral/60 bg-brand-coral/8 text-brand-coral'
+                              : 'border-white/8 bg-white/3 text-neutral-500 hover:border-white/15 hover:text-neutral-400'
+                          }`}
+                        >
+                          <Globe className="w-3.5 h-3.5" />
+                          Online
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setValue('tipoNegocio', 'fisico', { shouldValidate: true })}
+                          className={`flex items-center justify-center gap-2 rounded-xl px-3 py-2.5 border text-xs font-medium transition-all duration-200 ${
+                            tipoNegocioSeleccionado === 'fisico'
+                              ? 'border-brand-coral/60 bg-brand-coral/8 text-brand-coral'
+                              : 'border-white/8 bg-white/3 text-neutral-500 hover:border-white/15 hover:text-neutral-400'
+                          }`}
+                        >
+                          <MapPin className="w-3.5 h-3.5" />
+                          Físico
+                        </button>
+                      </div>
+                    )}
+                  </div>
+
                   <div className="space-y-4">
-                    {/* Honeypot — oculto para humanos, visible para bots */}
+                    {/* Honeypot */}
                     <input
                       {...register('website')}
                       type="text"
@@ -145,9 +222,7 @@ export function CTAFinal() {
                         placeholder="Carlos Martínez"
                         autoComplete="name"
                         className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-coral/20 text-brand-cream placeholder:text-neutral-600 ${
-                          errors.nombre
-                            ? 'border-red-500/40 bg-red-500/5'
-                            : 'border-white/10 bg-white/5 focus:border-brand-coral/40'
+                          errors.nombre ? 'border-red-500/40 bg-red-500/5' : 'border-white/10 bg-white/5 focus:border-brand-coral/40'
                         }`}
                       />
                       {errors.nombre && (
@@ -157,21 +232,19 @@ export function CTAFinal() {
                       )}
                     </div>
 
-                    {/* Negocio */}
+                    {/* Negocio / Marca */}
                     <div>
                       <label htmlFor="negocio" className="block text-sm font-medium text-neutral-400 mb-1.5">
-                        Tu negocio *
+                        {tipoSeleccionado === 'marca-personal' ? 'Tu marca *' : 'Tu negocio *'}
                       </label>
                       <input
                         {...register('negocio')}
                         id="negocio"
                         type="text"
-                        placeholder="Restaurante La Marina, Benidorm"
+                        placeholder={placeholderNegocio}
                         autoComplete="organization"
                         className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-coral/20 text-brand-cream placeholder:text-neutral-600 ${
-                          errors.negocio
-                            ? 'border-red-500/40 bg-red-500/5'
-                            : 'border-white/10 bg-white/5 focus:border-brand-coral/40'
+                          errors.negocio ? 'border-red-500/40 bg-red-500/5' : 'border-white/10 bg-white/5 focus:border-brand-coral/40'
                         }`}
                       />
                       {errors.negocio && (
@@ -190,12 +263,10 @@ export function CTAFinal() {
                         {...register('contacto')}
                         id="contacto"
                         type="text"
-                        placeholder="carlos@restaurante.com · 600 000 000"
+                        placeholder="carlos@ejemplo.com · 600 000 000"
                         autoComplete="email"
                         className={`w-full px-4 py-3 rounded-xl border text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-coral/20 text-brand-cream placeholder:text-neutral-600 ${
-                          errors.contacto
-                            ? 'border-red-500/40 bg-red-500/5'
-                            : 'border-white/10 bg-white/5 focus:border-brand-coral/40'
+                          errors.contacto ? 'border-red-500/40 bg-red-500/5' : 'border-white/10 bg-white/5 focus:border-brand-coral/40'
                         }`}
                       />
                       {errors.contacto && (
@@ -205,30 +276,28 @@ export function CTAFinal() {
                       )}
                     </div>
 
-                    {/* Necesidad (opcional) */}
+                    {/* Necesidad */}
                     <div>
                       <label htmlFor="necesidad" className="block text-sm font-medium text-neutral-400 mb-1.5">
-                        ¿Qué necesitas? <span className="text-neutral-400 font-normal">(opcional)</span>
+                        ¿Qué necesitas? <span className="text-neutral-500 font-normal">(opcional)</span>
                       </label>
                       <textarea
                         {...register('necesidad')}
                         id="necesidad"
                         rows={2}
-                        placeholder="Quiero más clientes en mi restaurante, ahora mismo tenemos poca visibilidad..."
+                        placeholder="Quiero más clientes, tengo poca visibilidad..."
                         className="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/5 text-brand-cream placeholder:text-neutral-600 text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-coral/20 focus:border-brand-coral/40 resize-none"
                       />
                     </div>
                   </div>
 
-                  {/* Error global */}
                   {status === 'error' && (
-                    <div className="mt-4 flex items-center gap-2 text-red-600 text-sm bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+                    <div className="mt-4 flex items-center gap-2 text-red-400 text-sm bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3">
                       <AlertCircle className="w-4 h-4 flex-shrink-0" />
                       Algo fue mal. Inténtalo de nuevo o escríbenos a pronovamark@gmail.com
                     </div>
                   )}
 
-                  {/* Submit */}
                   <button
                     type="submit"
                     disabled={status === 'loading'}
@@ -247,7 +316,7 @@ export function CTAFinal() {
                     )}
                   </button>
 
-                  <p className="text-center text-xs text-neutral-400 mt-3">
+                  <p className="text-center text-xs text-neutral-500 mt-3">
                     Sin compromiso · Respondemos en menos de 24h · Tus datos son seguros
                   </p>
                 </form>

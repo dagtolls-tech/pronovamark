@@ -209,9 +209,9 @@ export const PROCESS_STEPS = [
 export const WHY_US = [
   {
     icon: 'Store',
-    title: 'Solo negocios físicos',
+    title: 'Solo negocios y Marcas Personales',
     description:
-      'No trabajamos con tiendas online, infoproductos ni SaaS. Nos especializamos en restaurantes, clínicas, gimnasios y comercios locales. Eso hace que entendamos tu negocio de verdad.',
+      'No trabajamos con todo el mundo. Nos especializamos en negocios con producto o servicio real y en marcas personales que quieren monetizar su audiencia. Eso hace que entendamos tu situación de verdad.',
   },
   {
     icon: 'Layers',
@@ -223,7 +223,7 @@ export const WHY_US = [
     icon: 'LineChart',
     title: 'Resultados medibles',
     description:
-      'No te venderemos más seguidores si esos seguidores no se convierten en clientes. Lo que medimos es lo que importa: reservas, llamadas, visitas al local.',
+      'No te venderemos más seguidores si esos seguidores no se convierten en clientes. Lo que medimos es lo que importa: reservas, consultas, ventas reales.',
   },
   {
     icon: 'Handshake',
@@ -251,7 +251,7 @@ export const FAQS = [
     id: 'camara',
     question: '¿Tengo que salir yo en los vídeos?',
     answer:
-      'No es obligatorio. Muchos de nuestros clientes no aparecen en el contenido y aun así consiguen resultados excelentes. Mostramos el producto, el local, el proceso, el equipo. Si quieres aparecer tú, perfecto, funciona muy bien. Pero si no quieres o no puedes, lo resolvemos igual.',
+      'No es obligatorio. Muchos de nuestros clientes no aparecen en el contenido y aun así consiguen resultados excelentes. Mostramos el producto, el servicio, el proceso o el equipo. Si quieres aparecer tú, perfecto, funciona muy bien. Pero si no quieres o no puedes, lo resolvemos igual.',
   },
   {
     id: 'precio',
@@ -263,7 +263,7 @@ export const FAQS = [
     id: 'mi-negocio',
     question: '¿Funciona para mi tipo de negocio?',
     answer:
-      'Si tienes un negocio físico con clientes locales o de la zona, lo más probable es que sí. Hemos trabajado con restaurantes, clínicas estéticas, gimnasios, peluquerías, centros de fisioterapia, academias y comercios locales. Si no estás seguro, cuéntanos qué haces en el diagnóstico y te decimos con honestidad si podemos ayudarte.',
+      'Trabajamos con negocios que tienen un producto o servicio real que vender, y con marcas personales que quieren convertir su audiencia en ingresos. Si no estás seguro de si encajamos, cuéntanos qué haces en el diagnóstico y te decimos con honestidad si podemos ayudarte.',
   },
   {
     id: 'sin-resultados',

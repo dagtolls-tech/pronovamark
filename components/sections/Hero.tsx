@@ -36,7 +36,7 @@ export function Hero() {
             className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-7 backdrop-blur-sm"
           >
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-xs font-medium text-neutral-400">Agencia en Benidorm · Trabajamos en toda España</span>
+            <span className="text-xs font-medium text-neutral-400">Agencia de contenido · Trabajamos en toda España</span>
           </motion.div>
 
           {/* Headline */}
@@ -49,15 +49,14 @@ export function Hero() {
           >
             Convertimos vistas en{' '}
             <span className="relative inline-block">
-              <span className="text-brand-coral">clientes</span>
+              <span className="text-brand-coral">clientes reales</span>
               <motion.span
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.7, delay: 0.9, ease }}
                 className="absolute -bottom-1 left-0 right-0 h-[4px] bg-brand-coral/40 rounded-full origin-left"
               />
-            </span>{' '}
-            para tu negocio físico
+            </span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -67,8 +66,8 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.24, ease }}
             className="text-lg sm:text-xl text-neutral-400 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed"
           >
-            Creamos contenido viral para Instagram y TikTok, y lo convertimos en reservas y clientes reales.{' '}
-            <span className="text-brand-cream font-medium">Tú céntrate en tu negocio.</span>
+            Creamos contenido viral estratégico para Instagram y TikTok que genera reservas y ventas. Para negocios y marcas personales.{' '}
+            <span className="text-brand-cream font-medium">Tú céntrate en lo tuyo.</span>
           </motion.p>
 
           {/* CTAs */}
