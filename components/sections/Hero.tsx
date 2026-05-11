@@ -100,15 +100,16 @@ export function Hero() {
             initial={{ opacity: 0, y: 40, scale: 0.92 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.25, ease }}
-            className="relative z-10 my-4"
-            style={{ width: 220, flexShrink: 0 }}
+            className="relative z-10 my-4 w-[160px] sm:w-[200px] lg:w-[220px]"
+            style={{ flexShrink: 0 }}
           >
             {/* Phone shell */}
             <div
-              className="relative rounded-[40px] overflow-hidden"
+              className="relative rounded-[32px] sm:rounded-[38px] lg:rounded-[40px] overflow-hidden w-full"
               style={{
-                width: 220,
-                height: 460,
+                width: '100%',
+                height: 'auto',
+                aspectRatio: '220 / 460',
                 background: 'rgba(255,255,255,0.07)',
                 border: '1.5px solid rgba(255,255,255,0.18)',
                 boxShadow: '0 32px 80px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.06)',
