@@ -59,8 +59,8 @@ export function WhyUs() {
           >
             <span className="text-2xl" role="img" aria-label="Bandera España">🇪🇸</span>
             <div>
-              <p className="text-sm font-semibold text-brand-cream">Agencia en Benidorm, Alicante</p>
-              <p className="text-xs text-neutral-500">Trabajamos con negocios de toda España</p>
+              <p className="text-sm font-semibold text-brand-cream">Costa Blanca · Toda Alicante</p>
+              <p className="text-xs text-neutral-500">100% online · Nos desplazamos si necesitas vernos</p>
             </div>
           </div>
         </AnimatedSection>

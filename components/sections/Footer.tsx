@@ -41,10 +41,10 @@ export function Footer() {
           <div className="space-y-5">
             <Logo variant="light" size="md" />
             <p className="text-neutral-400 text-sm leading-relaxed max-w-xs">
-              Agencia de marketing digital especializada en negocios físicos. Convertimos seguidores en clientes con contenido viral y automatizaciones con IA.
+              Agencia de marketing en redes para negocios físicos y online. Contenido viral + embudos de venta con IA.
             </p>
             <p className="text-neutral-500 text-xs">
-              📍 Benidorm, Alicante · Trabajamos en toda España
+              📍 Costa Blanca · Toda Alicante · 100% online
             </p>
 
             {/* Email */}

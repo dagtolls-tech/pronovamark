@@ -163,7 +163,7 @@ export function Hero() {
         >
           <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
           <span className="text-[11px] sm:text-xs font-semibold text-brand-cream tracking-wide">
-            Agencia de marketing en redes · España
+            Agencia de marketing en redes · Costa Blanca
           </span>
         </motion.div>
 
@@ -174,11 +174,27 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 1.7, ease }}
           className="relative max-w-4xl text-center"
         >
+          {/* MÓVIL — versión resumida e impactante */}
           <h1
             id="hero-heading"
-            className="font-editorial font-bold text-brand-cream leading-[0.95] tracking-[-0.025em]"
+            className="sm:hidden font-editorial font-bold text-brand-cream tracking-[-0.03em]"
             style={{
-              fontSize: 'clamp(2.3rem, 6.5vw, 5.6rem)',
+              fontSize: 'clamp(2.6rem, 13vw, 4rem)',
+              lineHeight: 0.92,
+              textShadow: '0 4px 32px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5)',
+            }}
+          >
+            Contenido <span className="italic text-brand-coral">viral.</span>
+            <br />
+            Clientes <span className="italic">reales.</span>
+          </h1>
+
+          {/* DESKTOP / TABLET — versión completa */}
+          <h1
+            aria-hidden="true"
+            className="hidden sm:block font-editorial font-bold text-brand-cream leading-[0.95] tracking-[-0.025em]"
+            style={{
+              fontSize: 'clamp(2.5rem, 6.5vw, 5.6rem)',
               textShadow: '0 4px 32px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4)',
             }}
           >
@@ -192,11 +208,16 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.95, ease }}
-            className="mt-6 sm:mt-7 text-base sm:text-lg text-brand-cream/85 max-w-2xl mx-auto leading-relaxed font-medium"
+            className="mt-5 sm:mt-7 text-[15px] sm:text-lg text-brand-cream/85 max-w-md sm:max-w-2xl mx-auto leading-relaxed font-medium px-2 sm:px-0"
             style={{ textShadow: '0 2px 12px rgba(0,0,0,0.5)' }}
           >
-            Tú céntrate en tu negocio.{' '}
-            <span className="text-brand-coral font-semibold">Nosotros en tus redes</span> y en atraerte más clientes.
+            <span className="sm:hidden">
+              Embudos + contenido que <span className="text-brand-coral font-semibold">te traen clientes</span>. Tú a tu negocio.
+            </span>
+            <span className="hidden sm:inline">
+              Tú céntrate en tu negocio.{' '}
+              <span className="text-brand-coral font-semibold">Nosotros en tus redes</span> y en atraerte más clientes.
+            </span>
           </motion.p>
         </motion.div>
 

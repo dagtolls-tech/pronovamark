@@ -4,6 +4,7 @@ import { Hero } from '@/components/sections/Hero'
 import { Marquee } from '@/components/shared/Marquee'
 import { Problem } from '@/components/sections/Problem'
 import { Stats } from '@/components/sections/Stats'
+import { CostaBlanca } from '@/components/sections/CostaBlanca'
 import { Process } from '@/components/sections/Process'
 import { Services } from '@/components/sections/Services'
 import { Cases } from '@/components/sections/Cases'
@@ -31,6 +32,7 @@ export default function HomePage() {
         <Marquee text="PRONOVAMARK" speed={38} variant="dark" />
         <Problem />
         <Stats />
+        <CostaBlanca />
         <Process />
         <Services />
         <Cases />
