@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
-import { Inter, Space_Grotesk } from 'next/font/google'
+import { Inter, Space_Grotesk, Bricolage_Grotesque } from 'next/font/google'
 import './globals.css'
 import { defaultMetadata, organizationSchema } from '@/lib/seo'
+import { Cursor } from '@/components/shared/Cursor'
+import { Intro } from '@/components/shared/Intro'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -16,11 +18,18 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 })
 
+const bricolage = Bricolage_Grotesque({
+  subsets: ['latin'],
+  variable: '--font-bricolage',
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+})
+
 export const metadata: Metadata = defaultMetadata
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable} ${bricolage.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -30,6 +39,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body>
+        <Intro />
+        <Cursor />
         {children}
       </body>
     </html>

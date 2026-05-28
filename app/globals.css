@@ -42,6 +42,16 @@
   [id] {
     scroll-margin-top: 80px;
   }
+
+  /* Custom cursor — only on devices with fine pointer (desktop) */
+  @media (hover: hover) and (pointer: fine) {
+    html, body {
+      cursor: none;
+    }
+    a, button, input, textarea, select, [role="button"], [data-cursor-hover] {
+      cursor: none;
+    }
+  }
 }
 
 @layer utilities {
@@ -56,7 +66,12 @@
     background-clip: text;
   }
 
-  /* Grid pattern utility */
+  .font-editorial {
+    font-family: var(--font-bricolage), var(--font-space-grotesk), system-ui, sans-serif;
+    font-optical-sizing: auto;
+    font-variation-settings: "wdth" 100;
+  }
+
   .grid-pattern {
     background-image:
       linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
@@ -71,11 +86,33 @@
     background-size: 48px 48px;
   }
 
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Marquee animation */
+  @keyframes marquee-x {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  .animate-marquee {
+    animation: marquee-x linear infinite;
+  }
+
+  /* Reel column scroll animations */
+  @keyframes reel-up {
+    from { transform: translateY(0); }
+    to { transform: translateY(-50%); }
+  }
+  @keyframes reel-down {
+    from { transform: translateY(-50%); }
+    to { transform: translateY(0); }
+  }
+  .animate-reel-up { animation: reel-up linear infinite; }
+  .animate-reel-down { animation: reel-down linear infinite; }
+
+  /* Intro fade */
+  @keyframes intro-out {
+    0% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
   }
 }

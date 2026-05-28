@@ -2,12 +2,11 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ArrowUpRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Logo } from '@/components/shared/Logo'
-import { cn } from '@/lib/utils'
 
 const navLinks = [
+  { label: 'Inicio', href: '#hero' },
   { label: 'Servicios', href: '#servicios' },
   { label: 'Casos', href: '#casos' },
   { label: 'Proceso', href: '#proceso' },
@@ -15,16 +14,8 @@ const navLinks = [
 ]
 
 export function Nav() {
-  const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  // Bloquea scroll cuando el menú mobile está abierto
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
@@ -32,7 +23,6 @@ export function Nav() {
 
   const handleNavClick = (href: string) => {
     setIsMenuOpen(false)
-    // Scroll suave a sección
     if (href.startsWith('#')) {
       const el = document.getElementById(href.slice(1))
       el?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -41,79 +31,105 @@ export function Nav() {
 
   return (
     <>
+      {/* Nav flotante estilo Lathos */}
       <motion.header
-        initial={{ y: -80, opacity: 0 }}
+        initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          isScrolled
-            ? 'bg-brand-black/90 backdrop-blur-md border-b border-white/6'
-            : 'bg-transparent'
-        )}
+        transition={{ duration: 0.7, delay: 1.5, ease: [0.22, 1, 0.36, 1] }}
+        className="fixed top-3 sm:top-5 left-0 right-0 z-50 px-3 sm:px-6"
       >
-        <nav className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between" role="navigation" aria-label="Navegación principal">
-          <Logo size="sm" variant="dark" animate />
+        <nav
+          className="max-w-[1180px] mx-auto h-14 sm:h-16 flex items-center justify-between pl-4 pr-2 sm:pl-5 sm:pr-2 rounded-full"
+          style={{
+            background: 'rgba(250,247,242,0.94)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(10,10,10,0.06)',
+            boxShadow: '0 10px 40px rgba(10,10,10,0.18), 0 2px 8px rgba(10,10,10,0.08)',
+          }}
+          role="navigation" aria-label="Navegación principal"
+        >
+          {/* Logo izquierda */}
+          <Link href="/" className="flex items-center gap-2.5 group" aria-label="Pronovamark - Inicio">
+            <div
+              className="relative w-9 h-9 rounded-[10px] flex items-center justify-center bg-brand-black"
+              style={{ boxShadow: '0 2px 8px rgba(10,10,10,0.15)' }}
+            >
+              <span className="font-display font-bold text-brand-cream text-[13px] tracking-tight">pm</span>
+              <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-brand-coral" />
+            </div>
+            <span className="font-editorial font-bold text-brand-black text-[17px] tracking-tight hidden xs:block sm:block">
+              Pronovamark<span className="text-brand-coral">®</span>
+            </span>
+          </Link>
 
-          {/* Links desktop */}
-          <ul className="hidden md:flex items-center gap-8" role="list">
+          {/* Links centro — desktop */}
+          <ul className="hidden lg:flex items-center gap-1" role="list">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <button
                   onClick={() => handleNavClick(link.href)}
-                  className="text-sm font-medium text-neutral-400 hover:text-brand-cream transition-colors duration-200 relative group"
+                  className="text-[13px] font-semibold text-neutral-700 hover:text-brand-black px-4 py-2 rounded-full hover:bg-black/5 transition-all duration-200"
                 >
                   {link.label}
-                  <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-brand-coral rounded-full transition-all duration-200 group-hover:w-full" />
                 </button>
               </li>
             ))}
           </ul>
 
-          {/* CTA desktop */}
-          <div className="hidden md:flex items-center gap-3">
-            <a
-              href="#contacto"
-              onClick={(e) => { e.preventDefault(); handleNavClick('#contacto') }}
-              className="inline-flex items-center gap-2 bg-brand-coral text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-brand-coral-dark transition-all duration-200 hover:shadow-coral"
+          {/* CTA derecha — desktop */}
+          <div className="hidden lg:flex items-center gap-2">
+            <button
+              onClick={() => handleNavClick('#contacto')}
+              className="inline-flex items-center gap-1.5 bg-brand-black text-brand-cream text-[13px] font-semibold pl-4 pr-3 py-2.5 rounded-full hover:bg-brand-coral transition-all duration-200 group"
             >
-              Reservar diagnóstico gratis
-            </a>
+              Reservar diagnóstico
+              <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </button>
           </div>
 
-          {/* Botón hamburguesa mobile */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/8 text-brand-cream transition-colors"
-            aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
-            aria-expanded={isMenuOpen}
-          >
-            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          {/* Mobile: CTA mini + burger */}
+          <div className="flex lg:hidden items-center gap-1.5">
+            <button
+              onClick={() => handleNavClick('#contacto')}
+              className="inline-flex items-center gap-1 bg-brand-black text-brand-cream text-[11px] font-semibold px-3 py-2 rounded-full"
+            >
+              Reservar
+              <ArrowUpRight className="w-3 h-3" />
+            </button>
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-black/5 hover:bg-black/10 text-brand-black transition-colors"
+              aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+              aria-expanded={isMenuOpen}
+            >
+              {isMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            </button>
+          </div>
         </nav>
       </motion.header>
 
-      {/* Menú mobile */}
+      {/* Menú móvil */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-brand-black pt-16 px-4 flex flex-col border-r border-white/5"
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-40 bg-brand-black pt-24 px-6 flex flex-col"
           >
-            <nav className="flex flex-col gap-2 mt-8">
+            <nav className="flex flex-col gap-1 mt-8">
               {navLinks.map((link, i) => (
                 <motion.button
                   key={link.href}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.07 }}
+                  transition={{ delay: i * 0.06 }}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-left text-2xl font-display font-bold text-brand-cream py-4 border-b border-white/8 hover:text-brand-coral transition-colors"
+                  className="text-left font-editorial text-4xl font-bold text-brand-cream py-4 border-b border-white/10 hover:text-brand-coral transition-colors flex items-center justify-between"
                 >
                   {link.label}
+                  <ArrowUpRight className="w-5 h-5 opacity-50" />
                 </motion.button>
               ))}
             </nav>
@@ -121,16 +137,16 @@ export function Nav() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="mt-8"
+              transition={{ delay: 0.35 }}
+              className="mt-10"
             >
-              <a
-                href="#contacto"
-                onClick={(e) => { e.preventDefault(); handleNavClick('#contacto') }}
-                className="flex items-center justify-center w-full bg-brand-coral text-white text-base font-semibold px-6 py-4 rounded-2xl hover:bg-brand-coral-dark transition-all duration-200"
+              <button
+                onClick={() => handleNavClick('#contacto')}
+                className="flex items-center justify-center gap-2 w-full bg-brand-coral text-white text-base font-semibold px-6 py-4 rounded-full hover:bg-brand-coral-dark transition-all"
               >
                 Reservar diagnóstico gratis
-              </a>
+                <ArrowUpRight className="w-4 h-4" />
+              </button>
             </motion.div>
           </motion.div>
         )}
