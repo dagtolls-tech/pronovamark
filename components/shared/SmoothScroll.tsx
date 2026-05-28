@@ -8,13 +8,33 @@ export function SmoothScroll() {
     // Respeta usuarios que prefieren menos movimiento
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
+    // Móvil/táctil: usamos scroll nativo (más fluido con iframes + animaciones pesadas)
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches
+    if (isTouch) {
+      // Mantenemos el smooth scroll nativo solo para anchors #
+      const handleAnchorClick = (e: MouseEvent) => {
+        const target = e.target as HTMLElement
+        const link = target.closest('a[href^="#"]') as HTMLAnchorElement | null
+        if (!link) return
+        const href = link.getAttribute('href')
+        if (!href || href === '#') return
+        const el = document.getElementById(href.slice(1))
+        if (el) {
+          e.preventDefault()
+          window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' })
+        }
+      }
+      document.addEventListener('click', handleAnchorClick)
+      return () => document.removeEventListener('click', handleAnchorClick)
+    }
+
     const lenis = new Lenis({
       duration: 1.15,                       // viaje suave (1.0–1.3 = ideal Lathos-like)
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // ease-out exponencial
       smoothWheel: true,
       wheelMultiplier: 0.95,                // ligeramente más lento que el wheel nativo
-      touchMultiplier: 1.6,                 // móvil normal-rápido
-      lerp: 0.085,                          // interpolación suave
+      touchMultiplier: 1.6,
+      lerp: 0.085,
     })
 
     let rafId = 0

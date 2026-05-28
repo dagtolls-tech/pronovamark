@@ -14,24 +14,25 @@ export function CostaBlanca() {
         <div className="relative w-full h-[260px] sm:h-[320px] lg:h-[380px] overflow-hidden">
 
           {/* Vídeo de fondo (YouTube embed muteado y en loop) */}
-          <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden" style={{ contain: 'paint layout' }}>
             <iframe
               src="https://www.youtube.com/embed/OaEKZSj53YE?autoplay=1&mute=1&loop=1&playlist=OaEKZSj53YE&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&playsinline=1&disablekb=1"
               title="Benidorm Costa Blanca - vista aérea"
               allow="autoplay; encrypted-media"
               aria-hidden="true"
               tabIndex={-1}
+              loading="lazy"
               className="absolute pointer-events-none"
               style={{
-                // 16:9 cover: video escalado para llenar contenedor sin recortar barras
                 top: '50%',
                 left: '50%',
-                width: '177.78vh',     // 16/9 del alto de viewport
+                width: '177.78vh',
                 minWidth: '100%',
-                height: '56.25vw',     // 9/16 del ancho
+                height: '56.25vw',
                 minHeight: '100%',
-                transform: 'translate(-50%, -50%) scale(1.25)',
+                transform: 'translate(-50%, -50%) scale(1.25) translateZ(0)',
                 border: 0,
+                willChange: 'transform',
               }}
             />
           </div>

@@ -82,10 +82,19 @@ function ReelColumn({
   className?: string
 }) {
   return (
-    <div className={`relative overflow-hidden ${className}`} aria-hidden="true">
+    <div
+      className={`relative overflow-hidden ${className}`}
+      aria-hidden="true"
+      style={{ contain: 'paint layout' }}
+    >
       <div
         className={direction === 'up' ? 'animate-reel-up' : 'animate-reel-down'}
-        style={{ animationDuration: `${speed}s`, willChange: 'transform' }}
+        style={{
+          animationDuration: `${speed}s`,
+          willChange: 'transform',
+          transform: 'translateZ(0)',
+          backfaceVisibility: 'hidden',
+        }}
       >
         {/* Set 1 */}
         <div className="flex flex-col gap-3 pb-3">
@@ -123,21 +132,36 @@ export function Hero() {
     >
       {/* Capa 1 — columnas de reels scrolleando */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute inset-0 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3 px-3 opacity-55">
+        {/* Móvil: más opacidad para que se vean los reels (sin oscurecer tanto) */}
+        <div className="absolute inset-0 grid grid-cols-3 sm:hidden gap-2 px-2 opacity-95">
+          {cols.slice(0, 3).map((c, i) => (
+            <ReelColumn key={`m-${i}`} reels={c.reels} direction={c.dir} speed={c.speed} />
+          ))}
+        </div>
+        {/* Tablet/Desktop */}
+        <div className="absolute inset-0 hidden sm:grid sm:grid-cols-4 lg:grid-cols-6 gap-3 px-3 opacity-55">
           {cols.map((c, i) => (
             <ReelColumn
               key={i}
               reels={c.reels}
               direction={c.dir}
               speed={c.speed}
-              className={i >= 4 ? 'hidden lg:block' : i >= 3 ? 'hidden sm:block' : ''}
+              className={i >= 4 ? 'hidden lg:block' : ''}
             />
           ))}
         </div>
       </div>
 
-      {/* Capa 2 — viñeta oscura para legibilidad */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true"
+      {/* Capa 2 MÓVIL — viñeta más suave (deja ver los vídeos) */}
+      <div className="absolute inset-0 pointer-events-none sm:hidden" aria-hidden="true"
+        style={{
+          background:
+            'radial-gradient(ellipse 70% 50% at center 55%, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.55) 55%, rgba(10,10,10,0.85) 100%)',
+        }}
+      />
+
+      {/* Capa 2 DESKTOP — viñeta clásica */}
+      <div className="absolute inset-0 pointer-events-none hidden sm:block" aria-hidden="true"
         style={{
           background:
             'radial-gradient(ellipse at center, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.85) 50%, rgba(10,10,10,0.95) 100%)',
@@ -145,9 +169,32 @@ export function Hero() {
       />
 
       {/* Capa 3 — glow coral sutil */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <div className="absolute inset-0 pointer-events-none hidden sm:block" aria-hidden="true">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full blur-3xl opacity-25"
           style={{ background: 'radial-gradient(circle, rgba(232,102,90,0.4) 0%, transparent 70%)' }}
+        />
+      </div>
+
+      {/* Capa 4 MÓVIL — foco tipo teatro detrás del titular */}
+      <div className="absolute inset-0 pointer-events-none sm:hidden" aria-hidden="true">
+        {/* Halo blanco cálido (luz de escenario) */}
+        <div className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[55%] rounded-full blur-3xl"
+          style={{
+            background: 'radial-gradient(ellipse, rgba(250,247,242,0.22) 0%, rgba(250,247,242,0.08) 35%, transparent 70%)',
+          }}
+        />
+        {/* Glow coral cálido por debajo */}
+        <div className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[40%] rounded-full blur-3xl opacity-70"
+          style={{
+            background: 'radial-gradient(ellipse, rgba(232,102,90,0.30) 0%, transparent 65%)',
+          }}
+        />
+        {/* Cono de luz desde arriba (efecto foco teatral) */}
+        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[80%] h-[50%]"
+          style={{
+            background: 'radial-gradient(ellipse 60% 90% at 50% 0%, rgba(255,235,200,0.20) 0%, transparent 70%)',
+            mixBlendMode: 'screen',
+          }}
         />
       </div>
 
@@ -181,7 +228,8 @@ export function Hero() {
             style={{
               fontSize: 'clamp(2.6rem, 13vw, 4rem)',
               lineHeight: 0.92,
-              textShadow: '0 4px 32px rgba(0,0,0,0.7), 0 2px 8px rgba(0,0,0,0.5)',
+              textShadow:
+                '0 0 24px rgba(250,247,242,0.45), 0 4px 24px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.6)',
             }}
           >
             Contenido <span className="italic text-brand-coral">viral.</span>
