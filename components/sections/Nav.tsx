@@ -22,11 +22,8 @@ export function Nav() {
   }, [isMenuOpen])
 
   const handleNavClick = (href: string) => {
+    // Cerrar menú móvil. El scroll suave lo gestiona Lenis interceptando el <a href="#...">.
     setIsMenuOpen(false)
-    if (href.startsWith('#')) {
-      const el = document.getElementById(href.slice(1))
-      el?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
   }
 
   return (
@@ -48,54 +45,51 @@ export function Nav() {
           }}
           role="navigation" aria-label="Navegación principal"
         >
-          {/* Logo izquierda */}
-          <Link href="/" className="flex items-center gap-2.5 group" aria-label="Pronovamark - Inicio">
+          {/* Logo izquierda — solo pm + dot, sin wordmark */}
+          <Link href="/" className="flex items-center group" aria-label="Pronovamark - Inicio">
             <div
-              className="relative w-9 h-9 rounded-[10px] flex items-center justify-center bg-brand-black"
+              className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-[11px] flex items-center justify-center bg-brand-black transition-transform duration-300 group-hover:scale-105"
               style={{ boxShadow: '0 2px 8px rgba(10,10,10,0.15)' }}
             >
-              <span className="font-display font-bold text-brand-cream text-[13px] tracking-tight">pm</span>
+              <span className="font-display font-bold text-brand-cream text-[13px] sm:text-[14px] tracking-tight">pm</span>
               <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-brand-coral" />
             </div>
-            <span className="font-editorial font-bold text-brand-black text-[17px] tracking-tight hidden xs:block sm:block">
-              Pronovamark<span className="text-brand-coral">®</span>
-            </span>
           </Link>
 
           {/* Links centro — desktop */}
           <ul className="hidden lg:flex items-center gap-1" role="list">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <button
-                  onClick={() => handleNavClick(link.href)}
+                <a
+                  href={link.href}
                   className="text-[13px] font-semibold text-neutral-700 hover:text-brand-black px-4 py-2 rounded-full hover:bg-black/5 transition-all duration-200"
                 >
                   {link.label}
-                </button>
+                </a>
               </li>
             ))}
           </ul>
 
           {/* CTA derecha — desktop */}
           <div className="hidden lg:flex items-center gap-2">
-            <button
-              onClick={() => handleNavClick('#contacto')}
+            <a
+              href="#contacto"
               className="inline-flex items-center gap-1.5 bg-brand-black text-brand-cream text-[13px] font-semibold pl-4 pr-3 py-2.5 rounded-full hover:bg-brand-coral transition-all duration-200 group"
             >
               Reservar diagnóstico
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </button>
+            </a>
           </div>
 
           {/* Mobile: CTA mini + burger */}
           <div className="flex lg:hidden items-center gap-1.5">
-            <button
-              onClick={() => handleNavClick('#contacto')}
+            <a
+              href="#contacto"
               className="inline-flex items-center gap-1 bg-brand-black text-brand-cream text-[11px] font-semibold px-3 py-2 rounded-full"
             >
               Reservar
               <ArrowUpRight className="w-3 h-3" />
-            </button>
+            </a>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="w-10 h-10 flex items-center justify-center rounded-full bg-black/5 hover:bg-black/10 text-brand-black transition-colors"
@@ -120,8 +114,9 @@ export function Nav() {
           >
             <nav className="flex flex-col gap-1 mt-8">
               {navLinks.map((link, i) => (
-                <motion.button
+                <motion.a
                   key={link.href}
+                  href={link.href}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06 }}
@@ -130,7 +125,7 @@ export function Nav() {
                 >
                   {link.label}
                   <ArrowUpRight className="w-5 h-5 opacity-50" />
-                </motion.button>
+                </motion.a>
               ))}
             </nav>
 
@@ -140,13 +135,14 @@ export function Nav() {
               transition={{ delay: 0.35 }}
               className="mt-10"
             >
-              <button
+              <a
+                href="#contacto"
                 onClick={() => handleNavClick('#contacto')}
                 className="flex items-center justify-center gap-2 w-full bg-brand-coral text-white text-base font-semibold px-6 py-4 rounded-full hover:bg-brand-coral-dark transition-all"
               >
                 Reservar diagnóstico gratis
                 <ArrowUpRight className="w-4 h-4" />
-              </button>
+              </a>
             </motion.div>
           </motion.div>
         )}

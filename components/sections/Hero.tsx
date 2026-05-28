@@ -207,8 +207,8 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 2.1, ease }}
           className="mt-10 sm:mt-12 w-full max-w-md"
         >
-          <button
-            onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+          <a
+            href="#contacto"
             className="group w-full flex items-center justify-between gap-2 pl-6 pr-2 py-2 rounded-full transition-all duration-300"
             style={{
               background: 'rgba(250,247,242,0.96)',
@@ -222,7 +222,7 @@ export function Hero() {
             <span className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-brand-coral text-white group-hover:bg-brand-coral-dark transition-colors">
               <ArrowUpRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </span>
-          </button>
+          </a>
           <p className="text-center text-[11px] text-neutral-400 mt-3 font-medium">
             Sin compromiso · Respondemos en menos de 24h
           </p>

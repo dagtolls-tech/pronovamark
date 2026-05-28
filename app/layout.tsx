@@ -4,6 +4,7 @@ import './globals.css'
 import { defaultMetadata, organizationSchema } from '@/lib/seo'
 import { Cursor } from '@/components/shared/Cursor'
 import { Intro } from '@/components/shared/Intro'
+import { SmoothScroll } from '@/components/shared/SmoothScroll'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Intro />
         <Cursor />
+        <SmoothScroll />
         {children}
       </body>
     </html>

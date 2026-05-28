@@ -38,7 +38,7 @@ export function Marquee({
               style={{ fontSize: 'clamp(3rem, 8vw, 7rem)', lineHeight: 1, letterSpacing: '-0.03em' }}
             >
               {text}
-              <span className="text-brand-coral">®</span>
+              <span className="text-brand-coral">·</span>
             </span>
           ))}
         </div>
@@ -53,7 +53,7 @@ export function Marquee({
               style={{ fontSize: 'clamp(3rem, 8vw, 7rem)', lineHeight: 1, letterSpacing: '-0.03em' }}
             >
               {text}
-              <span className="text-brand-coral">®</span>
+              <span className="text-brand-coral">·</span>
             </span>
           ))}
         </div>

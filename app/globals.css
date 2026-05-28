@@ -8,8 +8,14 @@
     --brand-coral: #E8665A;
     --brand-coral-dark: #C94D42;
     --brand-cream: #FAF7F2;
-    scroll-behavior: smooth;
   }
+
+  /* Lenis smooth scroll */
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+  .lenis.lenis-stopped { overflow: hidden; }
+  .lenis.lenis-scrolling iframe { pointer-events: none; }
 
   * {
     box-sizing: border-box;
