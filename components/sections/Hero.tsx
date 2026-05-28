@@ -168,10 +168,26 @@ export function Hero() {
         }}
       />
 
-      {/* Capa 3 — glow coral sutil */}
+      {/* Capa 3 DESKTOP — foco teatral moderado sobre el titular */}
       <div className="absolute inset-0 pointer-events-none hidden sm:block" aria-hidden="true">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full blur-3xl opacity-25"
-          style={{ background: 'radial-gradient(circle, rgba(232,102,90,0.4) 0%, transparent 70%)' }}
+        {/* Halo crema suave detrás del texto (luz ambiente) */}
+        <div className="absolute top-[48%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[520px] rounded-full blur-3xl"
+          style={{
+            background: 'radial-gradient(ellipse, rgba(250,247,242,0.13) 0%, rgba(250,247,242,0.05) 40%, transparent 70%)',
+          }}
+        />
+        {/* Glow coral cálido por debajo del titular */}
+        <div className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full blur-3xl opacity-65"
+          style={{
+            background: 'radial-gradient(ellipse, rgba(232,102,90,0.32) 0%, transparent 65%)',
+          }}
+        />
+        {/* Cono de luz descendente (foco teatral) */}
+        <div className="absolute top-[8%] left-1/2 -translate-x-1/2 w-[70%] h-[60%]"
+          style={{
+            background: 'radial-gradient(ellipse 55% 90% at 50% 0%, rgba(255,238,210,0.12) 0%, transparent 75%)',
+            mixBlendMode: 'screen',
+          }}
         />
       </div>
 
@@ -243,7 +259,8 @@ export function Hero() {
             className="hidden sm:block font-editorial font-bold text-brand-cream leading-[0.95] tracking-[-0.025em]"
             style={{
               fontSize: 'clamp(2.5rem, 6.5vw, 5.6rem)',
-              textShadow: '0 4px 32px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4)',
+              textShadow:
+                '0 0 32px rgba(250,247,242,0.18), 0 4px 32px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4)',
             }}
           >
             Contenido <span className="italic text-brand-coral">creativo y viral.</span>
