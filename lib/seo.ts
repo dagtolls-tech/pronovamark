@@ -5,21 +5,22 @@ const siteUrl = 'https://www.pronovamark.com'
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Pronovamark | Agencia de Marketing Digital en Benidorm',
+    default: 'Pronovamark | Contenido viral + embudos de venta para tu negocio',
     template: '%s | Pronovamark',
   },
   description:
-    'Convertimos seguidores de Instagram y TikTok en clientes reales para negocios físicos. Contenido viral + embudos de IA. Agencia de marketing en Benidorm.',
+    'Agencia de marketing en redes para negocios físicos y online. Creamos contenido viral en Instagram y TikTok + embudos de venta con IA que convierten visitas en clientes. Diagnóstico gratuito.',
   keywords: [
-    'agencia marketing digital',
-    'marketing redes sociales',
-    'Instagram TikTok negocios',
-    'automatizaciones IA marketing',
-    'marketing restaurantes',
-    'marketing clínicas estéticas',
-    'agencia marketing Benidorm',
+    'agencia marketing redes sociales',
+    'contenido viral Instagram TikTok',
+    'embudos de venta IA',
+    'marketing para negocios físicos',
+    'marketing para negocios online',
+    'agencia marketing Costa Blanca',
+    'agencia marketing Alicante',
     'crecimiento Instagram',
-    'embudos de venta',
+    'automatizaciones IA marketing',
+    'marketing restaurantes clínicas gimnasios',
   ],
   authors: [{ name: 'Pronovamark', url: siteUrl }],
   creator: 'Pronovamark',
@@ -28,24 +29,17 @@ export const defaultMetadata: Metadata = {
     locale: 'es_ES',
     url: siteUrl,
     siteName: 'Pronovamark',
-    title: 'Pronovamark | Convierte seguidores en clientes para tu negocio',
+    title: 'Pronovamark | Contenido viral + embudos de venta para tu negocio',
     description:
-      'Agencia de marketing digital especializada en negocios físicos. Instagram + TikTok + automatizaciones con IA.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Pronovamark Marketing Agency',
-      },
-    ],
+      'Agencia de marketing en redes para negocios físicos y online. Contenido viral + embudos de venta con IA. Costa Blanca · Toda Alicante.',
+    // Imagen OG generada dinámicamente por app/opengraph-image.tsx
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pronovamark | Marketing Digital para Negocios Físicos',
+    title: 'Pronovamark | Contenido viral + embudos de venta',
     description:
-      'Convertimos seguidores en clientes. Contenido viral + embudos con IA.',
-    images: ['/og-image.png'],
+      'Convertimos vistas en clientes. Contenido viral + embudos con IA para negocios físicos y online.',
+    // Imagen Twitter generada dinámicamente por app/opengraph-image.tsx
   },
   robots: {
     index: true,
@@ -58,13 +52,9 @@ export const defaultMetadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
-  },
+  // Iconos generados dinámicamente por app/icon.tsx y app/apple-icon.tsx
   verification: {
-    // TODO: añadir Google Search Console verification
+    // TODO: añadir Google Search Console verification cuando lo configures
     google: '',
   },
 }
@@ -74,12 +64,10 @@ export const organizationSchema = {
   '@type': 'ProfessionalService',
   name: 'Pronovamark',
   url: siteUrl,
-  logo: `${siteUrl}/logos/pronovamark-logo.png`,
   description:
-    'Agencia de marketing digital especializada en crecimiento de Instagram y TikTok para negocios físicos, con automatizaciones de IA para convertir seguidores en clientes.',
+    'Agencia de marketing en redes para negocios físicos y online. Contenido viral en Instagram y TikTok + embudos de venta con IA. Operamos 100% online desde la Costa Blanca, trabajamos con negocios de toda Alicante.',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Benidorm',
     addressRegion: 'Alicante',
     addressCountry: 'ES',
   },
@@ -91,14 +79,17 @@ export const organizationSchema = {
   },
   sameAs: [
     'https://www.instagram.com/pronovamark/',
-    // TODO: añadir TikTok y LinkedIn cuando estén disponibles
   ],
-  areaServed: 'ES',
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: 'Alicante, Costa Blanca, España',
+  },
   serviceType: [
     'Marketing en redes sociales',
     'Gestión de Instagram',
     'Gestión de TikTok',
-    'Automatizaciones con IA',
+    'Contenido viral',
     'Embudos de venta',
+    'Automatizaciones con IA',
   ],
 }
