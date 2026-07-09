@@ -15,7 +15,7 @@ type CaseCard = {
 }
 
 const CASES: CaseCard[] = [
-  { niche: 'Óptica · Marca Personal', handle: '@cati_optica', hint: 'De 200 a +2.300 seguidores', href: '/casos#cati' },
+  { niche: 'Óptica · Marca Personal', handle: '@cati_optica', hint: 'De 200 a +2.300 seguidores en 1 mes', href: '/casos#cati' },
   { niche: 'Mentor de negocios', handle: '@mentorpro', hint: 'Autoridad + embudo a mentoría', href: '/casos' },
   { niche: 'Creador de contenido', handle: '@creador', hint: 'Crecimiento + monetización', href: '/casos' },
   { niche: 'E-commerce de moda', handle: '@tumarca', hint: 'Contenido viral + ventas web', href: '/casos' },
@@ -53,18 +53,12 @@ function VideoCard({ c, index }: { c: CaseCard; index: number }) {
           style={{ background: 'radial-gradient(ellipse at 50% 30%, rgba(232,102,90,0.18) 0%, transparent 60%)' }}
         />
 
-        {/* Top bar — badge nicho + logo pm */}
-        <div className="absolute top-0 inset-x-0 p-3.5 flex items-start justify-between z-10">
+        {/* Top bar — badge nicho */}
+        <div className="absolute top-0 inset-x-0 p-3.5 flex items-start z-10">
           <span className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-bold tracking-wide uppercase"
             style={{ background: 'rgba(232,102,90,0.15)', border: '1px solid rgba(232,102,90,0.3)', color: '#E8665A' }}>
             Caso {String(index + 1).padStart(2, '0')}
           </span>
-          <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-black/40 backdrop-blur-sm">
-            <span className="relative font-display font-bold text-brand-cream text-[9px]">
-              pm
-              <span className="absolute -top-0.5 -right-1.5 w-1 h-1 rounded-full bg-brand-coral" />
-            </span>
-          </div>
         </div>
 
         {/* Botón play central */}

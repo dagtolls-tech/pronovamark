@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 }
 
 const METRICS = [
-  { icon: Users, value: '200 → +2.300', label: 'seguidores' },
+  { icon: Users, value: '200 → +2.300', label: 'seguidores en 1 mes' },
   { icon: Eye, value: '60K–100K', label: 'visitas por vídeo' },
   { icon: Bot, value: 'IA 24/7', label: 'más citas y reservas' },
 ]
