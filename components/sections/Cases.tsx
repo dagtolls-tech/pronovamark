@@ -1,7 +1,8 @@
 'use client'
 
 import { useRef } from 'react'
-import { Play, ArrowRight, ArrowLeft, ArrowUpRight } from 'lucide-react'
+import Link from 'next/link'
+import { Play, ArrowRight, ArrowLeft, ArrowUpRight, Clapperboard } from 'lucide-react'
 import { AnimatedSection } from '@/components/shared/AnimatedSection'
 
 // Placeholders de casos — nichos de marca personal / negocio online.
@@ -134,24 +135,42 @@ export function Cases() {
           </p>
         </AnimatedSection>
 
-        {/* Controles carrusel — desktop */}
-        <AnimatedSection className="hidden sm:flex items-center justify-end gap-2 mb-5" delay={0.1}>
-          <button
-            onClick={() => scroll(-1)}
-            aria-label="Ver casos anteriores"
-            className="w-11 h-11 rounded-full flex items-center justify-center bg-white border border-black/8 text-brand-black hover:bg-brand-black hover:text-brand-cream transition-all duration-200 shadow-sm"
+        {/* Fila botón captativo + controles carrusel */}
+        <AnimatedSection className="flex items-center justify-between gap-3 mb-5" delay={0.1}>
+          {/* Botón que invita a ver el proceso completo */}
+          <Link
+            href="/casos"
             data-cursor-hover
+            className="group inline-flex items-center gap-2.5 bg-brand-black text-brand-cream text-sm font-semibold pl-2 pr-5 py-2 rounded-full hover:bg-brand-coral transition-all duration-300"
+            style={{ boxShadow: '0 8px 28px rgba(10,10,10,0.18)' }}
           >
-            <ArrowLeft className="w-4 h-4" />
-          </button>
-          <button
-            onClick={() => scroll(1)}
-            aria-label="Ver más casos"
-            className="w-11 h-11 rounded-full flex items-center justify-center bg-brand-black text-brand-cream hover:bg-brand-coral transition-all duration-200 shadow-sm"
-            data-cursor-hover
-          >
-            <ArrowRight className="w-4 h-4" />
-          </button>
+            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-coral text-white group-hover:bg-white group-hover:text-brand-coral transition-colors duration-300 flex-shrink-0">
+              <Clapperboard className="w-4 h-4" />
+            </span>
+            <span className="hidden sm:inline">Mira el proceso detrás de cada caso</span>
+            <span className="sm:hidden">Ver el proceso de los casos</span>
+            <ArrowUpRight className="w-4 h-4 flex-shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
+
+          {/* Controles carrusel — desktop */}
+          <div className="hidden sm:flex items-center gap-2 flex-shrink-0">
+            <button
+              onClick={() => scroll(-1)}
+              aria-label="Ver casos anteriores"
+              className="w-11 h-11 rounded-full flex items-center justify-center bg-white border border-black/8 text-brand-black hover:bg-brand-black hover:text-brand-cream transition-all duration-200 shadow-sm"
+              data-cursor-hover
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => scroll(1)}
+              aria-label="Ver más casos"
+              className="w-11 h-11 rounded-full flex items-center justify-center bg-brand-black text-brand-cream hover:bg-brand-coral transition-all duration-200 shadow-sm"
+              data-cursor-hover
+            >
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
         </AnimatedSection>
       </div>
 
