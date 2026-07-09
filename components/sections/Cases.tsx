@@ -26,9 +26,18 @@ const CARD_W = 'w-[78vw] sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/
 
 function VideoCard({ c, index }: { c: CaseCard; index: number }) {
   return (
-    <article
-      className={`snap-start shrink-0 ${CARD_W} group`}
-    >
+    <article className={`snap-start shrink-0 ${CARD_W} group`}>
+      {/* Botón captativo encima de cada vídeo */}
+      <Link
+        href="/casos"
+        data-cursor-hover
+        className="mb-3 flex h-10 items-center justify-center gap-2 rounded-full bg-brand-black text-brand-cream text-[11px] sm:text-xs font-semibold px-3 hover:bg-brand-coral transition-colors duration-300 group/btn"
+      >
+        <Clapperboard className="w-3.5 h-3.5 text-brand-coral group-hover/btn:text-white transition-colors flex-shrink-0" />
+        Mira el proceso detrás de este caso
+        <ArrowUpRight className="w-3.5 h-3.5 flex-shrink-0 transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+      </Link>
+
       <div
         className="relative rounded-[24px] overflow-hidden"
         style={{
@@ -135,42 +144,24 @@ export function Cases() {
           </p>
         </AnimatedSection>
 
-        {/* Fila botón captativo + controles carrusel */}
-        <AnimatedSection className="flex items-center justify-between gap-3 mb-5" delay={0.1}>
-          {/* Botón que invita a ver el proceso completo */}
-          <Link
-            href="/casos"
+        {/* Controles carrusel — desktop */}
+        <AnimatedSection className="hidden sm:flex items-center justify-end gap-2 mb-5" delay={0.1}>
+          <button
+            onClick={() => scroll(-1)}
+            aria-label="Ver casos anteriores"
+            className="w-11 h-11 rounded-full flex items-center justify-center bg-white border border-black/8 text-brand-black hover:bg-brand-black hover:text-brand-cream transition-all duration-200 shadow-sm"
             data-cursor-hover
-            className="group inline-flex items-center gap-2.5 bg-brand-black text-brand-cream text-sm font-semibold pl-2 pr-5 py-2 rounded-full hover:bg-brand-coral transition-all duration-300"
-            style={{ boxShadow: '0 8px 28px rgba(10,10,10,0.18)' }}
           >
-            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-coral text-white group-hover:bg-white group-hover:text-brand-coral transition-colors duration-300 flex-shrink-0">
-              <Clapperboard className="w-4 h-4" />
-            </span>
-            <span className="hidden sm:inline">Mira el proceso detrás de cada caso</span>
-            <span className="sm:hidden">Ver el proceso de los casos</span>
-            <ArrowUpRight className="w-4 h-4 flex-shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
-
-          {/* Controles carrusel — desktop */}
-          <div className="hidden sm:flex items-center gap-2 flex-shrink-0">
-            <button
-              onClick={() => scroll(-1)}
-              aria-label="Ver casos anteriores"
-              className="w-11 h-11 rounded-full flex items-center justify-center bg-white border border-black/8 text-brand-black hover:bg-brand-black hover:text-brand-cream transition-all duration-200 shadow-sm"
-              data-cursor-hover
-            >
-              <ArrowLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => scroll(1)}
-              aria-label="Ver más casos"
-              className="w-11 h-11 rounded-full flex items-center justify-center bg-brand-black text-brand-cream hover:bg-brand-coral transition-all duration-200 shadow-sm"
-              data-cursor-hover
-            >
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
+            <ArrowLeft className="w-4 h-4" />
+          </button>
+          <button
+            onClick={() => scroll(1)}
+            aria-label="Ver más casos"
+            className="w-11 h-11 rounded-full flex items-center justify-center bg-brand-black text-brand-cream hover:bg-brand-coral transition-all duration-200 shadow-sm"
+            data-cursor-hover
+          >
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </AnimatedSection>
       </div>
 
@@ -186,6 +177,8 @@ export function Cases() {
 
           {/* Card CTA final — mismo tamaño que las demás */}
           <article className={`snap-start shrink-0 ${CARD_W}`}>
+            {/* Espaciador para alinear con el botón de las tarjetas de vídeo */}
+            <div className="h-10 mb-3" aria-hidden="true" />
             <a
               href="#contacto"
               className="relative flex flex-col items-center justify-center text-center rounded-[24px] overflow-hidden h-full p-6 group"
