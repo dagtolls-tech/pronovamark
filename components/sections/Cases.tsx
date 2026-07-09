@@ -2,12 +2,6 @@ import Link from 'next/link'
 import { Play, ArrowUpRight, Clapperboard, Lock, Sparkles, Users, Eye, Bot } from 'lucide-react'
 import { AnimatedSection } from '@/components/shared/AnimatedSection'
 
-const METRICS = [
-  { icon: Users, value: '200 → +2.300', label: 'seguidores · 1 mes' },
-  { icon: Eye, value: '60K–100K', label: 'visitas por vídeo' },
-  { icon: Bot, value: 'IA 24/7', label: 'más citas y reservas' },
-]
-
 const PROXIMOS = [
   { n: '02', niche: 'Mentor de negocios' },
   { n: '03', niche: 'Creador de contenido' },
@@ -17,77 +11,68 @@ const PROXIMOS = [
 
 export function Cases() {
   return (
-    <section id="casos" className="bg-brand-cream py-24 lg:py-32 relative overflow-hidden" aria-labelledby="cases-heading">
+    <section id="casos" className="bg-brand-black py-24 lg:py-32 relative overflow-hidden" aria-labelledby="cases-heading">
       <div className="absolute inset-0 pointer-events-none opacity-[0.04]" aria-hidden="true"
-        style={{ backgroundImage: 'radial-gradient(circle, #0A0A0A 1px, transparent 1px)', backgroundSize: '28px 28px' }}
+        style={{ backgroundImage: 'radial-gradient(circle, #FFFFFF 1px, transparent 1px)', backgroundSize: '28px 28px' }}
       />
 
       <div className="relative max-w-container mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Header — NO cambiar */}
+        {/* Header */}
         <AnimatedSection className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 lg:mb-14">
           <div className="max-w-2xl">
             <span className="inline-flex items-center gap-2 text-brand-coral text-xs font-bold tracking-[0.2em] uppercase mb-5">
               <span className="w-8 h-px bg-brand-coral" />
               Casos de éxito
             </span>
-            <h2 id="cases-heading" className="font-editorial font-bold text-brand-black tracking-tight"
+            <h2 id="cases-heading" className="font-editorial font-bold text-brand-cream tracking-tight"
               style={{ fontSize: 'clamp(2.2rem, 5.5vw, 4.5rem)', lineHeight: 0.98 }}>
               Mira lo que hacemos por{' '}
               <span className="italic text-brand-coral">marcas como la tuya.</span>
             </h2>
           </div>
-          <p className="text-neutral-600 text-base lg:text-lg max-w-sm leading-relaxed">
-            Contenido real, resultados reales. El antes y el después de trabajar con nosotros.
+          <p className="text-neutral-400 text-base lg:text-lg max-w-sm leading-relaxed">
+            Perfiles reales que transformamos. El antes y el después de trabajar con nosotros.
           </p>
         </AnimatedSection>
 
-        {/* CASO 01 — Cati (destacado): vídeo + antes/después horizontal */}
+        {/* CASO 01 — Cati */}
         <AnimatedSection>
-          <div className="rounded-[28px] overflow-hidden border border-white/8 p-5 sm:p-7 lg:p-8"
-            style={{ background: 'linear-gradient(160deg, #161010 0%, #0A0A0A 55%)' }}>
+          <div className="rounded-[28px] border border-white/10 p-5 sm:p-7 lg:p-8"
+            style={{ background: 'linear-gradient(160deg, #131313 0%, #0A0A0A 60%)' }}>
 
-            {/* Cabecera del caso */}
-            <div className="flex flex-wrap items-center gap-3 mb-5">
-              <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold tracking-wide uppercase"
-                style={{ background: 'rgba(232,102,90,0.15)', border: '1px solid rgba(232,102,90,0.3)', color: '#E8665A' }}>
-                Caso 01
-              </span>
-              <div>
-                <span className="font-editorial font-bold text-brand-cream text-lg sm:text-xl leading-none">Cati Villaoslada</span>
-                <span className="text-neutral-500 text-xs sm:text-sm ml-2">· Óptica · Marca Personal</span>
-              </div>
+            {/* Label */}
+            <div className="flex items-center gap-2 mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-coral" />
+              <span className="text-brand-coral text-xs font-bold tracking-[0.2em] uppercase">Caso 01</span>
             </div>
 
-            {/* Vídeo + antes/después horizontal */}
-            <div className="grid lg:grid-cols-[240px_1fr] gap-4 sm:gap-5 items-stretch">
+            {/* Vídeo (izq) + antes/después (der) */}
+            <div className="grid lg:grid-cols-[300px_1fr] gap-4 sm:gap-5 items-stretch">
 
-              {/* Vídeo (reel) */}
-              <div className="w-full max-w-[240px] mx-auto lg:mx-0">
-                <div className="relative rounded-2xl overflow-hidden aspect-[9/16] border border-white/10 h-full"
-                  style={{ background: 'linear-gradient(160deg, #1c1310 0%, #0A0A0A 60%)' }}>
-                  <div className="absolute inset-0 pointer-events-none opacity-60"
-                    style={{ background: 'radial-gradient(ellipse at 50% 35%, rgba(232,102,90,0.2) 0%, transparent 60%)' }} />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative">
-                      <span className="absolute inset-0 rounded-full bg-brand-coral/30 animate-ping" style={{ animationDuration: '2.5s' }} />
-                      <div className="relative w-14 h-14 rounded-full flex items-center justify-center"
-                        style={{ background: '#E8665A', boxShadow: '0 8px 24px rgba(232,102,90,0.5)' }}>
-                        <Play className="w-5 h-5 text-white fill-white ml-0.5" />
-                      </div>
+              {/* Vídeo */}
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 aspect-[9/16] lg:aspect-auto lg:h-full min-h-[420px]"
+                style={{ background: 'linear-gradient(160deg, #1c1310 0%, #0A0A0A 60%)' }}>
+                <div className="absolute inset-0 pointer-events-none opacity-60"
+                  style={{ background: 'radial-gradient(ellipse at 50% 40%, rgba(232,102,90,0.2) 0%, transparent 60%)' }} />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative">
+                    <span className="absolute inset-0 rounded-full bg-brand-coral/30 animate-ping" style={{ animationDuration: '2.5s' }} />
+                    <div className="relative w-16 h-16 rounded-full flex items-center justify-center"
+                      style={{ background: '#E8665A', boxShadow: '0 8px 24px rgba(232,102,90,0.5)' }}>
+                      <Play className="w-6 h-6 text-white fill-white ml-0.5" />
                     </div>
                   </div>
-                  <div className="absolute bottom-0 inset-x-0 p-3.5"
-                    style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9), transparent)' }}>
-                    <p className="text-[12px] font-bold text-brand-cream">Reel del caso</p>
-                    <p className="text-[10px] text-neutral-400 mt-0.5">Vídeo próximamente</p>
-                  </div>
+                </div>
+                <div className="absolute bottom-0 inset-x-0 p-4"
+                  style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9), transparent)' }}>
+                  <p className="text-[13px] font-bold text-brand-cream">Reel del caso</p>
+                  <p className="text-[11px] text-neutral-400 mt-0.5">Vídeo próximamente</p>
                 </div>
               </div>
 
-              {/* Antes / Después — horizontales, apilados al lado del vídeo */}
+              {/* Antes (arriba) / Después (abajo) */}
               <div className="flex flex-col gap-4 justify-center">
-                {/* Antes */}
                 <figure className="relative">
                   <span className="absolute z-10 top-2.5 left-2.5 text-[10px] font-bold tracking-[0.15em] uppercase text-brand-cream bg-black/60 backdrop-blur-sm rounded-full px-3 py-1 border border-white/15">
                     Antes
@@ -100,7 +85,6 @@ export function Cases() {
                     loading="lazy"
                   />
                 </figure>
-                {/* Después */}
                 <figure className="relative">
                   <span className="absolute z-10 top-2.5 left-2.5 text-[10px] font-bold tracking-[0.15em] uppercase text-white bg-brand-coral rounded-full px-3 py-1">
                     Después
@@ -109,33 +93,63 @@ export function Cases() {
                   <img
                     src="/casos/cati/despues-instagram.jpg"
                     alt="Instagram de Cati Villaoslada con +2.300 seguidores y vídeos virales"
-                    className="rounded-2xl border border-brand-coral/25 w-full h-auto block"
+                    className="rounded-2xl border border-brand-coral/30 w-full h-auto block"
                     loading="lazy"
-                    style={{ boxShadow: '0 12px 40px rgba(232,102,90,0.18)' }}
+                    style={{ boxShadow: '0 12px 40px rgba(232,102,90,0.22)' }}
                   />
                 </figure>
               </div>
             </div>
 
-            {/* Datos + texto clave + botón */}
-            <div className="mt-6 grid lg:grid-cols-[1fr_auto] gap-5 items-center">
-              <div className="grid grid-cols-3 gap-2 sm:gap-3">
-                {METRICS.map((m) => (
-                  <div key={m.label} className="rounded-2xl bg-white/[0.04] border border-white/8 p-3 sm:p-4">
-                    <m.icon className="w-4 h-4 text-brand-coral mb-2" />
-                    <p className="font-editorial font-bold text-brand-cream leading-none" style={{ fontSize: 'clamp(0.9rem, 1.8vw, 1.3rem)' }}>
-                      {m.value}
-                    </p>
-                    <p className="text-neutral-500 text-[10px] sm:text-xs mt-1 leading-tight">{m.label}</p>
-                  </div>
-                ))}
+            {/* Números — tarjetas blancas */}
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-6">
+              {/* Seguidores + EN 1 MES */}
+              <div className="rounded-2xl bg-brand-cream p-3 sm:p-5 flex flex-col">
+                <Users className="w-4 h-4 text-brand-coral mb-2" />
+                <p className="font-editorial font-bold text-brand-black leading-none" style={{ fontSize: 'clamp(1rem, 2.2vw, 1.6rem)' }}>
+                  200 → +2.300
+                </p>
+                <p className="text-neutral-500 text-[10px] sm:text-xs mt-1">seguidores</p>
+                <p className="font-editorial font-bold text-brand-coral uppercase tracking-tight mt-2 leading-none"
+                  style={{ fontSize: 'clamp(0.95rem, 1.9vw, 1.35rem)' }}>
+                  En 1 mes
+                </p>
+              </div>
+              {/* Visitas */}
+              <div className="rounded-2xl bg-brand-cream p-3 sm:p-5 flex flex-col">
+                <Eye className="w-4 h-4 text-brand-coral mb-2" />
+                <p className="font-editorial font-bold text-brand-black leading-none" style={{ fontSize: 'clamp(1rem, 2.2vw, 1.6rem)' }}>
+                  60K–100K
+                </p>
+                <p className="text-neutral-500 text-[10px] sm:text-xs mt-1">visitas por vídeo</p>
+              </div>
+              {/* IA */}
+              <div className="rounded-2xl bg-brand-cream p-3 sm:p-5 flex flex-col">
+                <Bot className="w-4 h-4 text-brand-coral mb-2" />
+                <p className="font-editorial font-bold text-brand-black leading-none" style={{ fontSize: 'clamp(1rem, 2.2vw, 1.6rem)' }}>
+                  IA 24/7
+                </p>
+                <p className="text-neutral-500 text-[10px] sm:text-xs mt-1">más citas y reservas</p>
+              </div>
+            </div>
+
+            {/* Testimonio con palabras clave */}
+            <div className="mt-6 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+              <div className="max-w-2xl">
+                <p className="font-editorial text-brand-cream text-base sm:text-xl leading-snug">
+                  De 200 a <span className="text-brand-coral">+2.300 seguidores en 1 mes</span>, reels de
+                  <span className="text-brand-coral"> 60K–100K visitas</span> y una IA que
+                  <span className="text-brand-coral"> llena la agenda de citas y reservas</span>. Elevamos el negocio
+                  al siguiente nivel con mi Marca Personal y un marketing honesto.
+                </p>
+                <p className="text-neutral-500 text-sm mt-3 font-semibold">— Cati Villaoslada · Óptica Ibiza</p>
               </div>
               <Link
                 href="/casos"
-                className="inline-flex items-center justify-center gap-2 bg-brand-coral text-white text-sm font-semibold pl-5 pr-3 py-3 rounded-full hover:bg-brand-coral-dark transition-all group whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 bg-brand-coral text-white text-sm font-semibold pl-5 pr-3 py-3 rounded-full hover:bg-brand-coral-dark transition-all group whitespace-nowrap flex-shrink-0"
               >
                 <Clapperboard className="w-4 h-4" />
-                Mira el proceso detrás de este caso
+                Ver el proceso
                 <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center">
                   <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
@@ -144,13 +158,13 @@ export function Cases() {
           </div>
         </AnimatedSection>
 
-        {/* Próximos casos — en desarrollo con hype */}
+        {/* Próximos casos — en desarrollo */}
         <AnimatedSection className="mt-6" delay={0.1}>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {PROXIMOS.map((c) => (
               <div key={c.n}
-                className="group relative rounded-2xl overflow-hidden border border-white/8 aspect-[4/3] sm:aspect-[3/4] p-5 flex flex-col justify-between transition-all duration-300 hover:border-brand-coral/30 hover:-translate-y-1"
-                style={{ background: 'linear-gradient(160deg, #161010 0%, #0A0A0A 60%)' }}
+                className="group relative rounded-2xl overflow-hidden border border-white/10 aspect-[4/3] sm:aspect-[3/4] p-5 flex flex-col justify-between transition-all duration-300 hover:border-brand-coral/40 hover:-translate-y-1"
+                style={{ background: 'linear-gradient(160deg, #1a1a1a 0%, #0d0d0d 60%)' }}
               >
                 <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(232,102,90,0.15) 0%, transparent 60%)' }} />
@@ -176,13 +190,13 @@ export function Cases() {
 
         {/* CTA inferior */}
         <AnimatedSection className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 text-center" delay={0.2}>
-          <p className="text-neutral-600 text-sm sm:text-base">Contenido que convierte seguidores en clientes.</p>
+          <p className="text-neutral-400 text-sm sm:text-base">Contenido que convierte seguidores en clientes.</p>
           <a
             href="#contacto"
-            className="inline-flex items-center gap-2 bg-brand-black text-brand-cream text-sm font-semibold pl-5 pr-3 py-3 rounded-full hover:bg-brand-coral transition-all group"
+            className="inline-flex items-center gap-2 bg-brand-cream text-brand-black text-sm font-semibold pl-5 pr-3 py-3 rounded-full hover:bg-brand-coral hover:text-white transition-all group"
           >
             Quiero mis casos de éxito
-            <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center">
+            <span className="w-6 h-6 rounded-full bg-black/10 flex items-center justify-center group-hover:bg-white/15">
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </span>
           </a>
