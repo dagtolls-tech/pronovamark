@@ -1,29 +1,72 @@
 'use client'
 
 import { useState } from 'react'
-import { Instagram } from 'lucide-react'
 
 interface BeforeAfterProps {
   beforeSrc: string
   beforeAlt: string
-  beforeStat: string
-  beforeCaption: string
   afterSrc: string
   afterAlt: string
 }
 
-export function BeforeAfter({
-  beforeSrc,
-  beforeAlt,
-  beforeStat,
-  beforeCaption,
-  afterSrc,
-  afterAlt,
-}: BeforeAfterProps) {
+// Réplica del perfil de Instagram "antes" (Óptica Ibiza, 172 seguidores).
+// Se muestra si aún no existe el archivo real /casos/cati/antes-instagram.jpg
+function AntesMock() {
+  const stats = [
+    { n: '33', l: 'publicaciones' },
+    { n: '172', l: 'seguidores' },
+    { n: '258', l: 'seguidos' },
+  ]
+  return (
+    <div className="rounded-2xl border border-white/10 overflow-hidden bg-[#0d0d0d]">
+      <div className="p-4 sm:p-5">
+        {/* Cabecera perfil */}
+        <div className="flex items-center gap-4">
+          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex-shrink-0 flex items-center justify-center"
+            style={{ background: 'radial-gradient(circle at 30% 30%, #2a2a2a, #050505)' }}>
+            {/* confeti tipo avatar */}
+            <div className="flex flex-wrap gap-0.5 w-8 justify-center">
+              {['#E8665A','#4ade80','#facc15','#60a5fa','#f472b6','#fff'].map((c,i)=>(
+                <span key={i} className="w-1.5 h-1.5 rounded-[1px]" style={{ background: c }} />
+              ))}
+            </div>
+          </div>
+          <div className="min-w-0">
+            <p className="text-brand-cream text-sm font-semibold truncate">Óptica Ibiza</p>
+            <div className="flex gap-4 mt-1.5">
+              {stats.map((s) => (
+                <div key={s.l} className="text-center">
+                  <p className="text-brand-cream text-sm font-bold leading-none">{s.n}</p>
+                  <p className="text-neutral-500 text-[10px] leading-tight">{s.l}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        {/* Bio */}
+        <div className="mt-3 text-[11px] leading-snug text-neutral-400">
+          <p className="text-brand-cream font-semibold">Óptica</p>
+          <p>👓 Óptica y Audiología</p>
+          <p>+33 años de experiencia profesional</p>
+        </div>
+      </div>
+      {/* Grid de reels apagado */}
+      <div className="grid grid-cols-3 gap-0.5">
+        {Array.from({ length: 3 }).map((_, i) => (
+          <div key={i} className="aspect-[9/13] bg-white/[0.03] flex items-center justify-center">
+            <span className="text-neutral-700 text-[10px]">▶ {[167, 142, 141][i]}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export function BeforeAfter({ beforeSrc, beforeAlt, afterSrc, afterAlt }: BeforeAfterProps) {
   const [beforeError, setBeforeError] = useState(false)
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 items-start">
       {/* ANTES */}
       <div>
         <div className="flex items-center gap-2 mb-3">
@@ -31,14 +74,7 @@ export function BeforeAfter({
           <span className="flex-1 h-px bg-white/10" />
         </div>
         {beforeError ? (
-          // Fallback si aún no existe la imagen del "antes"
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] aspect-[4/3] flex flex-col items-center justify-center text-center p-6">
-            <Instagram className="w-7 h-7 text-neutral-600 mb-4" />
-            <p className="font-editorial font-bold text-brand-cream" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', lineHeight: 1 }}>
-              {beforeStat}
-            </p>
-            <p className="text-neutral-500 text-xs sm:text-sm mt-2">{beforeCaption}</p>
-          </div>
+          <AntesMock />
         ) : (
           // eslint-disable-next-line @next/next/no-img-element
           <img

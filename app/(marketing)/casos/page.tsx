@@ -91,8 +91,6 @@ export default function CasosPage() {
                   <BeforeAfter
                     beforeSrc="/casos/cati/antes-instagram.jpg"
                     beforeAlt="Instagram de Óptica Ibiza con 172 seguidores antes de trabajar con Pronovamark"
-                    beforeStat="172"
-                    beforeCaption="seguidores · punto de partida"
                     afterSrc="/casos/cati/despues-instagram.jpg"
                     afterAlt="Instagram de Cati Villaoslada con +2.300 seguidores y vídeos virales"
                   />
