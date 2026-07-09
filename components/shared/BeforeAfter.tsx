@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowRight } from 'lucide-react'
 
 interface BeforeAfterProps {
   beforeSrc: string
@@ -83,16 +82,6 @@ export function BeforeAfter({ beforeSrc, beforeAlt, afterSrc, afterAlt }: Before
           />
         )}
       </figure>
-
-      {/* Flecha central antes → después */}
-      <div className="flex-shrink-0 z-20 my-1 sm:my-0 sm:-mx-6">
-        <div
-          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-brand-coral flex items-center justify-center rotate-90 sm:rotate-0"
-          style={{ boxShadow: '0 8px 28px rgba(232,102,90,0.5), 0 0 0 5px rgba(10,10,10,0.6)' }}
-        >
-          <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 text-white" strokeWidth={2.5} />
-        </div>
-      </div>
 
       {/* DESPUÉS */}
       <figure className="relative w-full sm:flex-1">
