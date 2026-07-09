@@ -63,7 +63,7 @@ export function BeforeAfter({ beforeSrc, beforeAlt, afterSrc, afterAlt }: Before
   const [beforeError, setBeforeError] = useState(false)
 
   return (
-    <div className="relative flex flex-col sm:flex-row items-center gap-4 sm:gap-3">
+    <div className="relative flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
 
       {/* ANTES */}
       <figure className="relative w-full sm:flex-1">
@@ -84,13 +84,13 @@ export function BeforeAfter({ beforeSrc, beforeAlt, afterSrc, afterAlt }: Before
         )}
       </figure>
 
-      {/* Flecha central antes → después */}
-      <div className="flex-shrink-0 z-20 my-1 sm:my-0 sm:-mx-6">
+      {/* Flecha central antes → después — sutil y translúcida, sin tocar las imágenes */}
+      <div className="flex-shrink-0 z-20">
         <div
-          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-brand-coral flex items-center justify-center rotate-90 sm:rotate-0"
-          style={{ boxShadow: '0 8px 28px rgba(232,102,90,0.5), 0 0 0 5px rgba(10,10,10,0.6)' }}
+          className="w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center rotate-90 sm:rotate-0 backdrop-blur-sm"
+          style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)' }}
         >
-          <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 text-white" strokeWidth={2.5} />
+          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-brand-cream/70" strokeWidth={2} />
         </div>
       </div>
 
