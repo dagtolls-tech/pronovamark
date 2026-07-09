@@ -87,7 +87,7 @@ export default function CasosPage() {
                 </div>
 
                 {/* ANTES / DESPUÉS — grande */}
-                <div className="mt-8">
+                <div className="mt-8 -mx-2 sm:-mx-4 lg:-mx-6">
                   <BeforeAfter
                     beforeSrc="/casos/cati/antes-instagram.jpg"
                     beforeAlt="Instagram de Óptica Ibiza con 172 seguidores antes de trabajar con Pronovamark"
