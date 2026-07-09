@@ -41,14 +41,14 @@ export function Problem() {
           </span>
           <h2 id="problem-heading" className="font-editorial font-bold text-brand-black tracking-tight"
             style={{ fontSize: 'clamp(2.2rem, 5.5vw, 4.5rem)', lineHeight: 0.98 }}>
-            Tienes un negocio que funciona.
+            Tienes una marca con algo que vender.
             <br />
             <span className="italic text-neutral-500">Lo que no tienes es </span>
             <span className="italic text-brand-coral">tiempo</span>
             <span className="italic text-neutral-500"> para redes.</span>
           </h2>
           <p className="text-neutral-700 text-base sm:text-lg mt-7 leading-relaxed max-w-2xl">
-            Negocios físicos y online se enfrentan al mismo techo: para crecer en redes hace falta producir contenido a diario, entender algoritmos, contestar mensajes en minutos, montar embudos, medir, ajustar. Imposible si llevas tu negocio en serio.
+            Las marcas personales y los negocios online se enfrentan al mismo techo: para crecer en redes hace falta producir contenido a diario, entender algoritmos, contestar mensajes en minutos, montar embudos, medir, ajustar. Imposible si de verdad quieres escalar tu proyecto.
           </p>
           <p className="text-brand-black text-lg sm:text-xl mt-5 font-editorial font-semibold leading-snug max-w-2xl">
             Nosotros nos encargamos de todo eso para que tú no tengas que tocarlo.

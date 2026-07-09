@@ -13,28 +13,26 @@ export function CostaBlanca() {
       <AnimatedSection>
         <div className="relative w-full h-[260px] sm:h-[320px] lg:h-[380px] overflow-hidden">
 
-          {/* Vídeo de fondo (YouTube embed muteado y en loop) */}
+          {/* Vídeo de fondo (dron Benidorm, muteado y en loop) */}
           <div className="absolute inset-0 overflow-hidden" style={{ contain: 'paint layout' }}>
-            <iframe
-              src="https://www.youtube.com/embed/OaEKZSj53YE?autoplay=1&mute=1&loop=1&playlist=OaEKZSj53YE&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&playsinline=1&disablekb=1"
-              title="Benidorm Costa Blanca - vista aérea"
-              allow="autoplay; encrypted-media"
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster="/videos/benidorm-poster.jpg"
               aria-hidden="true"
               tabIndex={-1}
-              loading="lazy"
-              className="absolute pointer-events-none"
+              className="absolute top-1/2 left-1/2 w-full h-full pointer-events-none"
               style={{
-                top: '50%',
-                left: '50%',
-                width: '177.78vh',
-                minWidth: '100%',
-                height: '56.25vw',
-                minHeight: '100%',
-                transform: 'translate(-50%, -50%) scale(1.25) translateZ(0)',
-                border: 0,
+                objectFit: 'cover',
+                transform: 'translate(-50%, -50%) translateZ(0)',
                 willChange: 'transform',
               }}
-            />
+            >
+              <source src="/videos/benidorm.mp4" type="video/mp4" />
+            </video>
           </div>
 
           {/* Overlay oscuro para legibilidad */}

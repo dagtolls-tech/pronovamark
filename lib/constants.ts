@@ -208,10 +208,10 @@ export const PROCESS_STEPS = [
 // ── POR QUÉ PRONOVAMARK ────────────────────────────────────
 export const WHY_US = [
   {
-    icon: 'Store',
-    title: 'Solo negocios y Marcas Personales',
+    icon: 'UserCheck',
+    title: 'Especialistas en marcas personales',
     description:
-      'No trabajamos con todo el mundo. Nos especializamos en negocios con producto o servicio real y en marcas personales que quieren monetizar su audiencia. Eso hace que entendamos tu situación de verdad.',
+      'No trabajamos con todo el mundo. Nos especializamos en marcas personales y negocios online con un nicho claro y algo que vender. Esa especialización es la que nos hace entender tu situación de verdad.',
   },
   {
     icon: 'Layers',
@@ -223,7 +223,7 @@ export const WHY_US = [
     icon: 'LineChart',
     title: 'Resultados medibles',
     description:
-      'No te venderemos más seguidores si esos seguidores no se convierten en clientes. Lo que medimos es lo que importa: reservas, consultas, ventas reales.',
+      'No te venderemos más seguidores si esos seguidores no se convierten en clientes. Lo que medimos es lo que importa: ventas, clientes y facturación real.',
   },
   {
     icon: 'Handshake',

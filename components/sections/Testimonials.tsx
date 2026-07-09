@@ -15,7 +15,7 @@ export function Testimonials() {
           <h2 id="testimonials-heading" className="font-display font-bold text-display-lg text-brand-cream mb-4">
             Ellos ya <span className="text-brand-coral">lo viven</span>
           </h2>
-          <p className="text-neutral-500 text-lg">Negocios físicos que decidieron crecer en redes. Y funcionó.</p>
+          <p className="text-neutral-500 text-lg">Marcas personales y negocios online que decidieron crecer en redes. Y funcionó.</p>
         </AnimatedSection>
 
         <AnimatedSection>

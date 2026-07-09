@@ -17,7 +17,7 @@ import { Footer } from '@/components/sections/Footer'
 export const metadata: Metadata = {
   title: 'Pronovamark | Contenido creativo y embudos de venta para tu negocio',
   description:
-    'Agencia de marketing en redes para negocios físicos y online. Contenido viral en Instagram y TikTok + embudos de venta con IA. Diagnóstico gratuito.',
+    'Agencia de marketing en redes para marcas personales y negocios online. Contenido viral en Instagram y TikTok + embudos de venta con IA. Diagnóstico gratuito.',
   alternates: {
     canonical: 'https://www.pronovamark.com',
   },
@@ -32,10 +32,10 @@ export default function HomePage() {
         <Marquee text="PRONOVAMARK" speed={38} variant="dark" />
         <Problem />
         <Stats />
+        <Cases />
         <CostaBlanca />
         <Process />
         <Services />
-        <Cases />
         <Testimonials />
         <WhyUs />
         <FAQ />

@@ -1,10 +1,10 @@
 'use client'
 
-import { Store, Layers, LineChart, Handshake } from 'lucide-react'
+import { UserCheck, Layers, LineChart, Handshake } from 'lucide-react'
 import { AnimatedSection, AnimatedGroup, AnimatedItem } from '@/components/shared/AnimatedSection'
 import { WHY_US } from '@/lib/constants'
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = { Store, Layers, LineChart, Handshake }
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = { UserCheck, Layers, LineChart, Handshake }
 
 export function WhyUs() {
   return (
@@ -20,7 +20,7 @@ export function WhyUs() {
             <span className="text-brand-coral">genérica</span>
           </h2>
           <p className="text-neutral-500 text-lg leading-relaxed">
-            Hay miles de agencias que prometen lo mismo. La diferencia está en que solo trabajamos con negocios físicos y entendemos sus problemas reales.
+            Hay miles de agencias que prometen lo mismo. La diferencia está en que nos especializamos en marcas personales y negocios online, y entendemos de verdad cómo monetizar una audiencia.
           </p>
         </AnimatedSection>
 

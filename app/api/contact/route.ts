@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { Resend } from 'resend'
 
-// Esquema compatible con el nuevo CTAFinal (tipo: negocio-online | negocio-fisico)
+// Esquema compatible con el CTAFinal (tipo: marca-personal | negocio-online)
 const contactSchema = z.object({
-  tipo: z.enum(['negocio-online', 'negocio-fisico']).optional(),
+  tipo: z.enum(['marca-personal', 'negocio-online']).optional(),
   nombre: z.string().min(2).max(80),
   negocio: z.string().min(2).max(120),
   contacto: z.string().min(5).max(100),
@@ -21,8 +21,8 @@ const FROM_EMAIL = process.env.RESEND_FROM || 'Pronovamark <onboarding@resend.de
 //   Pronovamark <web@pronovamark.com>
 
 const tipoLabel: Record<string, string> = {
+  'marca-personal': 'Marca Personal',
   'negocio-online': 'Negocio Online',
-  'negocio-fisico': 'Negocio Físico',
 }
 
 export async function POST(request: NextRequest) {

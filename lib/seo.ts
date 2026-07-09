@@ -9,13 +9,14 @@ export const defaultMetadata: Metadata = {
     template: '%s | Pronovamark',
   },
   description:
-    'Agencia de marketing en redes para negocios físicos y online. Creamos contenido viral en Instagram y TikTok + embudos de venta con IA que convierten visitas en clientes. Diagnóstico gratuito.',
+    'Agencia de marketing en redes para marcas personales y negocios online. Creamos contenido viral en Instagram y TikTok + embudos de venta con IA que convierten tu audiencia en clientes. Diagnóstico gratuito.',
   keywords: [
     'agencia marketing redes sociales',
     'contenido viral Instagram TikTok',
     'embudos de venta IA',
-    'marketing para negocios físicos',
+    'marketing para marcas personales',
     'marketing para negocios online',
+    'monetizar marca personal',
     'agencia marketing Costa Blanca',
     'agencia marketing Alicante',
     'crecimiento Instagram',
@@ -31,14 +32,14 @@ export const defaultMetadata: Metadata = {
     siteName: 'Pronovamark',
     title: 'Pronovamark | Contenido viral + embudos de venta para tu negocio',
     description:
-      'Agencia de marketing en redes para negocios físicos y online. Contenido viral + embudos de venta con IA. Costa Blanca · Toda Alicante.',
+      'Agencia de marketing en redes para marcas personales y negocios online. Contenido viral + embudos de venta con IA. Costa Blanca · Toda Alicante.',
     // Imagen OG generada dinámicamente por app/opengraph-image.tsx
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Pronovamark | Contenido viral + embudos de venta',
     description:
-      'Convertimos vistas en clientes. Contenido viral + embudos con IA para negocios físicos y online.',
+      'Convertimos vistas en clientes. Contenido viral + embudos con IA para marcas personales y negocios online.',
     // Imagen Twitter generada dinámicamente por app/opengraph-image.tsx
   },
   robots: {
@@ -65,7 +66,7 @@ export const organizationSchema = {
   name: 'Pronovamark',
   url: siteUrl,
   description:
-    'Agencia de marketing en redes para negocios físicos y online. Contenido viral en Instagram y TikTok + embudos de venta con IA. Operamos 100% online desde la Costa Blanca, trabajamos con negocios de toda Alicante.',
+    'Agencia de marketing en redes para marcas personales y negocios online. Contenido viral en Instagram y TikTok + embudos de venta con IA. Operamos 100% online desde la Costa Blanca, trabajamos con clientes de toda Alicante y España.',
   address: {
     '@type': 'PostalAddress',
     addressRegion: 'Alicante',

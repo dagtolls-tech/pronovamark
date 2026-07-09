@@ -41,7 +41,7 @@ export function Footer() {
           <div className="space-y-5">
             <Logo variant="light" size="md" />
             <p className="text-neutral-400 text-sm leading-relaxed max-w-xs">
-              Agencia de marketing en redes para negocios físicos y online. Contenido viral + embudos de venta con IA.
+              Agencia de marketing en redes para marcas personales y negocios online. Contenido viral + embudos de venta con IA.
             </p>
             <p className="text-neutral-500 text-xs">
               📍 Costa Blanca · Toda Alicante · 100% online

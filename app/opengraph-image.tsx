@@ -123,7 +123,7 @@ export default function OpengraphImage() {
               maxWidth: 850,
             }}
           >
-            Embudos de venta + contenido que convierte para negocios físicos y online.
+            Embudos de venta + contenido que convierte para marcas personales y negocios online.
           </p>
         </div>
 

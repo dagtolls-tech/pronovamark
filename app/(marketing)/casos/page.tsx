@@ -8,7 +8,7 @@ import { CASES } from '@/lib/constants'
 export const metadata: Metadata = {
   title: 'Casos de éxito | Pronovamark',
   description:
-    'Negocios físicos que multiplicaron sus clientes con Pronovamark. Restaurantes, clínicas, gimnasios — resultados reales y medibles.',
+    'Marcas personales y negocios online que multiplicaron sus clientes con Pronovamark. Resultados reales y medibles.',
   alternates: { canonical: 'https://www.pronovamark.com/casos' },
 }
 
@@ -31,7 +31,7 @@ export default function CasosPage() {
               Casos de éxito
             </h1>
             <p className="text-neutral-400 text-lg max-w-xl">
-              Negocios físicos que decidieron crecer. Estos son sus números.
+              Marcas personales y negocios online que decidieron crecer. Estos son sus números.
             </p>
           </div>
         </section>

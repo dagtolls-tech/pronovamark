@@ -1,30 +1,119 @@
 'use client'
 
-import { Sparkles, ArrowUpRight } from 'lucide-react'
-import { AnimatedSection, AnimatedGroup, AnimatedItem } from '@/components/shared/AnimatedSection'
+import { useRef } from 'react'
+import { Play, ArrowRight, ArrowLeft, ArrowUpRight } from 'lucide-react'
+import { AnimatedSection } from '@/components/shared/AnimatedSection'
 
-const CASE_SLOTS = [
-  { sector: 'Restauración', tag: 'En desarrollo' },
-  { sector: 'Estética & Bienestar', tag: 'En desarrollo' },
-  { sector: 'Marca Personal', tag: 'En desarrollo' },
-  { sector: 'Fitness & Gimnasios', tag: 'En desarrollo' },
-  { sector: 'E-commerce', tag: 'En desarrollo' },
-  { sector: 'Servicios profesionales', tag: 'En desarrollo' },
+// Placeholders de casos — nichos de marca personal / negocio online.
+// De momento son reproductores en negro; se sustituyen por vídeos reales.
+type CaseCard = {
+  niche: string
+  handle: string
+  hint: string
+}
+
+const CASES: CaseCard[] = [
+  { niche: 'Coach de fitness', handle: '@tucoachfit', hint: 'Reels de rutinas + venta de programa' },
+  { niche: 'Mentor de negocios', handle: '@mentorpro', hint: 'Autoridad + embudo a mentoría' },
+  { niche: 'Creador de contenido', handle: '@creador', hint: 'Crecimiento + monetización' },
+  { niche: 'E-commerce de moda', handle: '@tumarca', hint: 'Contenido viral + ventas web' },
+  { niche: 'Infoproductor', handle: '@expertx', hint: 'Lanzamiento de curso online' },
 ]
 
+function VideoCard({ c, index }: { c: CaseCard; index: number }) {
+  return (
+    <article
+      className="snap-start shrink-0 w-[74vw] xs:w-[62vw] sm:w-[300px] lg:w-[320px] group"
+      data-cursor-hover
+    >
+      <div
+        className="relative rounded-[24px] overflow-hidden"
+        style={{
+          aspectRatio: '9 / 16',
+          background: 'linear-gradient(160deg, #17110f 0%, #0A0A0A 60%)',
+          border: '1px solid rgba(255,255,255,0.09)',
+          boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
+        }}
+      >
+        {/* Glow coral sutil de fondo */}
+        <div className="absolute inset-0 pointer-events-none opacity-60"
+          style={{ background: 'radial-gradient(ellipse at 50% 30%, rgba(232,102,90,0.18) 0%, transparent 60%)' }}
+        />
+
+        {/* Top bar — badge nicho + logo pm */}
+        <div className="absolute top-0 inset-x-0 p-3.5 flex items-start justify-between z-10">
+          <span className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-bold tracking-wide uppercase"
+            style={{ background: 'rgba(232,102,90,0.15)', border: '1px solid rgba(232,102,90,0.3)', color: '#E8665A' }}>
+            Caso {String(index + 1).padStart(2, '0')}
+          </span>
+          <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-black/40 backdrop-blur-sm">
+            <span className="relative font-display font-bold text-brand-cream text-[9px]">
+              pm
+              <span className="absolute -top-0.5 -right-1.5 w-1 h-1 rounded-full bg-brand-coral" />
+            </span>
+          </div>
+        </div>
+
+        {/* Botón play central */}
+        <div className="absolute inset-0 flex items-center justify-center z-10">
+          <div className="relative">
+            {/* Anillo pulse */}
+            <span className="absolute inset-0 rounded-full bg-brand-coral/30 animate-ping" style={{ animationDuration: '2.5s' }} />
+            <div className="relative w-16 h-16 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+              style={{ background: '#E8665A', boxShadow: '0 8px 24px rgba(232,102,90,0.5)' }}>
+              <Play className="w-6 h-6 text-white fill-white ml-0.5" />
+            </div>
+          </div>
+        </div>
+
+        {/* Etiqueta "en producción" */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[54px] z-10">
+          <span className="text-[10px] font-semibold text-neutral-400 tracking-wide whitespace-nowrap">
+            ● Caso en producción
+          </span>
+        </div>
+
+        {/* Bottom — info + scrubber */}
+        <div className="absolute bottom-0 inset-x-0 p-4 z-10"
+          style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 100%)' }}>
+          <p className="text-[13px] font-bold text-brand-cream leading-tight">{c.niche}</p>
+          <p className="text-[11px] text-neutral-400 mt-0.5">{c.handle} · {c.hint}</p>
+
+          {/* Scrubber falso */}
+          <div className="mt-3 flex items-center gap-2">
+            <span className="text-[9px] font-mono text-neutral-500">0:00</span>
+            <div className="flex-1 h-1 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.15)' }}>
+              <div className="h-full rounded-full" style={{ width: '32%', background: '#E8665A' }} />
+            </div>
+            <span className="text-[9px] font-mono text-neutral-500">0:38</span>
+          </div>
+        </div>
+      </div>
+    </article>
+  )
+}
+
 export function Cases() {
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  const scroll = (dir: 1 | -1) => {
+    const el = scrollRef.current
+    if (!el) return
+    const amount = el.clientWidth * 0.8 * dir
+    el.scrollBy({ left: amount, behavior: 'smooth' })
+  }
+
   return (
     <section id="casos" className="bg-brand-cream py-24 lg:py-32 relative overflow-hidden" aria-labelledby="cases-heading">
+      {/* Patrón sutil */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.04]" aria-hidden="true"
-        style={{
-          backgroundImage: 'radial-gradient(circle, #0A0A0A 1px, transparent 1px)',
-          backgroundSize: '28px 28px',
-        }}
+        style={{ backgroundImage: 'radial-gradient(circle, #0A0A0A 1px, transparent 1px)', backgroundSize: '28px 28px' }}
       />
 
       <div className="relative max-w-container mx-auto px-4 sm:px-6 lg:px-8">
 
-        <AnimatedSection className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14 lg:mb-16">
+        {/* Header */}
+        <AnimatedSection className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 lg:mb-16">
           <div className="max-w-2xl">
             <span className="inline-flex items-center gap-2 text-brand-coral text-xs font-bold tracking-[0.2em] uppercase mb-5">
               <span className="w-8 h-px bg-brand-coral" />
@@ -32,77 +121,94 @@ export function Cases() {
             </span>
             <h2 id="cases-heading" className="font-editorial font-bold text-brand-black tracking-tight"
               style={{ fontSize: 'clamp(2.2rem, 5.5vw, 4.5rem)', lineHeight: 0.98 }}>
-              Resultados que vienen.{' '}
-              <span className="italic text-neutral-400">Pronto, aquí.</span>
+              Mira lo que hacemos por{' '}
+              <span className="italic text-brand-coral">marcas como la tuya.</span>
             </h2>
           </div>
-          <p className="text-neutral-600 text-base lg:text-lg max-w-md leading-relaxed">
-            Estamos arrancando con nuestros primeros clientes. Cuando los resultados estén, los enseñamos sin filtros.
+          <p className="text-neutral-600 text-base lg:text-lg max-w-sm leading-relaxed">
+            Contenido real, resultados reales. Desliza para ver los proyectos con los que estamos trabajando.
           </p>
         </AnimatedSection>
 
-        <AnimatedGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5" stagger={0.08}>
-          {CASE_SLOTS.map((c, i) => (
-            <AnimatedItem key={c.sector + i}>
-              <article
-                className="group relative bg-white rounded-3xl overflow-hidden h-full flex flex-col transition-all duration-300 hover:-translate-y-1"
-                style={{
-                  border: '1px solid rgba(10,10,10,0.06)',
-                  boxShadow: '0 4px 20px rgba(10,10,10,0.05)',
-                }}
-                data-cursor-hover
-              >
-                <div className="relative h-44 flex items-center justify-center overflow-hidden"
-                  style={{
-                    background: 'linear-gradient(135deg, #F4F1EC 0%, #E8E3DA 100%)',
-                  }}
-                >
-                  <div className="relative">
-                    <div
-                      className="w-20 h-32 rounded-2xl flex items-center justify-center transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-3"
-                      style={{
-                        background: 'linear-gradient(135deg, #FAF7F2, #FFFFFF)',
-                        boxShadow: '0 12px 32px rgba(10,10,10,0.12), inset 0 0 0 1px rgba(10,10,10,0.04)',
-                      }}
-                    >
-                      <Sparkles className="w-6 h-6 text-brand-coral/60" />
-                    </div>
-                    <div
-                      className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-brand-black text-brand-cream text-[10px] font-bold tracking-wider uppercase whitespace-nowrap"
-                      style={{ boxShadow: '0 4px 12px rgba(10,10,10,0.2)' }}
-                    >
-                      {c.tag}
-                    </div>
-                  </div>
-                </div>
+        {/* Controles carrusel — desktop */}
+        <AnimatedSection className="hidden sm:flex items-center justify-end gap-2 mb-5" delay={0.1}>
+          <button
+            onClick={() => scroll(-1)}
+            aria-label="Ver casos anteriores"
+            className="w-11 h-11 rounded-full flex items-center justify-center bg-white border border-black/8 text-brand-black hover:bg-brand-black hover:text-brand-cream transition-all duration-200 shadow-sm"
+            data-cursor-hover
+          >
+            <ArrowLeft className="w-4 h-4" />
+          </button>
+          <button
+            onClick={() => scroll(1)}
+            aria-label="Ver más casos"
+            className="w-11 h-11 rounded-full flex items-center justify-center bg-brand-black text-brand-cream hover:bg-brand-coral transition-all duration-200 shadow-sm"
+            data-cursor-hover
+          >
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </AnimatedSection>
+      </div>
 
-                <div className="p-6 flex-1 flex flex-col">
-                  <p className="text-[11px] text-brand-coral font-bold tracking-[0.15em] uppercase mb-2">
-                    Sector
-                  </p>
-                  <h3 className="font-editorial font-bold text-brand-black text-xl leading-tight tracking-tight">
-                    {c.sector}
-                  </h3>
-                  <p className="text-neutral-500 text-sm leading-relaxed mt-3 flex-1">
-                    Caso de éxito en producción. Pronto publicaremos métricas y testimonios reales.
-                  </p>
-                  <div className="mt-5 flex items-center gap-1.5 text-neutral-400 text-[11px] font-semibold tracking-wider uppercase">
-                    Próximamente
-                  </div>
-                </div>
-              </article>
-            </AnimatedItem>
+      {/* Carrusel — scroll horizontal con snap */}
+      <div className="relative">
+        <div
+          ref={scrollRef}
+          className="flex gap-4 sm:gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide px-4 sm:px-6 lg:px-8 pb-2"
+          style={{ scrollPaddingLeft: '1rem' }}
+        >
+          {/* Espaciador para centrar con el container en desktop */}
+          <div className="shrink-0 w-0 lg:w-[calc((100vw-1280px)/2)]" aria-hidden="true" />
+
+          {CASES.map((c, i) => (
+            <VideoCard key={c.handle} c={c} index={i} />
           ))}
-        </AnimatedGroup>
 
-        <AnimatedSection className="mt-14 text-center" delay={0.3}>
+          {/* Card CTA final — conversión */}
+          <article className="snap-start shrink-0 w-[74vw] xs:w-[62vw] sm:w-[300px] lg:w-[320px]" data-cursor-hover>
+            <a
+              href="#contacto"
+              className="relative flex flex-col items-center justify-center text-center rounded-[24px] overflow-hidden h-full p-6 group"
+              style={{
+                aspectRatio: '9 / 16',
+                background: 'linear-gradient(160deg, #E8665A 0%, #C94D42 100%)',
+                boxShadow: '0 20px 50px rgba(232,102,90,0.35)',
+              }}
+            >
+              <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                <ArrowUpRight className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="font-editorial font-bold text-white text-2xl leading-tight mb-3">
+                ¿Quieres ser nuestro próximo caso?
+              </h3>
+              <p className="text-white/85 text-sm leading-relaxed">
+                Reserva tu diagnóstico gratuito y empieza a generar clientes desde tus redes.
+              </p>
+              <span className="mt-6 inline-flex items-center gap-1.5 bg-white text-brand-black text-sm font-bold px-5 py-2.5 rounded-full">
+                Reservar gratis
+                <ArrowRight className="w-4 h-4" />
+              </span>
+            </a>
+          </article>
+
+          {/* Espaciador final */}
+          <div className="shrink-0 w-1 sm:w-4" aria-hidden="true" />
+        </div>
+      </div>
+
+      {/* CTA inferior */}
+      <div className="relative max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+        <AnimatedSection className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 text-center" delay={0.2}>
+          <p className="text-neutral-600 text-sm sm:text-base">
+            Contenido que convierte seguidores en clientes.
+          </p>
           <a
             href="#contacto"
-            onClick={(e) => { e.preventDefault(); document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' }) }}
             className="inline-flex items-center gap-2 bg-brand-black text-brand-cream text-sm font-semibold pl-5 pr-3 py-3 rounded-full hover:bg-brand-coral transition-all group"
             data-cursor-hover
           >
-            ¿Quieres ser nuestro próximo caso?
+            Quiero mis casos de éxito
             <span className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center">
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </span>

@@ -139,7 +139,7 @@ export function Hero() {
           ))}
         </div>
         {/* Tablet/Desktop */}
-        <div className="absolute inset-0 hidden sm:grid sm:grid-cols-4 lg:grid-cols-6 gap-3 px-3 opacity-55">
+        <div className="absolute inset-0 hidden sm:grid sm:grid-cols-4 lg:grid-cols-6 gap-3 px-3 opacity-[0.72]">
           {cols.map((c, i) => (
             <ReelColumn
               key={i}
@@ -160,32 +160,32 @@ export function Hero() {
         }}
       />
 
-      {/* Capa 2 DESKTOP — viñeta clásica */}
+      {/* Capa 2 DESKTOP — viñeta más suave (deja ver más los vídeos) */}
       <div className="absolute inset-0 pointer-events-none hidden sm:block" aria-hidden="true"
         style={{
           background:
-            'radial-gradient(ellipse at center, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.85) 50%, rgba(10,10,10,0.95) 100%)',
+            'radial-gradient(ellipse 75% 60% at center, rgba(10,10,10,0.30) 0%, rgba(10,10,10,0.68) 55%, rgba(10,10,10,0.92) 100%)',
         }}
       />
 
-      {/* Capa 3 DESKTOP — foco teatral moderado sobre el titular */}
+      {/* Capa 3 DESKTOP — foco teatral sobre el titular (moderado) */}
       <div className="absolute inset-0 pointer-events-none hidden sm:block" aria-hidden="true">
         {/* Halo crema suave detrás del texto (luz ambiente) */}
-        <div className="absolute top-[48%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1100px] h-[520px] rounded-full blur-3xl"
+        <div className="absolute top-[48%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1150px] h-[560px] rounded-full blur-3xl"
           style={{
-            background: 'radial-gradient(ellipse, rgba(250,247,242,0.13) 0%, rgba(250,247,242,0.05) 40%, transparent 70%)',
+            background: 'radial-gradient(ellipse, rgba(250,247,242,0.20) 0%, rgba(250,247,242,0.08) 42%, transparent 72%)',
           }}
         />
         {/* Glow coral cálido por debajo del titular */}
-        <div className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full blur-3xl opacity-65"
+        <div className="absolute top-[56%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[820px] h-[420px] rounded-full blur-3xl opacity-80"
           style={{
-            background: 'radial-gradient(ellipse, rgba(232,102,90,0.32) 0%, transparent 65%)',
+            background: 'radial-gradient(ellipse, rgba(232,102,90,0.38) 0%, transparent 66%)',
           }}
         />
         {/* Cono de luz descendente (foco teatral) */}
-        <div className="absolute top-[8%] left-1/2 -translate-x-1/2 w-[70%] h-[60%]"
+        <div className="absolute top-[6%] left-1/2 -translate-x-1/2 w-[72%] h-[64%]"
           style={{
-            background: 'radial-gradient(ellipse 55% 90% at 50% 0%, rgba(255,238,210,0.12) 0%, transparent 75%)',
+            background: 'radial-gradient(ellipse 55% 92% at 50% 0%, rgba(255,238,210,0.18) 0%, transparent 76%)',
             mixBlendMode: 'screen',
           }}
         />
@@ -277,11 +277,11 @@ export function Hero() {
             style={{ textShadow: '0 2px 12px rgba(0,0,0,0.5)' }}
           >
             <span className="sm:hidden">
-              Embudos + contenido que <span className="text-brand-coral font-semibold">te traen clientes</span>. Tú a tu negocio.
+              Para marcas personales y negocios online. <span className="text-brand-coral font-semibold">Tú creas. Nosotros vendemos.</span>
             </span>
             <span className="hidden sm:inline">
-              Tú céntrate en tu negocio.{' '}
-              <span className="text-brand-coral font-semibold">Nosotros en tus redes</span> y en atraerte más clientes.
+              Especialistas en marcas personales y negocios online.{' '}
+              <span className="text-brand-coral font-semibold">Tú céntrate en tu marca</span>, nosotros en atraerte clientes.
             </span>
           </motion.p>
         </motion.div>

@@ -4,13 +4,13 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useState } from 'react'
-import { Send, CheckCircle2, AlertCircle, Loader2, Globe, MapPin } from 'lucide-react'
+import { Send, CheckCircle2, AlertCircle, Loader2, User, ShoppingBag } from 'lucide-react'
 import { AnimatedSection } from '@/components/shared/AnimatedSection'
 
 const contactSchema = z.object({
-  tipo: z.enum(['negocio-online', 'negocio-fisico'], { required_error: 'Selecciona una opción' }),
+  tipo: z.enum(['marca-personal', 'negocio-online'], { required_error: 'Selecciona una opción' }),
   nombre: z.string().min(2, 'Dinos cómo te llamas').max(80),
-  negocio: z.string().min(2, 'Cuéntanos qué negocio o marca tienes').max(120),
+  negocio: z.string().min(2, 'Cuéntanos qué marca o proyecto tienes').max(120),
   contacto: z.string().min(5, 'Necesitamos un email o móvil para llamarte').max(100),
   necesidad: z.string().max(300).optional(),
   website: z.string().max(0, 'Error de validación').optional(),
@@ -52,9 +52,9 @@ export function CTAFinal() {
     }
   }
 
-  const placeholderNegocio = tipoSeleccionado === 'negocio-online'
-    ? 'Tu marca, canal o proyecto online'
-    : 'Restaurante La Marina, Clínica Belleza...'
+  const placeholderNegocio = tipoSeleccionado === 'marca-personal'
+    ? 'Tu nombre de marca, canal o @usuario'
+    : 'Tu tienda, infoproducto o proyecto online'
 
   return (
     <section id="contacto" className="bg-[#0F0F0F] py-20 lg:py-28 relative overflow-hidden" aria-labelledby="cta-heading">
@@ -118,10 +118,29 @@ export function CTAFinal() {
                     Sin compromiso. Te llamamos en menos de 24h.
                   </p>
 
-                  {/* Selector tipo — Marca Personal / Negocio */}
+                  {/* Selector tipo — Marca Personal / Negocio Online */}
                   <div className="mb-5">
                     <p className="text-sm font-medium text-neutral-400 mb-2.5">¿Qué describes mejor tu caso? *</p>
                     <div className="grid grid-cols-2 gap-3">
+                      {/* Marca Personal */}
+                      <button
+                        type="button"
+                        onClick={() => setValue('tipo', 'marca-personal', { shouldValidate: true })}
+                        className={`flex flex-col items-center gap-2 rounded-2xl p-4 border transition-all duration-200 text-center ${
+                          tipoSeleccionado === 'marca-personal'
+                            ? 'border-brand-coral bg-brand-coral/10 text-brand-cream'
+                            : 'border-white/10 bg-white/3 text-neutral-400 hover:border-white/20 hover:text-neutral-300'
+                        }`}
+                      >
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-200 ${tipoSeleccionado === 'marca-personal' ? 'bg-brand-coral/20' : 'bg-white/6'}`}>
+                          <User className={`w-5 h-5 ${tipoSeleccionado === 'marca-personal' ? 'text-brand-coral' : 'text-neutral-500'}`} />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold leading-tight">Marca Personal</p>
+                          <p className="text-xs text-neutral-500 mt-0.5 leading-tight">Creador, coach, mentor, experto...</p>
+                        </div>
+                      </button>
+
                       {/* Negocio Online */}
                       <button
                         type="button"
@@ -133,30 +152,11 @@ export function CTAFinal() {
                         }`}
                       >
                         <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-200 ${tipoSeleccionado === 'negocio-online' ? 'bg-brand-coral/20' : 'bg-white/6'}`}>
-                          <Globe className={`w-5 h-5 ${tipoSeleccionado === 'negocio-online' ? 'text-brand-coral' : 'text-neutral-500'}`} />
+                          <ShoppingBag className={`w-5 h-5 ${tipoSeleccionado === 'negocio-online' ? 'text-brand-coral' : 'text-neutral-500'}`} />
                         </div>
                         <div>
                           <p className="text-sm font-semibold leading-tight">Negocio Online</p>
-                          <p className="text-xs text-neutral-500 mt-0.5 leading-tight">Creador, coach, e-commerce...</p>
-                        </div>
-                      </button>
-
-                      {/* Negocio Físico */}
-                      <button
-                        type="button"
-                        onClick={() => setValue('tipo', 'negocio-fisico', { shouldValidate: true })}
-                        className={`flex flex-col items-center gap-2 rounded-2xl p-4 border transition-all duration-200 text-center ${
-                          tipoSeleccionado === 'negocio-fisico'
-                            ? 'border-brand-coral bg-brand-coral/10 text-brand-cream'
-                            : 'border-white/10 bg-white/3 text-neutral-400 hover:border-white/20 hover:text-neutral-300'
-                        }`}
-                      >
-                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-200 ${tipoSeleccionado === 'negocio-fisico' ? 'bg-brand-coral/20' : 'bg-white/6'}`}>
-                          <MapPin className={`w-5 h-5 ${tipoSeleccionado === 'negocio-fisico' ? 'text-brand-coral' : 'text-neutral-500'}`} />
-                        </div>
-                        <div>
-                          <p className="text-sm font-semibold leading-tight">Negocio Físico</p>
-                          <p className="text-xs text-neutral-500 mt-0.5 leading-tight">Restaurante, clínica, gimnasio...</p>
+                          <p className="text-xs text-neutral-500 mt-0.5 leading-tight">E-commerce, infoproducto, servicios...</p>
                         </div>
                       </button>
                     </div>
@@ -203,7 +203,7 @@ export function CTAFinal() {
                     {/* Negocio / Marca */}
                     <div>
                       <label htmlFor="negocio" className="block text-sm font-medium text-neutral-400 mb-1.5">
-                        {tipoSeleccionado === 'negocio-online' ? 'Tu marca o proyecto *' : 'Tu negocio *'}
+                        {tipoSeleccionado === 'marca-personal' ? 'Tu marca personal *' : 'Tu negocio online *'}
                       </label>
                       <input
                         {...register('negocio')}

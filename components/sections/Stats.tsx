@@ -4,9 +4,9 @@ import { Eye, TrendingUp, Video, Headphones } from 'lucide-react'
 import { AnimatedSection, AnimatedGroup, AnimatedItem } from '@/components/shared/AnimatedSection'
 
 const STATS = [
-  { icon: Eye, value: '?', label: 'Views generadas', sub: 'Próximamente' },
-  { icon: TrendingUp, value: '?', label: 'Ingresos generados', sub: 'Próximamente' },
-  { icon: Video, value: '?', label: 'Vídeos producidos', sub: 'Próximamente' },
+  { icon: Eye, value: '+1M', label: 'Views generadas', sub: 'En redes sociales' },
+  { icon: TrendingUp, value: '+2.000€', label: 'Ingresos generados', sub: 'Para nuestros clientes' },
+  { icon: Video, value: '+40', label: 'Vídeos producidos', sub: 'Contenido que convierte' },
   { icon: Headphones, value: '24/7', label: 'Soporte directo', sub: 'Siempre disponibles' },
 ]
 
@@ -28,11 +28,11 @@ export function Stats() {
           </span>
           <h2 id="stats-heading" className="font-editorial font-bold text-brand-cream tracking-tight"
             style={{ fontSize: 'clamp(2rem, 4.5vw, 3.5rem)', lineHeight: 1.05 }}>
-            Aún empezamos.{' '}
-            <span className="italic text-brand-coral">Pronto, los datos.</span>
+            Números que{' '}
+            <span className="italic text-brand-coral">hablan por nosotros.</span>
           </h2>
           <p className="text-neutral-400 text-base sm:text-lg mt-5 leading-relaxed">
-            Estamos construyendo nuestra base de clientes. Aquí iremos publicando los resultados reales conforme los generamos.
+            No vendemos humo. Estos son los resultados que generamos con contenido estratégico y embudos que convierten. Y esto es solo el principio.
           </p>
         </AnimatedSection>
 
