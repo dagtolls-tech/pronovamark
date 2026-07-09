@@ -6,7 +6,6 @@ export function Cursor() {
   const ringRef = useRef<HTMLDivElement>(null)
   const dotRef = useRef<HTMLDivElement>(null)
   const [enabled, setEnabled] = useState(false)
-  const [hovering, setHovering] = useState(false)
 
   useEffect(() => {
     // Solo en desktop con puntero fino
@@ -33,7 +32,7 @@ export function Cursor() {
       ringY += (mouseY - ringY) * 0.16
 
       if (ringRef.current) {
-        ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%) scale(${hovering ? 1.7 : 1})`
+        ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`
       }
       if (dotRef.current) {
         dotRef.current.style.transform = `translate3d(${dotX}px, ${dotY}px, 0) translate(-50%, -50%)`
@@ -41,42 +40,33 @@ export function Cursor() {
       raf = requestAnimationFrame(loop)
     }
 
-    const onOver = (e: MouseEvent) => {
-      const t = e.target as HTMLElement
-      const isInteractive = t.closest('a, button, input, textarea, select, [role="button"], [data-cursor-hover]')
-      setHovering(!!isInteractive)
-    }
-
     window.addEventListener('mousemove', onMove)
-    window.addEventListener('mouseover', onOver)
     raf = requestAnimationFrame(loop)
 
     return () => {
       window.removeEventListener('mousemove', onMove)
-      window.removeEventListener('mouseover', onOver)
       cancelAnimationFrame(raf)
     }
-  }, [hovering])
+  }, [])
 
   if (!enabled) return null
 
   return (
     <>
-      {/* Anillo */}
+      {/* Anillo — color y forma constantes */}
       <div
         ref={ringRef}
         aria-hidden="true"
-        className="pointer-events-none fixed top-0 left-0 z-[90] rounded-full transition-[width,height,background-color,border-color] duration-200"
+        className="pointer-events-none fixed top-0 left-0 z-[90] rounded-full"
         style={{
           width: 32,
           height: 32,
-          border: hovering ? '1.5px solid rgba(232,102,90,0.9)' : '1.5px solid rgba(250,247,242,0.55)',
-          backgroundColor: hovering ? 'rgba(232,102,90,0.08)' : 'transparent',
-          mixBlendMode: hovering ? 'normal' : 'difference',
+          border: '1.5px solid rgba(250,247,242,0.55)',
+          mixBlendMode: 'difference',
           willChange: 'transform',
         }}
       />
-      {/* Punto central */}
+      {/* Punto central — color y forma constantes */}
       <div
         ref={dotRef}
         aria-hidden="true"
@@ -84,8 +74,8 @@ export function Cursor() {
         style={{
           width: 5,
           height: 5,
-          backgroundColor: hovering ? '#E8665A' : '#FAF7F2',
-          mixBlendMode: hovering ? 'normal' : 'difference',
+          backgroundColor: '#FAF7F2',
+          mixBlendMode: 'difference',
           willChange: 'transform',
         }}
       />

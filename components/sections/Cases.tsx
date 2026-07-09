@@ -20,11 +20,13 @@ const CASES: CaseCard[] = [
   { niche: 'Infoproductor', handle: '@expertx', hint: 'Lanzamiento de curso online' },
 ]
 
+// Ancho de tarjeta: 1 en móvil, 2 en tablet, exactamente 3 en desktop
+const CARD_W = 'w-[78vw] sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]'
+
 function VideoCard({ c, index }: { c: CaseCard; index: number }) {
   return (
     <article
-      className="snap-start shrink-0 w-[74vw] xs:w-[62vw] sm:w-[300px] lg:w-[320px] group"
-      data-cursor-hover
+      className={`snap-start shrink-0 ${CARD_W} group`}
     >
       <div
         className="relative rounded-[24px] overflow-hidden"
@@ -151,22 +153,18 @@ export function Cases() {
         </AnimatedSection>
       </div>
 
-      {/* Carrusel — scroll horizontal con snap */}
-      <div className="relative">
+      {/* Carrusel — scroll horizontal con snap (3 visibles en desktop) */}
+      <div className="relative max-w-container mx-auto px-4 sm:px-6 lg:px-8">
         <div
           ref={scrollRef}
-          className="flex gap-4 sm:gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide px-4 sm:px-6 lg:px-8 pb-2"
-          style={{ scrollPaddingLeft: '1rem' }}
+          className="flex gap-4 sm:gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2 -mx-4 px-4 sm:mx-0 sm:px-0"
         >
-          {/* Espaciador para centrar con el container en desktop */}
-          <div className="shrink-0 w-0 lg:w-[calc((100vw-1280px)/2)]" aria-hidden="true" />
-
           {CASES.map((c, i) => (
             <VideoCard key={c.handle} c={c} index={i} />
           ))}
 
-          {/* Card CTA final — conversión */}
-          <article className="snap-start shrink-0 w-[74vw] xs:w-[62vw] sm:w-[300px] lg:w-[320px]" data-cursor-hover>
+          {/* Card CTA final — mismo tamaño que las demás */}
+          <article className={`snap-start shrink-0 ${CARD_W}`}>
             <a
               href="#contacto"
               className="relative flex flex-col items-center justify-center text-center rounded-[24px] overflow-hidden h-full p-6 group"
@@ -191,9 +189,6 @@ export function Cases() {
               </span>
             </a>
           </article>
-
-          {/* Espaciador final */}
-          <div className="shrink-0 w-1 sm:w-4" aria-hidden="true" />
         </div>
       </div>
 
