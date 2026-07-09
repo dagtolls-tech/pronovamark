@@ -5,20 +5,21 @@ import Link from 'next/link'
 import { Play, ArrowRight, ArrowLeft, ArrowUpRight, Clapperboard } from 'lucide-react'
 import { AnimatedSection } from '@/components/shared/AnimatedSection'
 
-// Placeholders de casos — nichos de marca personal / negocio online.
-// De momento son reproductores en negro; se sustituyen por vídeos reales.
+// Casos. El primero es real (Cati Villaoslada) y enlaza a su apartado en /casos.
+// El resto son placeholders hasta publicar más casos.
 type CaseCard = {
   niche: string
   handle: string
   hint: string
+  href: string
 }
 
 const CASES: CaseCard[] = [
-  { niche: 'Coach de fitness', handle: '@tucoachfit', hint: 'Reels de rutinas + venta de programa' },
-  { niche: 'Mentor de negocios', handle: '@mentorpro', hint: 'Autoridad + embudo a mentoría' },
-  { niche: 'Creador de contenido', handle: '@creador', hint: 'Crecimiento + monetización' },
-  { niche: 'E-commerce de moda', handle: '@tumarca', hint: 'Contenido viral + ventas web' },
-  { niche: 'Infoproductor', handle: '@expertx', hint: 'Lanzamiento de curso online' },
+  { niche: 'Óptica · Marca Personal', handle: '@cati_optica', hint: 'De 200 a +2.300 seguidores', href: '/casos#cati' },
+  { niche: 'Mentor de negocios', handle: '@mentorpro', hint: 'Autoridad + embudo a mentoría', href: '/casos' },
+  { niche: 'Creador de contenido', handle: '@creador', hint: 'Crecimiento + monetización', href: '/casos' },
+  { niche: 'E-commerce de moda', handle: '@tumarca', hint: 'Contenido viral + ventas web', href: '/casos' },
+  { niche: 'Infoproductor', handle: '@expertx', hint: 'Lanzamiento de curso online', href: '/casos' },
 ]
 
 // Ancho de tarjeta: 1 en móvil, 2 en tablet, exactamente 3 en desktop
@@ -29,7 +30,7 @@ function VideoCard({ c, index }: { c: CaseCard; index: number }) {
     <article className={`snap-start shrink-0 ${CARD_W} group`}>
       {/* Botón captativo encima de cada vídeo */}
       <Link
-        href="/casos"
+        href={c.href}
         data-cursor-hover
         className="mb-3 flex h-10 items-center justify-center gap-2 rounded-full bg-brand-black text-brand-cream text-[11px] sm:text-xs font-semibold px-3 hover:bg-brand-coral transition-colors duration-300 group/btn"
       >
