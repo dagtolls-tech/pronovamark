@@ -101,7 +101,9 @@ export function Cases() {
   const scroll = (dir: 1 | -1) => {
     const el = scrollRef.current
     if (!el) return
-    const amount = el.clientWidth * 0.8 * dir
+    // Avanza una "página" completa (los 3 siguientes) para que la 2ª tanda
+    // caiga limpia en: caso 4, caso 5 y la tarjeta "próximo caso".
+    const amount = el.clientWidth * dir
     el.scrollBy({ left: amount, behavior: 'smooth' })
   }
 
