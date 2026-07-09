@@ -47,58 +47,66 @@ export function Cases() {
               <span className="text-brand-coral text-xs font-bold tracking-[0.2em] uppercase">Caso 01</span>
             </div>
 
-            {/* Vídeo (izq) + antes/después (der) */}
-            <div className="grid lg:grid-cols-[300px_1fr] gap-4 sm:gap-5 items-stretch">
+            {/* Vídeo + Antes + Después — 3 paneles verticales del mismo tamaño (estilo Elevate) */}
+            <div className="flex gap-3 sm:gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-5 px-5 sm:mx-0 sm:px-0">
 
               {/* Vídeo */}
-              <div className="relative rounded-2xl overflow-hidden border border-white/10 aspect-[9/16] lg:aspect-auto lg:h-full min-h-[420px]"
-                style={{ background: 'linear-gradient(160deg, #1c1310 0%, #0A0A0A 60%)' }}>
-                <div className="absolute inset-0 pointer-events-none opacity-60"
-                  style={{ background: 'radial-gradient(ellipse at 50% 40%, rgba(232,102,90,0.2) 0%, transparent 60%)' }} />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative">
-                    <span className="absolute inset-0 rounded-full bg-brand-coral/30 animate-ping" style={{ animationDuration: '2.5s' }} />
-                    <div className="relative w-16 h-16 rounded-full flex items-center justify-center"
-                      style={{ background: '#E8665A', boxShadow: '0 8px 24px rgba(232,102,90,0.5)' }}>
-                      <Play className="w-6 h-6 text-white fill-white ml-0.5" />
+              <div className="snap-start shrink-0 w-[72vw] xs:w-[60vw] sm:w-[calc((100%-2rem)/3)]">
+                <div className="relative rounded-2xl overflow-hidden aspect-[9/16] border border-white/10"
+                  style={{ background: 'linear-gradient(160deg, #1c1310 0%, #0A0A0A 60%)' }}>
+                  <div className="absolute inset-0 pointer-events-none opacity-60"
+                    style={{ background: 'radial-gradient(ellipse at 50% 40%, rgba(232,102,90,0.2) 0%, transparent 60%)' }} />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="relative">
+                      <span className="absolute inset-0 rounded-full bg-brand-coral/30 animate-ping" style={{ animationDuration: '2.5s' }} />
+                      <div className="relative w-16 h-16 rounded-full flex items-center justify-center"
+                        style={{ background: '#E8665A', boxShadow: '0 8px 24px rgba(232,102,90,0.5)' }}>
+                        <Play className="w-6 h-6 text-white fill-white ml-0.5" />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="absolute bottom-0 inset-x-0 p-4"
-                  style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9), transparent)' }}>
-                  <p className="text-[13px] font-bold text-brand-cream">Reel del caso</p>
-                  <p className="text-[11px] text-neutral-400 mt-0.5">Vídeo próximamente</p>
+                  <div className="absolute bottom-0 inset-x-0 p-4"
+                    style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9), transparent)' }}>
+                    <p className="text-[13px] font-bold text-brand-cream">Reel del caso</p>
+                    <p className="text-[11px] text-neutral-400 mt-0.5">Vídeo próximamente</p>
+                  </div>
                 </div>
               </div>
 
-              {/* Antes (arriba) / Después (abajo) */}
-              <div className="flex flex-col gap-4 justify-center">
-                <figure className="relative">
-                  <span className="absolute z-10 top-2.5 left-2.5 text-[10px] font-bold tracking-[0.15em] uppercase text-brand-cream bg-black/60 backdrop-blur-sm rounded-full px-3 py-1 border border-white/15">
-                    Antes
-                  </span>
+              {/* Antes */}
+              <figure className="snap-start shrink-0 w-[72vw] xs:w-[60vw] sm:w-[calc((100%-2rem)/3)]">
+                <div className="relative rounded-2xl overflow-hidden aspect-[9/16] border border-white/10 bg-[#0d0d0d]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/casos/cati/antes-instagram.jpg"
                     alt="Instagram de Óptica Ibiza con 172 seguidores antes de Pronovamark"
-                    className="rounded-2xl border border-white/10 w-full h-auto block"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{ objectPosition: '50% 0%' }}
                     loading="lazy"
                   />
-                </figure>
-                <figure className="relative">
-                  <span className="absolute z-10 top-2.5 left-2.5 text-[10px] font-bold tracking-[0.15em] uppercase text-white bg-brand-coral rounded-full px-3 py-1">
-                    Después
+                  <span className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[11px] font-bold tracking-[0.15em] uppercase text-brand-cream bg-black/65 backdrop-blur-sm rounded-full px-4 py-1.5 border border-white/15">
+                    Antes
                   </span>
+                </div>
+              </figure>
+
+              {/* Después */}
+              <figure className="snap-start shrink-0 w-[72vw] xs:w-[60vw] sm:w-[calc((100%-2rem)/3)]">
+                <div className="relative rounded-2xl overflow-hidden aspect-[9/16] border border-brand-coral/30 bg-[#0d0d0d]"
+                  style={{ boxShadow: '0 12px 40px rgba(232,102,90,0.22)' }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/casos/cati/despues-instagram.jpg"
                     alt="Instagram de Cati Villaoslada con +2.300 seguidores y vídeos virales"
-                    className="rounded-2xl border border-brand-coral/30 w-full h-auto block"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{ objectPosition: '50% 0%' }}
                     loading="lazy"
-                    style={{ boxShadow: '0 12px 40px rgba(232,102,90,0.22)' }}
                   />
-                </figure>
-              </div>
+                  <span className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[11px] font-bold tracking-[0.15em] uppercase text-white bg-brand-coral rounded-full px-4 py-1.5">
+                    Después
+                  </span>
+                </div>
+              </figure>
             </div>
 
             {/* Números — tarjetas blancas */}
