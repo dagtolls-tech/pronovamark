@@ -96,7 +96,7 @@ export function Nav() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-[13px] font-semibold text-neutral-700 hover:text-brand-black px-4 py-2 rounded-full hover:bg-black/5 transition-all duration-200"
+                  className="font-editorial text-[12px] font-bold uppercase tracking-[0.12em] text-neutral-700 hover:text-brand-black px-4 py-2 rounded-full hover:bg-black/5 transition-all duration-200"
                 >
                   {link.label}
                 </a>
@@ -108,7 +108,7 @@ export function Nav() {
           <div className="hidden lg:flex items-center gap-2">
             <a
               href="#contacto"
-              className="inline-flex items-center gap-1.5 bg-brand-black text-brand-cream text-[13px] font-semibold pl-4 pr-3 py-2.5 rounded-full hover:bg-brand-coral transition-all duration-200 group"
+              className="inline-flex items-center gap-1.5 bg-brand-black text-brand-cream font-editorial text-[12px] font-bold uppercase tracking-[0.08em] pl-4 pr-3 py-2.5 rounded-full hover:bg-brand-coral transition-all duration-200 group"
             >
               Reservar diagnóstico
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

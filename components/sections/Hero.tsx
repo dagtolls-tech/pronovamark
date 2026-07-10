@@ -133,7 +133,7 @@ export function Hero() {
       {/* Capa 1 — columnas de reels scrolleando */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {/* Móvil: más opacidad para que se vean los reels (sin oscurecer tanto) */}
-        <div className="absolute inset-0 grid grid-cols-3 sm:hidden gap-2 px-2 opacity-95">
+        <div className="absolute inset-0 grid grid-cols-3 sm:hidden gap-2 px-2 opacity-80">
           {cols.slice(0, 3).map((c, i) => (
             <ReelColumn key={`m-${i}`} reels={c.reels} direction={c.dir} speed={c.speed} />
           ))}
@@ -196,19 +196,19 @@ export function Hero() {
         {/* Halo blanco cálido (luz de escenario) */}
         <div className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[55%] rounded-full blur-3xl"
           style={{
-            background: 'radial-gradient(ellipse, rgba(250,247,242,0.13) 0%, rgba(250,247,242,0.05) 35%, transparent 70%)',
+            background: 'radial-gradient(ellipse, rgba(250,247,242,0.07) 0%, rgba(250,247,242,0.03) 35%, transparent 70%)',
           }}
         />
         {/* Glow coral cálido por debajo */}
-        <div className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[40%] rounded-full blur-3xl opacity-50"
+        <div className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[40%] rounded-full blur-3xl opacity-40"
           style={{
-            background: 'radial-gradient(ellipse, rgba(232,102,90,0.22) 0%, transparent 65%)',
+            background: 'radial-gradient(ellipse, rgba(232,102,90,0.14) 0%, transparent 65%)',
           }}
         />
         {/* Cono de luz desde arriba (efecto foco teatral) */}
         <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[80%] h-[50%]"
           style={{
-            background: 'radial-gradient(ellipse 60% 90% at 50% 0%, rgba(255,235,200,0.12) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse 60% 90% at 50% 0%, rgba(255,235,200,0.08) 0%, transparent 70%)',
             mixBlendMode: 'screen',
           }}
         />
