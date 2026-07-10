@@ -36,7 +36,7 @@ export function Stats() {
           </p>
         </AnimatedSection>
 
-        <AnimatedGroup className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8 sm:gap-x-12 lg:gap-x-14 border-t border-white/10 pt-12" stagger={0.1}>
+        <AnimatedGroup className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8 sm:gap-x-14 lg:gap-x-20 border-t border-white/10 pt-12" stagger={0.1}>
           {STATS.map((stat) => (
             <AnimatedItem key={stat.label}>
               <div className="group" data-cursor-hover>
