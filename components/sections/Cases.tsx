@@ -65,11 +65,6 @@ export function Cases() {
                       </div>
                     </div>
                   </div>
-                  <div className="absolute bottom-0 inset-x-0 p-4"
-                    style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9), transparent)' }}>
-                    <p className="text-[13px] font-bold text-brand-cream">Reel del caso</p>
-                    <p className="text-[11px] text-neutral-400 mt-0.5">Vídeo próximamente</p>
-                  </div>
                 </div>
               </div>
 
@@ -112,9 +107,9 @@ export function Cases() {
             {/* Números — tarjetas blancas */}
             <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-6">
               {/* Seguidores + EN 1 MES */}
-              <div className="rounded-2xl bg-brand-cream p-3 sm:p-5 flex flex-col">
+              <div className="rounded-2xl bg-white/[0.04] border border-white/10 p-3 sm:p-5 flex flex-col">
                 <Users className="w-4 h-4 text-brand-coral mb-2" />
-                <p className="font-editorial font-bold text-brand-black leading-none" style={{ fontSize: 'clamp(1rem, 2.2vw, 1.6rem)' }}>
+                <p className="font-editorial font-bold text-brand-cream leading-none" style={{ fontSize: 'clamp(1rem, 2.2vw, 1.6rem)' }}>
                   200 → +2.300
                 </p>
                 <p className="text-neutral-500 text-[10px] sm:text-xs mt-1">seguidores</p>
@@ -124,17 +119,17 @@ export function Cases() {
                 </p>
               </div>
               {/* Visitas */}
-              <div className="rounded-2xl bg-brand-cream p-3 sm:p-5 flex flex-col">
+              <div className="rounded-2xl bg-white/[0.04] border border-white/10 p-3 sm:p-5 flex flex-col">
                 <Eye className="w-4 h-4 text-brand-coral mb-2" />
-                <p className="font-editorial font-bold text-brand-black leading-none" style={{ fontSize: 'clamp(1rem, 2.2vw, 1.6rem)' }}>
+                <p className="font-editorial font-bold text-brand-cream leading-none" style={{ fontSize: 'clamp(1rem, 2.2vw, 1.6rem)' }}>
                   60K–100K
                 </p>
                 <p className="text-neutral-500 text-[10px] sm:text-xs mt-1">visitas por vídeo</p>
               </div>
               {/* IA */}
-              <div className="rounded-2xl bg-brand-cream p-3 sm:p-5 flex flex-col">
+              <div className="rounded-2xl bg-white/[0.04] border border-white/10 p-3 sm:p-5 flex flex-col">
                 <Bot className="w-4 h-4 text-brand-coral mb-2" />
-                <p className="font-editorial font-bold text-brand-black leading-none" style={{ fontSize: 'clamp(1rem, 2.2vw, 1.6rem)' }}>
+                <p className="font-editorial font-bold text-brand-cream leading-none" style={{ fontSize: 'clamp(1rem, 2.2vw, 1.6rem)' }}>
                   IA 24/7
                 </p>
                 <p className="text-neutral-500 text-[10px] sm:text-xs mt-1">más citas y reservas</p>
