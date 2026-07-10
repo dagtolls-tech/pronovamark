@@ -12,7 +12,7 @@ const STATS = [
 
 export function Stats() {
   return (
-    <section id="datos" className="bg-brand-black py-20 lg:py-28 relative overflow-hidden" aria-labelledby="stats-heading">
+    <section id="datos" className="bg-brand-black pt-20 lg:pt-28 pb-12 lg:pb-14 relative overflow-hidden" aria-labelledby="stats-heading">
       {/* Decoración */}
       <div className="absolute inset-0 pointer-events-none opacity-40" aria-hidden="true">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full blur-3xl"
@@ -36,7 +36,7 @@ export function Stats() {
           </p>
         </AnimatedSection>
 
-        <AnimatedGroup className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6 border-t border-white/10 pt-12" stagger={0.1}>
+        <AnimatedGroup className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8 sm:gap-x-12 lg:gap-x-14 border-t border-white/10 pt-12" stagger={0.1}>
           {STATS.map((stat) => (
             <AnimatedItem key={stat.label}>
               <div className="group" data-cursor-hover>

@@ -12,7 +12,7 @@ const PROXIMOS = [
 
 export function Cases() {
   return (
-    <section id="casos" className="bg-brand-black py-24 lg:py-32 relative overflow-hidden" aria-labelledby="cases-heading">
+    <section id="casos" className="bg-brand-black pt-12 lg:pt-16 pb-24 lg:pb-28 relative overflow-hidden" aria-labelledby="cases-heading">
       <div className="absolute inset-0 pointer-events-none opacity-[0.04]" aria-hidden="true"
         style={{ backgroundImage: 'radial-gradient(circle, #FFFFFF 1px, transparent 1px)', backgroundSize: '28px 28px' }}
       />
