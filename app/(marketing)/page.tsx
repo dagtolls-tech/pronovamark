@@ -30,9 +30,9 @@ export default function HomePage() {
       <main id="main-content" tabIndex={-1}>
         <Hero />
         <Marquee text="PRONOVAMARK" speed={38} variant="dark" />
-        <Problem />
         <Stats />
         <Cases />
+        <Problem />
         <CostaBlanca />
         <Process />
         <Services />

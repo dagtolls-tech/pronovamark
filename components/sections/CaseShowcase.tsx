@@ -53,7 +53,7 @@ export function CaseShowcase() {
 
   return (
     <>
-      <div className="flex gap-3 sm:gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-5 px-5 sm:mx-0 sm:px-0">
+      <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-stretch sm:gap-4 sm:overflow-x-auto sm:snap-x sm:snap-mandatory sm:scrollbar-hide">
 
         {/* Vídeo */}
         <motion.div
@@ -61,7 +61,7 @@ export function CaseShowcase() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6, ease }}
-          className="snap-start shrink-0 w-[72vw] xs:w-[60vw] sm:w-[calc((100%-2rem)/3)]"
+          className="w-full max-w-[280px] sm:max-w-none sm:snap-start sm:shrink-0 sm:w-[calc((100%-2rem)/3)]"
         >
           <div className="relative rounded-2xl overflow-hidden aspect-[9/16] border border-white/10"
             style={{ background: 'linear-gradient(160deg, #1c1310 0%, #0A0A0A 60%)' }}>
@@ -87,7 +87,7 @@ export function CaseShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6, delay: 0.12 + i * 0.12, ease }}
-            className="snap-start shrink-0 w-[72vw] xs:w-[60vw] sm:w-[calc((100%-2rem)/3)]"
+            className="w-full max-w-[280px] sm:max-w-none sm:snap-start sm:shrink-0 sm:w-[calc((100%-2rem)/3)]"
           >
             <button
               type="button"
