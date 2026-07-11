@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Play, Pause, Maximize2, X } from 'lucide-react'
+import { Play, Maximize2, X } from 'lucide-react'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -96,22 +96,24 @@ export function CaseShowcase() {
               onEnded={() => setPlaying(false)}
               className="absolute inset-0 w-full h-full object-cover"
             />
-            {/* Overlay play/pause */}
-            <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${playing ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}
-              style={{ background: playing ? 'rgba(10,10,10,0.15)' : 'rgba(10,10,10,0.25)' }}
-            >
-              <div className="relative">
-                {!playing && (
+            {!playing && (
+              /* Botón de play — solo antes de reproducir, en cualquier dispositivo */
+              <div className="absolute inset-0 flex items-center justify-center" style={{ background: 'rgba(10,10,10,0.25)' }}>
+                <div className="relative">
                   <span className="absolute inset-0 rounded-full bg-brand-coral/30 animate-ping" style={{ animationDuration: '2.5s' }} />
-                )}
-                <div className="relative w-16 h-16 rounded-full flex items-center justify-center"
-                  style={{ background: '#E8665A', boxShadow: '0 8px 24px rgba(232,102,90,0.5)' }}>
-                  {playing
-                    ? <Pause className="w-6 h-6 text-white fill-white" />
-                    : <Play className="w-6 h-6 text-white fill-white ml-0.5" />}
+                  <div className="relative w-16 h-16 rounded-full flex items-center justify-center"
+                    style={{ background: '#E8665A', boxShadow: '0 8px 24px rgba(232,102,90,0.5)' }}>
+                    <Play className="w-6 h-6 text-white fill-white ml-0.5" />
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
+
+            {/* Mientras reproduce: solo en PC, al pasar el cursor se ilumina el borde (indica que se puede pausar) */}
+            {playing && (
+              <span className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300"
+                style={{ boxShadow: 'inset 0 0 0 2px #E8665A, 0 0 30px rgba(232,102,90,0.45)' }} />
+            )}
           </button>
         </motion.div>
 
