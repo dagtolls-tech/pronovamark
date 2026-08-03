@@ -32,7 +32,7 @@ export function Nav() {
       <motion.header
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7, delay: 1.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
         className="fixed top-3 sm:top-5 left-0 right-0 z-50 px-3 sm:px-6"
       >
         <nav
@@ -45,49 +45,17 @@ export function Nav() {
           }}
           role="navigation" aria-label="Navegación principal"
         >
-          {/* Logo izquierda — marquee horizontal PRONOVAMARK girando a la izquierda */}
+          {/* Logo izquierda */}
           <Link
             href="/"
-            className="relative flex items-center overflow-hidden group h-9 sm:h-10 w-[150px] sm:w-[200px] flex-shrink-0"
+            className="flex items-center flex-shrink-0"
             aria-label="Pronovamark - Inicio"
           >
-            <div
-              className="flex whitespace-nowrap animate-marquee will-change-transform"
-              style={{ animationDuration: '14s' }}
-              aria-hidden="true"
-            >
-              {/* Copia 1 */}
-              <div className="flex shrink-0 items-center">
-                {Array.from({ length: 4 }).map((_, i) => (
-                  <span key={`a-${i}`} className="flex items-center mx-2 sm:mx-3">
-                    <span className="font-editorial font-bold italic text-brand-black tracking-tight"
-                      style={{ fontSize: 'clamp(15px, 1.6vw, 19px)', lineHeight: 1 }}>
-                      PRONOVAMARK
-                    </span>
-                    <span className="ml-1.5 w-1.5 h-1.5 rounded-full bg-brand-coral flex-shrink-0" />
-                  </span>
-                ))}
-              </div>
-              {/* Copia 2 (loop) */}
-              <div className="flex shrink-0 items-center">
-                {Array.from({ length: 4 }).map((_, i) => (
-                  <span key={`b-${i}`} className="flex items-center mx-2 sm:mx-3">
-                    <span className="font-editorial font-bold italic text-brand-black tracking-tight"
-                      style={{ fontSize: 'clamp(15px, 1.6vw, 19px)', lineHeight: 1 }}>
-                      PRONOVAMARK
-                    </span>
-                    <span className="ml-1.5 w-1.5 h-1.5 rounded-full bg-brand-coral flex-shrink-0" />
-                  </span>
-                ))}
-              </div>
-            </div>
-            {/* Fade-out laterales */}
-            <span className="pointer-events-none absolute left-0 top-0 bottom-0 w-4"
-              style={{ background: 'linear-gradient(to right, rgba(250,247,242,0.94), transparent)' }}
-            />
-            <span className="pointer-events-none absolute right-0 top-0 bottom-0 w-4"
-              style={{ background: 'linear-gradient(to left, rgba(250,247,242,0.94), transparent)' }}
-            />
+            <span className="font-editorial font-bold italic text-brand-black tracking-tight"
+              style={{ fontSize: 'clamp(15px, 1.6vw, 19px)', lineHeight: 1 }}>
+              PRONOVAMARK
+            </span>
+            <span className="ml-1.5 w-1.5 h-1.5 rounded-full bg-brand-coral flex-shrink-0" />
           </Link>
 
           {/* Links centro — desktop */}

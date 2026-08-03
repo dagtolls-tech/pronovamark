@@ -3,7 +3,6 @@ import { Inter, Space_Grotesk, Bricolage_Grotesque } from 'next/font/google'
 import './globals.css'
 import { defaultMetadata, organizationSchema } from '@/lib/seo'
 import { Cursor } from '@/components/shared/Cursor'
-import { Intro } from '@/components/shared/Intro'
 import { SmoothScroll } from '@/components/shared/SmoothScroll'
 
 const inter = Inter({
@@ -40,7 +39,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body>
-        <Intro />
         <Cursor />
         <SmoothScroll />
         {children}

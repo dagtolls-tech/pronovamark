@@ -57,7 +57,7 @@ export function Cases() {
               <div className="rounded-2xl bg-white/[0.04] border border-white/10 p-3 sm:p-5 flex flex-col">
                 <Users className="w-4 h-4 text-brand-coral mb-2" />
                 <p className="font-editorial font-bold text-brand-cream leading-none" style={{ fontSize: 'clamp(1rem, 2.2vw, 1.6rem)' }}>
-                  200 → +2.300
+                  200 → +3.500
                 </p>
                 <p className="text-neutral-500 text-[10px] sm:text-xs mt-1">seguidores</p>
                 <p className="font-editorial font-bold text-brand-coral uppercase tracking-tight mt-2 leading-none"
@@ -87,7 +87,7 @@ export function Cases() {
             <div className="mt-6 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
               <div className="max-w-2xl">
                 <p className="font-editorial text-brand-cream text-base sm:text-xl leading-snug">
-                  De 200 a <span className="text-brand-coral">+2.300 seguidores en 1 mes</span>, reels de
+                  De 200 a <span className="text-brand-coral">+3.500 seguidores en 1 mes</span>, reels de
                   <span className="text-brand-coral"> 60K–100K visitas</span> y una IA que
                   <span className="text-brand-coral"> llena la agenda de citas y reservas</span>. Elevamos el negocio
                   al siguiente nivel con mi Marca Personal y un marketing honesto.

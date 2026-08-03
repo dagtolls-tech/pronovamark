@@ -116,9 +116,12 @@
   .animate-reel-up { animation: reel-up linear infinite; }
   .animate-reel-down { animation: reel-down linear infinite; }
 
-  /* Intro fade */
-  @keyframes intro-out {
-    0% { opacity: 1; }
-    100% { opacity: 0; visibility: hidden; }
+  /* Borde giratorio — igual que YTA Consulting */
+  @keyframes border-beam-spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+  .animate-border-beam {
+    animation: border-beam-spin 3s linear infinite;
   }
 }

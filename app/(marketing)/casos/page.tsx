@@ -8,12 +8,12 @@ import { CaseShowcase } from '@/components/sections/CaseShowcase'
 export const metadata: Metadata = {
   title: 'Casos de éxito | Pronovamark',
   description:
-    'Caso de éxito Cati Villaoslada (Óptica Ibiza): de 200 a +2.300 seguidores en 1 mes, vídeos con 60K-100K visitas y una automatización con IA que genera más citas y reservas.',
+    'Caso de éxito Cati Villaoslada (Óptica Ibiza): de 200 a +3.500 seguidores en 1 mes, vídeos con 60K-100K visitas y una automatización con IA que genera más citas y reservas.',
   alternates: { canonical: 'https://www.pronovamark.com/casos' },
 }
 
 const METRICS = [
-  { icon: Users, value: '200 → +2.300', label: 'seguidores · 1 mes' },
+  { icon: Users, value: '200 → +3.500', label: 'seguidores · 1 mes' },
   { icon: Eye, value: '60K–100K', label: 'visitas por vídeo' },
   { icon: Bot, value: 'IA 24/7', label: 'más citas y reservas' },
 ]
@@ -105,7 +105,7 @@ export default function CasosPage() {
                 {/* Texto clave */}
                 <div>
                   <p className="text-brand-cream text-base sm:text-lg leading-snug font-editorial">
-                    De 200 a <span className="text-brand-coral">+2.300 seguidores en 1 mes</span>, reels de
+                    De 200 a <span className="text-brand-coral">+3.500 seguidores en 1 mes</span>, reels de
                     <span className="text-brand-coral"> 60K–100K visitas</span> y una IA que
                     <span className="text-brand-coral"> llena la agenda de citas y reservas</span>.
                   </p>

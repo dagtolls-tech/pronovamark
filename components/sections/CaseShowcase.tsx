@@ -30,9 +30,9 @@ const SHOTS: Shot[] = [
     key: 'despues',
     cropSrc: '/casos/cati/despues-instagram.jpg',
     fullSrc: '/casos/cati/despues-full.jpg',
-    alt: 'Instagram de Cati Villaoslada con +2.300 seguidores y vídeos virales',
+    alt: 'Instagram de Cati Villaoslada con +3.500 seguidores y vídeos virales',
     label: 'Después',
-    sublabel: '+2.300 y +416K visitas 🚀',
+    sublabel: '+3.500 y +889K visitas 🚀',
     variant: 'despues',
   },
 ]
