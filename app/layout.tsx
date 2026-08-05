@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Space_Grotesk, Bricolage_Grotesque } from 'next/font/google'
+import { Inter, Space_Grotesk, Bricolage_Grotesque, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import { defaultMetadata, organizationSchema } from '@/lib/seo'
 import { Cursor } from '@/components/shared/Cursor'
@@ -25,11 +25,19 @@ const bricolage = Bricolage_Grotesque({
   display: 'swap',
 })
 
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  weight: ['400', '500', '600', '700', '800', '900'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+})
+
 export const metadata: Metadata = defaultMetadata
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable} ${bricolage.variable}`}>
+    <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable} ${bricolage.variable} ${playfair.variable}`}>
       <head>
         <script
           type="application/ld+json"

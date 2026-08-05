@@ -30,7 +30,7 @@ export function FloatingCTA() {
             transition={{ type: 'spring', stiffness: 380, damping: 22, mass: 0.8 }}
           >
             <a
-              href="#contacto"
+              href="/survey"
               data-cursor-hover
               className="group relative inline-flex items-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 rounded-full font-editorial font-bold text-white text-sm sm:text-base uppercase tracking-[0.06em] transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_0_44px_rgba(230,35,35,0.55)]"
               style={{

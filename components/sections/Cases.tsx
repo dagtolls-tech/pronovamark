@@ -20,21 +20,24 @@ export function Cases() {
       <div className="relative max-w-container mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <AnimatedSection className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 lg:mb-14">
+        <AnimatedSection className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-10 mb-12 lg:mb-14">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 text-brand-coral text-xs font-bold tracking-[0.2em] uppercase mb-5">
-              <span className="w-8 h-px bg-brand-coral" />
+            <span className="inline-flex items-center gap-3 text-brand-cream/80 text-xs font-medium tracking-[0.3em] uppercase mb-5">
+              <span className="w-8 h-px bg-brand-cream/40" />
               Casos de éxito
             </span>
             <h2 id="cases-heading" className="font-editorial font-bold text-brand-cream tracking-tight"
               style={{ fontSize: 'clamp(2.2rem, 5.5vw, 4.5rem)', lineHeight: 0.98 }}>
-              Mira lo que hacemos por{' '}
-              <span className="italic text-brand-coral">marcas como la tuya.</span>
+              Esto no es una promesa.{' '}
+              <span className="italic text-brand-coral" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>Es lo que ya conseguimos.</span>
             </h2>
+            <p className="text-neutral-400 text-base lg:text-lg mt-5">
+              Perfiles reales. Resultados reales.
+            </p>
+            <p className="italic text-neutral-500 text-sm lg:text-base mt-3" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
+              Algunos de los expertos que hemos escalado.
+            </p>
           </div>
-          <p className="text-neutral-400 text-base lg:text-lg max-w-sm leading-relaxed">
-            Perfiles reales que transformamos. El antes y el después de trabajar con nosotros.
-          </p>
         </AnimatedSection>
 
         {/* CASO 01 — Cati */}
@@ -142,7 +145,7 @@ export function Cases() {
         <AnimatedSection className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 text-center" delay={0.2}>
           <p className="text-neutral-400 text-sm sm:text-base">Contenido que convierte seguidores en clientes.</p>
           <a
-            href="#contacto"
+            href="/survey"
             className="inline-flex items-center gap-2 bg-brand-cream text-brand-black text-sm font-semibold pl-5 pr-3 py-3 rounded-full hover:bg-brand-coral hover:text-white transition-all group"
           >
             Quiero mis casos de éxito

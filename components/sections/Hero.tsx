@@ -150,7 +150,7 @@ export function Hero() {
           className="mt-6 sm:mt-8"
         >
           <a
-            href="#contacto"
+            href="/survey"
             data-cursor-hover
             className="group relative inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-[18px] rounded-xl font-editorial font-bold text-white text-base sm:text-lg uppercase tracking-[0.08em] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_44px_rgba(230,35,35,0.55)]"
             style={{
