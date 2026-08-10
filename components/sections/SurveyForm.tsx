@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Mail, Phone } from 'lucide-react'
+import Cal, { getCalApi } from '@calcom/embed-react'
 
 type Step =
   | { type: 'choice'; question: string; options: string[] }
@@ -65,11 +66,24 @@ export function SurveyForm() {
 
   const step = STEPS[current]
 
+  useEffect(() => {
+    if (phase !== 'calendar') return
+    ;(async function () {
+      const cal = await getCalApi()
+      cal('ui', {
+        theme: 'dark',
+        styles: { branding: { brandColor: '#E86040' } },
+        hideEventTypeDetails: false,
+        layout: 'month_view',
+      })
+    })()
+  }, [phase])
+
   const goNext = useCallback(() => {
     if (current < STEPS.length - 1) {
       setDirection(1)
       setSelected(null)
-      setCurrent((c) => c + 1)
+      setCurrent((c) => (c < STEPS.length - 1 ? c + 1 : c))
       setTimeout(() => {
         inputRef.current?.focus()
         textareaRef.current?.focus()
@@ -125,21 +139,33 @@ export function SurveyForm() {
 
   if (phase === 'calendar') {
     return (
-      <div className="fixed inset-0 bg-brand-black flex flex-col z-50 overflow-y-auto">
-        <div className="flex justify-center py-6">
+      <div className="fixed inset-0 bg-brand-black flex flex-col z-50 overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease }}
+          className="flex justify-center py-6 flex-shrink-0"
+        >
           <span className="font-editorial font-bold text-brand-cream text-lg sm:text-xl tracking-[0.22em] uppercase">
             PRONOVAMARK<span className="text-brand-coral">.</span>
           </span>
-        </div>
+        </motion.div>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease }}
-          className="flex-1 flex items-center justify-center px-4 pb-12"
+          transition={{ duration: 0.7, delay: 0.15, ease }}
+          className="flex-1 overflow-y-auto px-4 pb-12"
         >
-          <div className="w-full max-w-3xl rounded-2xl bg-white min-h-[500px] flex items-center justify-center">
-            <p className="text-neutral-400 text-sm font-medium">Calendario — próximamente</p>
-          </div>
+          <Cal
+            calLink="pronovamark-ii3rst/llamada-de-descubrimiento"
+            style={{ width: '100%', height: '100%', overflow: 'scroll' }}
+            config={{
+              layout: 'month_view',
+              theme: 'dark',
+              ...(answers[1] ? { name: answers[1] } : {}),
+              ...(answers[3] ? { email: answers[3] } : {}),
+            }}
+          />
         </motion.div>
       </div>
     )
