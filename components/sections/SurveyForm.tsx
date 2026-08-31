@@ -244,7 +244,15 @@ export function SurveyForm() {
                       ref={inputRef}
                       type={step.icon === 'mail' ? 'email' : step.icon === 'phone' ? 'tel' : 'text'}
                       value={answers[current] || ''}
-                      onChange={(e) => setAnswers((a) => ({ ...a, [current]: e.target.value }))}
+                      onChange={(e) => {
+                        let val = e.target.value
+                        if (step.icon === 'phone') {
+                          const digits = val.replace(/\D/g, '').slice(0, 9)
+                          const parts = [digits.slice(0, 3), digits.slice(3, 5), digits.slice(5, 7), digits.slice(7, 9)].filter(Boolean)
+                          val = parts.join(' ')
+                        }
+                        setAnswers((a) => ({ ...a, [current]: val }))
+                      }}
                       onKeyDown={(e) => e.key === 'Enter' && handleTextNext()}
                       placeholder={step.placeholder}
                       className={`w-full bg-transparent border border-white/20 rounded-lg py-3.5 text-brand-cream text-sm sm:text-base placeholder:text-neutral-600 focus:outline-none focus:border-white/40 transition-colors ${
