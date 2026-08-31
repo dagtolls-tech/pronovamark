@@ -333,14 +333,18 @@ export function SurveyForm() {
                           <svg className={`w-3 h-3 text-neutral-600 transition-transform ${showCountryPicker ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                         </button>
                         {showCountryPicker && (
-                          <div className="absolute top-full left-0 mt-1 w-64 max-h-52 overflow-y-auto rounded-xl border border-white/10 bg-neutral-900/95 backdrop-blur-xl shadow-2xl shadow-black/50 z-50">
-                            <div className="sticky top-0 bg-neutral-900/95 backdrop-blur-xl p-2 border-b border-white/5">
+                          <div
+                            className="country-picker absolute top-full left-0 mt-1 w-72 max-h-64 overflow-y-auto overscroll-contain rounded-xl border border-white/10 bg-neutral-900/95 backdrop-blur-xl shadow-2xl shadow-black/50 z-50"
+                            style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}
+                          >
+                            <style>{`.country-picker::-webkit-scrollbar{display:none}`}</style>
+                            <div className="sticky top-0 bg-neutral-900/95 backdrop-blur-xl p-2.5 border-b border-white/5 z-10">
                               <input
                                 type="text"
                                 value={countrySearch}
                                 onChange={(e) => setCountrySearch(e.target.value)}
                                 placeholder="Buscar país..."
-                                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-brand-cream placeholder:text-neutral-600 focus:outline-none focus:border-white/20"
+                                className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-brand-cream placeholder:text-neutral-600 focus:outline-none focus:border-white/20"
                                 autoFocus
                               />
                             </div>
@@ -349,9 +353,9 @@ export function SurveyForm() {
                                 key={`${c.code}-${c.name}-${i}`}
                                 type="button"
                                 onClick={() => { setPhoneCountry(c); setShowCountryPicker(false); setCountrySearch(''); inputRef.current?.focus() }}
-                                className={`w-full flex items-center gap-3 px-3 py-2 text-left text-sm transition-colors hover:bg-white/5 ${phoneCountry.name === c.name && phoneCountry.code === c.code ? 'bg-white/[0.03] text-brand-cream' : 'text-neutral-400'}`}
+                                className={`w-full flex items-center gap-3 px-3.5 py-2.5 text-left text-sm transition-colors hover:bg-white/5 active:bg-white/10 ${phoneCountry.name === c.name && phoneCountry.code === c.code ? 'bg-white/[0.03] text-brand-cream' : 'text-neutral-400'}`}
                               >
-                                <span className="text-base">{c.flag}</span>
+                                <span className="text-xl leading-none">{c.flag}</span>
                                 <span className="flex-1 truncate">{c.name}</span>
                                 <span className="text-xs text-neutral-600">{c.code}</span>
                               </button>
