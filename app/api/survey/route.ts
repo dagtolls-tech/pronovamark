@@ -43,14 +43,16 @@ const DECISION_MAP: Record<string, string> = {
 export async function POST(req: Request) {
   try {
     const body = await req.json()
-    const { answers } = body as { answers: Record<number, string> }
+    const { answers, phoneCode } = body as { answers: Record<number, string>; phoneCode?: string }
+
+    const phone = answers[2] ? `${phoneCode || '+34'} ${answers[2]}` : null
 
     await notion.pages.create({
       parent: { database_id: DATABASE_ID },
       properties: {
         'Nombre': { title: [{ text: { content: answers[1] || '' } }] },
         'Sector': { select: { name: SECTOR_MAP[answers[0]] || answers[0] || '' } },
-        'Teléfono': { phone_number: answers[2] || null },
+        'Teléfono': { phone_number: phone },
         'Email': { email: answers[3] || null },
         'Instagram': { rich_text: [{ text: { content: answers[4] || '' } }] },
         'Mayor Reto': { select: { name: RETO_MAP[answers[5]] || answers[5] || '' } },
