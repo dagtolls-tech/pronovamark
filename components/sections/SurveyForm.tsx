@@ -107,6 +107,11 @@ export function SurveyForm() {
     const val = answers[current]?.trim()
     if (!val) return
     setPhase('loading')
+    fetch('/api/survey', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ answers }),
+    }).catch(() => {})
     setTimeout(() => setPhase('calendar'), 2800)
   }
 
