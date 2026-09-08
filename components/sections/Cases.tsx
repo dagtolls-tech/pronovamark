@@ -29,7 +29,7 @@ export function Cases() {
             <h2 id="cases-heading" className="font-editorial font-bold text-brand-cream tracking-tight"
               style={{ fontSize: 'clamp(2.2rem, 5.5vw, 4.5rem)', lineHeight: 0.98 }}>
               Esto no es una promesa.{' '}
-              <span className="italic text-brand-coral" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>Es lo que ya conseguimos.</span>
+              <span className="italic bg-gradient-to-b from-[#FF7A7A] to-[#C41818] bg-clip-text text-transparent" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>Es lo que ya conseguimos.</span>
             </h2>
             <p className="text-neutral-400 text-base lg:text-lg mt-5">
               Perfiles reales. Resultados reales.
