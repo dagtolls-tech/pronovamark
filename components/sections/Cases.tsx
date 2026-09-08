@@ -31,10 +31,7 @@ export function Cases() {
               Esto no es una promesa.{' '}
               <span className="bg-gradient-to-b from-[#FF7A7A] to-[#C41818] bg-clip-text text-transparent">Es lo que ya conseguimos.</span>
             </h2>
-            <p className="text-neutral-400 text-base lg:text-lg mt-5">
-              Perfiles reales. Resultados reales.
-            </p>
-            <p className="italic text-neutral-500 text-sm lg:text-base mt-3" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
+            <p className="italic text-neutral-500 text-lg lg:text-xl mt-5" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
               Algunos de los expertos que hemos escalado.
             </p>
           </div>
@@ -42,6 +39,9 @@ export function Cases() {
 
         {/* CASO 01 — Cati */}
         <AnimatedSection>
+          <p className="text-center text-neutral-500 text-xs font-semibold tracking-[0.25em] uppercase mb-6">
+            Perfiles reales. Resultados reales.
+          </p>
           <div className="rounded-[28px] border border-white/10 p-5 sm:p-7 lg:p-8"
             style={{ background: 'linear-gradient(160deg, #131313 0%, #0A0A0A 60%)' }}>
 
