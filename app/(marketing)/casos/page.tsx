@@ -36,7 +36,7 @@ export default function CasosPage() {
         <section className="pt-24 pb-8 lg:pt-28 lg:pb-10 relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none opacity-40" aria-hidden="true">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[320px] rounded-full blur-3xl"
-              style={{ background: 'radial-gradient(ellipse, rgba(232,102,90,0.2) 0%, transparent 70%)' }}
+              style={{ background: 'radial-gradient(ellipse, rgba(241,48,48,0.2) 0%, transparent 70%)' }}
             />
           </div>
           <div className="relative max-w-container mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,7 +65,7 @@ export default function CasosPage() {
               {/* Cabecera del caso */}
               <div className="flex flex-wrap items-center gap-3 mb-4">
                 <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold tracking-wide uppercase"
-                  style={{ background: 'rgba(232,102,90,0.15)', border: '1px solid rgba(232,102,90,0.3)', color: '#E8665A' }}>
+                  style={{ background: 'rgba(241,48,48,0.15)', border: '1px solid rgba(241,48,48,0.3)', color: '#F13030' }}>
                   Caso 01
                 </span>
                 <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-semibold text-neutral-300 bg-white/5 border border-white/10">
@@ -132,7 +132,7 @@ export default function CasosPage() {
                 >
                   {/* shimmer / glow */}
                   <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(232,102,90,0.15) 0%, transparent 60%)' }} />
+                    style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(241,48,48,0.15) 0%, transparent 60%)' }} />
 
                   <div className="relative flex items-center justify-between">
                     <span className="text-[11px] font-bold tracking-wide uppercase text-neutral-500">Caso {c.n}</span>

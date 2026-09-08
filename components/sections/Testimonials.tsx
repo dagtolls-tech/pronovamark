@@ -32,7 +32,7 @@ export function Testimonials() {
 
             <div
               className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
-              style={{ background: 'rgba(232,102,90,0.08)', border: '1px solid rgba(232,102,90,0.15)', color: '#E8665A' }}
+              style={{ background: 'rgba(241,48,48,0.08)', border: '1px solid rgba(241,48,48,0.15)', color: '#F13030' }}
             >
               <Clock className="w-4 h-4" />
               Testimonios en desarrollo

@@ -18,7 +18,7 @@ export function Hero() {
           className="absolute top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full blur-[120px]"
           style={{
             background:
-              'radial-gradient(ellipse, rgba(232,102,90,0.12) 0%, rgba(120,40,30,0.06) 50%, transparent 80%)',
+              'radial-gradient(ellipse, rgba(241,48,48,0.12) 0%, rgba(120,40,30,0.06) 50%, transparent 80%)',
           }}
         />
       </div>
@@ -33,7 +33,7 @@ export function Hero() {
         >
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] h-[70px] rounded-full blur-2xl pointer-events-none"
-            style={{ background: 'radial-gradient(ellipse, rgba(232,102,90,0.35) 0%, transparent 75%)' }}
+            style={{ background: 'radial-gradient(ellipse, rgba(241,48,48,0.35) 0%, transparent 75%)' }}
             aria-hidden="true"
           />
           <span className="relative font-editorial font-bold text-brand-cream text-lg sm:text-xl tracking-[0.22em] uppercase">
@@ -52,7 +52,7 @@ export function Hero() {
             className="absolute top-1/2 left-1/2 w-[1500px] h-[1500px] animate-border-beam"
             style={{
               background:
-                'conic-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0) 10%, #E8665A 30%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 60%, #E8665A 80%, rgba(0,0,0,0) 100%)',
+                'conic-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0) 10%, #F13030 30%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 60%, #F13030 80%, rgba(0,0,0,0) 100%)',
             }}
             aria-hidden="true"
           />
@@ -115,7 +115,7 @@ export function Hero() {
               aspectRatio: '16 / 9',
               background: 'linear-gradient(145deg, #141414 0%, #0d0d0d 100%)',
               boxShadow:
-                '0 0 0 1px rgba(255,255,255,0.05), 0 24px 80px rgba(0,0,0,0.6), 0 0 60px rgba(232,102,90,0.08)',
+                '0 0 0 1px rgba(255,255,255,0.05), 0 24px 80px rgba(0,0,0,0.6), 0 0 60px rgba(241,48,48,0.08)',
             }}
           >
             {/* Placeholder — se reemplazará con vídeo real */}
@@ -124,8 +124,8 @@ export function Hero() {
                 <div
                   className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-3"
                   style={{
-                    background: 'rgba(232,102,90,0.15)',
-                    border: '2px solid rgba(232,102,90,0.3)',
+                    background: 'rgba(241,48,48,0.15)',
+                    border: '2px solid rgba(241,48,48,0.3)',
                   }}
                 >
                   <svg

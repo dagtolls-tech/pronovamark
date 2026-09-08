@@ -56,71 +56,86 @@ const STEPS: Step[] = [
 const ease = [0.22, 1, 0.36, 1] as const
 
 const COUNTRIES = [
-  { code: '+34', flag: '🇪🇸', name: 'Spain' },
-  { code: '+1', flag: '🇺🇸', name: 'United States' },
-  { code: '+44', flag: '🇬🇧', name: 'United Kingdom' },
-  { code: '+33', flag: '🇫🇷', name: 'France' },
-  { code: '+49', flag: '🇩🇪', name: 'Germany' },
-  { code: '+39', flag: '🇮🇹', name: 'Italy' },
-  { code: '+351', flag: '🇵🇹', name: 'Portugal' },
-  { code: '+52', flag: '🇲🇽', name: 'Mexico' },
-  { code: '+54', flag: '🇦🇷', name: 'Argentina' },
-  { code: '+57', flag: '🇨🇴', name: 'Colombia' },
-  { code: '+56', flag: '🇨🇱', name: 'Chile' },
-  { code: '+55', flag: '🇧🇷', name: 'Brazil' },
-  { code: '+51', flag: '🇵🇪', name: 'Peru' },
-  { code: '+593', flag: '🇪🇨', name: 'Ecuador' },
-  { code: '+58', flag: '🇻🇪', name: 'Venezuela' },
-  { code: '+507', flag: '🇵🇦', name: 'Panama' },
-  { code: '+506', flag: '🇨🇷', name: 'Costa Rica' },
-  { code: '+598', flag: '🇺🇾', name: 'Uruguay' },
-  { code: '+595', flag: '🇵🇾', name: 'Paraguay' },
-  { code: '+591', flag: '🇧🇴', name: 'Bolivia' },
-  { code: '+503', flag: '🇸🇻', name: 'El Salvador' },
-  { code: '+502', flag: '🇬🇹', name: 'Guatemala' },
-  { code: '+504', flag: '🇭🇳', name: 'Honduras' },
-  { code: '+505', flag: '🇳🇮', name: 'Nicaragua' },
-  { code: '+53', flag: '🇨🇺', name: 'Cuba' },
-  { code: '+1', flag: '🇩🇴', name: 'Dominican Republic' },
-  { code: '+1', flag: '🇵🇷', name: 'Puerto Rico' },
-  { code: '+41', flag: '🇨🇭', name: 'Switzerland' },
-  { code: '+43', flag: '🇦🇹', name: 'Austria' },
-  { code: '+32', flag: '🇧🇪', name: 'Belgium' },
-  { code: '+31', flag: '🇳🇱', name: 'Netherlands' },
-  { code: '+46', flag: '🇸🇪', name: 'Sweden' },
-  { code: '+47', flag: '🇳🇴', name: 'Norway' },
-  { code: '+45', flag: '🇩🇰', name: 'Denmark' },
-  { code: '+358', flag: '🇫🇮', name: 'Finland' },
-  { code: '+48', flag: '🇵🇱', name: 'Poland' },
-  { code: '+420', flag: '🇨🇿', name: 'Czech Republic' },
-  { code: '+36', flag: '🇭🇺', name: 'Hungary' },
-  { code: '+40', flag: '🇷🇴', name: 'Romania' },
-  { code: '+30', flag: '🇬🇷', name: 'Greece' },
-  { code: '+353', flag: '🇮🇪', name: 'Ireland' },
-  { code: '+90', flag: '🇹🇷', name: 'Turkey' },
-  { code: '+7', flag: '🇷🇺', name: 'Russia' },
-  { code: '+380', flag: '🇺🇦', name: 'Ukraine' },
-  { code: '+212', flag: '🇲🇦', name: 'Morocco' },
-  { code: '+971', flag: '🇦🇪', name: 'United Arab Emirates' },
-  { code: '+966', flag: '🇸🇦', name: 'Saudi Arabia' },
-  { code: '+91', flag: '🇮🇳', name: 'India' },
-  { code: '+86', flag: '🇨🇳', name: 'China' },
-  { code: '+81', flag: '🇯🇵', name: 'Japan' },
-  { code: '+82', flag: '🇰🇷', name: 'South Korea' },
-  { code: '+61', flag: '🇦🇺', name: 'Australia' },
-  { code: '+64', flag: '🇳🇿', name: 'New Zealand' },
-  { code: '+27', flag: '🇿🇦', name: 'South Africa' },
-  { code: '+234', flag: '🇳🇬', name: 'Nigeria' },
-  { code: '+254', flag: '🇰🇪', name: 'Kenya' },
-  { code: '+20', flag: '🇪🇬', name: 'Egypt' },
-  { code: '+63', flag: '🇵🇭', name: 'Philippines' },
-  { code: '+66', flag: '🇹🇭', name: 'Thailand' },
-  { code: '+84', flag: '🇻🇳', name: 'Vietnam' },
-  { code: '+62', flag: '🇮🇩', name: 'Indonesia' },
-  { code: '+60', flag: '🇲🇾', name: 'Malaysia' },
-  { code: '+65', flag: '🇸🇬', name: 'Singapore' },
-  { code: '+972', flag: '🇮🇱', name: 'Israel' },
+  { code: '+34', iso: 'es', name: 'Spain' },
+  { code: '+1', iso: 'us', name: 'United States' },
+  { code: '+44', iso: 'gb', name: 'United Kingdom' },
+  { code: '+33', iso: 'fr', name: 'France' },
+  { code: '+49', iso: 'de', name: 'Germany' },
+  { code: '+39', iso: 'it', name: 'Italy' },
+  { code: '+351', iso: 'pt', name: 'Portugal' },
+  { code: '+52', iso: 'mx', name: 'Mexico' },
+  { code: '+54', iso: 'ar', name: 'Argentina' },
+  { code: '+57', iso: 'co', name: 'Colombia' },
+  { code: '+56', iso: 'cl', name: 'Chile' },
+  { code: '+55', iso: 'br', name: 'Brazil' },
+  { code: '+51', iso: 'pe', name: 'Peru' },
+  { code: '+593', iso: 'ec', name: 'Ecuador' },
+  { code: '+58', iso: 've', name: 'Venezuela' },
+  { code: '+507', iso: 'pa', name: 'Panama' },
+  { code: '+506', iso: 'cr', name: 'Costa Rica' },
+  { code: '+598', iso: 'uy', name: 'Uruguay' },
+  { code: '+595', iso: 'py', name: 'Paraguay' },
+  { code: '+591', iso: 'bo', name: 'Bolivia' },
+  { code: '+503', iso: 'sv', name: 'El Salvador' },
+  { code: '+502', iso: 'gt', name: 'Guatemala' },
+  { code: '+504', iso: 'hn', name: 'Honduras' },
+  { code: '+505', iso: 'ni', name: 'Nicaragua' },
+  { code: '+53', iso: 'cu', name: 'Cuba' },
+  { code: '+1', iso: 'do', name: 'Dominican Republic' },
+  { code: '+1', iso: 'pr', name: 'Puerto Rico' },
+  { code: '+41', iso: 'ch', name: 'Switzerland' },
+  { code: '+43', iso: 'at', name: 'Austria' },
+  { code: '+32', iso: 'be', name: 'Belgium' },
+  { code: '+31', iso: 'nl', name: 'Netherlands' },
+  { code: '+46', iso: 'se', name: 'Sweden' },
+  { code: '+47', iso: 'no', name: 'Norway' },
+  { code: '+45', iso: 'dk', name: 'Denmark' },
+  { code: '+358', iso: 'fi', name: 'Finland' },
+  { code: '+48', iso: 'pl', name: 'Poland' },
+  { code: '+420', iso: 'cz', name: 'Czech Republic' },
+  { code: '+36', iso: 'hu', name: 'Hungary' },
+  { code: '+40', iso: 'ro', name: 'Romania' },
+  { code: '+30', iso: 'gr', name: 'Greece' },
+  { code: '+353', iso: 'ie', name: 'Ireland' },
+  { code: '+90', iso: 'tr', name: 'Turkey' },
+  { code: '+7', iso: 'ru', name: 'Russia' },
+  { code: '+380', iso: 'ua', name: 'Ukraine' },
+  { code: '+212', iso: 'ma', name: 'Morocco' },
+  { code: '+971', iso: 'ae', name: 'United Arab Emirates' },
+  { code: '+966', iso: 'sa', name: 'Saudi Arabia' },
+  { code: '+91', iso: 'in', name: 'India' },
+  { code: '+86', iso: 'cn', name: 'China' },
+  { code: '+81', iso: 'jp', name: 'Japan' },
+  { code: '+82', iso: 'kr', name: 'South Korea' },
+  { code: '+61', iso: 'au', name: 'Australia' },
+  { code: '+64', iso: 'nz', name: 'New Zealand' },
+  { code: '+27', iso: 'za', name: 'South Africa' },
+  { code: '+234', iso: 'ng', name: 'Nigeria' },
+  { code: '+254', iso: 'ke', name: 'Kenya' },
+  { code: '+20', iso: 'eg', name: 'Egypt' },
+  { code: '+63', iso: 'ph', name: 'Philippines' },
+  { code: '+66', iso: 'th', name: 'Thailand' },
+  { code: '+84', iso: 'vn', name: 'Vietnam' },
+  { code: '+62', iso: 'id', name: 'Indonesia' },
+  { code: '+60', iso: 'my', name: 'Malaysia' },
+  { code: '+65', iso: 'sg', name: 'Singapore' },
+  { code: '+972', iso: 'il', name: 'Israel' },
 ]
+
+function CountryFlag({ iso }: { iso: string }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={`https://flagcdn.com/24x18/${iso}.png`}
+      srcSet={`https://flagcdn.com/48x36/${iso}.png 2x`}
+      width={24}
+      height={18}
+      alt=""
+      className="rounded-sm object-cover inline-block"
+      style={{ minWidth: 24 }}
+    />
+  )
+}
 
 export function SurveyForm() {
   const [current, setCurrent] = useState(0)
@@ -159,7 +174,7 @@ export function SurveyForm() {
       const cal = await getCalApi()
       cal('ui', {
         theme: 'dark',
-        styles: { branding: { brandColor: '#E86040' } },
+        styles: { branding: { brandColor: '#F13030' } },
         hideEventTypeDetails: false,
         layout: 'month_view',
       })
@@ -328,16 +343,22 @@ export function SurveyForm() {
                           onClick={() => { setShowCountryPicker(!showCountryPicker); setCountrySearch('') }}
                           className="flex items-center gap-1.5 h-full pl-4 pr-2 text-sm text-neutral-300 hover:text-brand-cream transition-colors"
                         >
-                          <span>{phoneCountry.flag}</span>
+                          <CountryFlag iso={phoneCountry.iso} />
                           <span className="text-neutral-500 text-xs">{phoneCountry.code}</span>
                           <svg className={`w-3 h-3 text-neutral-600 transition-transform ${showCountryPicker ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                         </button>
                         {showCountryPicker && (
                           <div
-                            className="country-picker absolute top-full left-0 mt-1 w-72 max-h-64 overflow-y-auto overscroll-contain rounded-xl border border-white/10 bg-neutral-900/95 backdrop-blur-xl shadow-2xl shadow-black/50 z-50"
-                            style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}
+                            className="country-picker-scroll absolute top-full left-0 mt-1 w-72 max-h-64 rounded-xl border border-white/10 bg-neutral-900/95 backdrop-blur-xl shadow-2xl shadow-black/50 z-50"
+                            onWheel={(e) => { e.stopPropagation(); const el = e.currentTarget; el.scrollTop += e.deltaY }}
                           >
-                            <style>{`.country-picker::-webkit-scrollbar{display:none}`}</style>
+                            <style>{`
+                              .country-picker-scroll { overflow-y: scroll !important; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.25) transparent; }
+                              .country-picker-scroll::-webkit-scrollbar { width: 6px; }
+                              .country-picker-scroll::-webkit-scrollbar-track { background: transparent; }
+                              .country-picker-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.25); border-radius: 3px; }
+                              .country-picker-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
+                            `}</style>
                             <div className="sticky top-0 bg-neutral-900/95 backdrop-blur-xl p-2.5 border-b border-white/5 z-10">
                               <input
                                 type="text"
@@ -355,7 +376,7 @@ export function SurveyForm() {
                                 onClick={() => { setPhoneCountry(c); setShowCountryPicker(false); setCountrySearch(''); inputRef.current?.focus() }}
                                 className={`w-full flex items-center gap-3 px-3.5 py-2.5 text-left text-sm transition-colors hover:bg-white/5 active:bg-white/10 ${phoneCountry.name === c.name && phoneCountry.code === c.code ? 'bg-white/[0.03] text-brand-cream' : 'text-neutral-400'}`}
                               >
-                                <span className="text-xl leading-none">{c.flag}</span>
+                                <CountryFlag iso={c.iso} />
                                 <span className="flex-1 truncate">{c.name}</span>
                                 <span className="text-xs text-neutral-600">{c.code}</span>
                               </button>

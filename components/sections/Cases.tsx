@@ -120,7 +120,7 @@ export function Cases() {
                 style={{ background: 'linear-gradient(160deg, #1a1a1a 0%, #0d0d0d 60%)' }}
               >
                 <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(232,102,90,0.15) 0%, transparent 60%)' }} />
+                  style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(241,48,48,0.15) 0%, transparent 60%)' }} />
                 <div className="relative flex items-center justify-between">
                   <span className="text-[11px] font-bold tracking-wide uppercase text-neutral-500">Caso {c.n}</span>
                   <Lock className="w-3.5 h-3.5 text-neutral-600" />

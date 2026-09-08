@@ -5,8 +5,8 @@
 @layer base {
   :root {
     --brand-black: #0A0A0A;
-    --brand-coral: #E8665A;
-    --brand-coral-dark: #C94D42;
+    --brand-coral: #F13030;
+    --brand-coral-dark: #C41818;
     --brand-cream: #FAF7F2;
   }
 
@@ -66,7 +66,7 @@
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, var(--brand-coral), #f5a49d);
+    background: linear-gradient(135deg, var(--brand-coral), #F56060);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

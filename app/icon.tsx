@@ -32,7 +32,7 @@ export default function Icon() {
             width: 70,
             height: 70,
             borderRadius: '50%',
-            background: '#E8665A',
+            background: '#F13030',
             top: 105,
             right: 110,
             display: 'block',

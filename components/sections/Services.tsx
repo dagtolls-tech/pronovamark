@@ -35,7 +35,7 @@ export function Services() {
                   className="relative rounded-3xl p-8 h-full flex flex-col transition-all duration-300 hover:-translate-y-1"
                   style={
                     isMiddle
-                      ? { background: '#E8665A', boxShadow: '0 24px 60px rgba(232,102,90,0.3)' }
+                      ? { background: '#F13030', boxShadow: '0 24px 60px rgba(241,48,48,0.3)' }
                       : { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }
                   }
                 >

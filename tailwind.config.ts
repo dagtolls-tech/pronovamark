@@ -11,9 +11,9 @@ const config: Config = {
       colors: {
         brand: {
           black: '#0A0A0A',
-          coral: '#E8665A',
-          'coral-dark': '#C94D42',
-          'coral-light': '#F5A49D',
+          coral: '#F13030',
+          'coral-dark': '#C41818',
+          'coral-light': '#F56060',
           cream: '#FAF7F2',
           'cream-dark': '#F0EBE3',
         },
@@ -55,7 +55,7 @@ const config: Config = {
       boxShadow: {
         card: '0 2px 16px 0 rgba(10,10,10,0.06)',
         'card-hover': '0 8px 32px 0 rgba(10,10,10,0.12)',
-        coral: '0 8px 32px 0 rgba(232,102,90,0.25)',
+        coral: '0 8px 32px 0 rgba(241,48,48,0.25)',
       },
     },
   },

@@ -102,7 +102,7 @@ export function CaseShowcase() {
                 <div className="relative">
                   <span className="absolute inset-0 rounded-full bg-brand-coral/30 animate-ping" style={{ animationDuration: '2.5s' }} />
                   <div className="relative w-16 h-16 rounded-full flex items-center justify-center"
-                    style={{ background: '#E8665A', boxShadow: '0 8px 24px rgba(232,102,90,0.5)' }}>
+                    style={{ background: '#F13030', boxShadow: '0 8px 24px rgba(241,48,48,0.5)' }}>
                     <Play className="w-6 h-6 text-white fill-white ml-0.5" />
                   </div>
                 </div>
@@ -112,7 +112,7 @@ export function CaseShowcase() {
             {/* Mientras reproduce: solo en PC, al pasar el cursor se ilumina el borde (indica que se puede pausar) */}
             {playing && (
               <span className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300"
-                style={{ boxShadow: 'inset 0 0 0 2px #E8665A, 0 0 30px rgba(232,102,90,0.45)' }} />
+                style={{ boxShadow: 'inset 0 0 0 2px #F13030, 0 0 30px rgba(241,48,48,0.45)' }} />
             )}
           </button>
         </motion.div>
@@ -133,7 +133,7 @@ export function CaseShowcase() {
               data-cursor-hover
               className="group relative block w-full rounded-2xl overflow-hidden aspect-[9/16] bg-[#0d0d0d] transition-all duration-300 hover:-translate-y-1"
               style={{
-                border: shot.variant === 'despues' ? '1px solid rgba(232,102,90,0.3)' : '1px solid rgba(255,255,255,0.1)',
+                border: shot.variant === 'despues' ? '1px solid rgba(241,48,48,0.3)' : '1px solid rgba(255,255,255,0.1)',
               }}
               aria-label={`Ver captura ${shot.label} en completo`}
             >
@@ -148,7 +148,7 @@ export function CaseShowcase() {
 
               {/* Borde llamativo al hover */}
               <span className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ boxShadow: 'inset 0 0 0 2px #E8665A, 0 0 30px rgba(232,102,90,0.45)' }} />
+                style={{ boxShadow: 'inset 0 0 0 2px #F13030, 0 0 30px rgba(241,48,48,0.45)' }} />
 
               {/* Hint "ver completo" */}
               <span className="pointer-events-none absolute top-3 right-3 w-8 h-8 rounded-full bg-black/55 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
@@ -161,7 +161,7 @@ export function CaseShowcase() {
                   ? 'bg-brand-coral text-white'
                   : 'bg-black/70 backdrop-blur-sm text-brand-cream border border-white/15'
               }`}
-                style={shot.variant === 'despues' ? { boxShadow: '0 6px 20px rgba(232,102,90,0.5)' } : undefined}>
+                style={shot.variant === 'despues' ? { boxShadow: '0 6px 20px rgba(241,48,48,0.5)' } : undefined}>
                 <span className="text-[11px] font-bold tracking-[0.18em] uppercase leading-none">{shot.label}</span>
                 <span className={`text-[10px] font-semibold leading-none ${shot.variant === 'despues' ? 'text-white/90' : 'text-neutral-300'}`}>
                   {shot.sublabel}
@@ -205,7 +205,7 @@ export function CaseShowcase() {
                 src={open.fullSrc}
                 alt={open.alt}
                 className="rounded-[26px] border-2 max-h-[86vh] w-auto"
-                style={{ borderColor: open.variant === 'despues' ? 'rgba(232,102,90,0.6)' : 'rgba(255,255,255,0.2)' }}
+                style={{ borderColor: open.variant === 'despues' ? 'rgba(241,48,48,0.6)' : 'rgba(255,255,255,0.2)' }}
               />
               <span className={`absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-[11px] font-bold tracking-[0.18em] uppercase ${
                 open.variant === 'despues' ? 'bg-brand-coral text-white' : 'bg-brand-cream text-brand-black'

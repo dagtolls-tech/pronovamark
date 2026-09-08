@@ -10,8 +10,8 @@ export function PhoneMockup() {
         className="absolute inset-0 scale-[1.8]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(232,102,90,0.13) 1px, transparent 1px),
-            linear-gradient(to right, rgba(232,102,90,0.13) 1px, transparent 1px)
+            linear-gradient(rgba(241,48,48,0.13) 1px, transparent 1px),
+            linear-gradient(to right, rgba(241,48,48,0.13) 1px, transparent 1px)
           `,
           backgroundSize: '36px 36px',
           maskImage: 'radial-gradient(ellipse 90% 90% at 55% 50%, black 10%, transparent 75%)',
@@ -175,7 +175,7 @@ export function PhoneMockup() {
         animate={{ opacity: 1, x: 0, scale: 1 }}
         transition={{ duration: 0.5, delay: 1.2 }}
         className="absolute -left-4 bottom-[25%] bg-brand-coral rounded-2xl px-3 py-2 z-20"
-        style={{ boxShadow: '0 8px 32px rgba(232,102,90,0.4)' }}
+        style={{ boxShadow: '0 8px 32px rgba(241,48,48,0.4)' }}
       >
         <p className="text-[11px] font-bold text-white leading-tight">🎉 +38 reservas</p>
         <p className="text-[9px] text-white/70 mt-0.5">este mes</p>

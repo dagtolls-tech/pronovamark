@@ -77,7 +77,7 @@ export function Logo({ variant = 'light', size = 'md', className, animate = fals
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           style={{
             borderRadius: 'inherit',
-            boxShadow: 'inset 0 0 12px rgba(232,102,90,0.15)',
+            boxShadow: 'inset 0 0 12px rgba(241,48,48,0.15)',
           }}
         />
       </IconWrapper>

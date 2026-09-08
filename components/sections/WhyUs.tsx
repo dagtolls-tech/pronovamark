@@ -33,7 +33,7 @@ export function WhyUs() {
                   className="flex gap-5 rounded-2xl p-6 transition-all duration-300 group hover:-translate-y-0.5"
                   style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}
                   onMouseEnter={(e) => {
-                    ;(e.currentTarget as HTMLElement).style.borderColor = 'rgba(232,102,90,0.25)'
+                    ;(e.currentTarget as HTMLElement).style.borderColor = 'rgba(241,48,48,0.25)'
                   }}
                   onMouseLeave={(e) => {
                     ;(e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.07)'

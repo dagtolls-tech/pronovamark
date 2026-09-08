@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
       <div style="font-family:Inter,system-ui,sans-serif;max-width:600px;margin:0 auto;padding:24px;background:#FAF7F2;color:#0A0A0A;">
         <div style="background:#0A0A0A;border-radius:16px;padding:24px;margin-bottom:20px;">
           <h1 style="color:#FAF7F2;margin:0 0 6px;font-size:22px;">Nuevo diagnóstico solicitado</h1>
-          <p style="color:#E8665A;margin:0;font-size:13px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;">Pronovamark · ${fecha}</p>
+          <p style="color:#F13030;margin:0;font-size:13px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;">Pronovamark · ${fecha}</p>
         </div>
 
         <table style="width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;border:1px solid #E8E3DA;">

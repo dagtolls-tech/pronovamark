@@ -31,7 +31,7 @@ export default function OpengraphImage() {
             width: 600,
             height: 600,
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(232,102,90,0.35) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(241,48,48,0.35) 0%, transparent 70%)',
             display: 'block',
           }}
         />
@@ -63,7 +63,7 @@ export default function OpengraphImage() {
                   width: 12,
                   height: 12,
                   borderRadius: '50%',
-                  background: '#E8665A',
+                  background: '#F13030',
                   top: 10,
                   right: 12,
                   display: 'block',
@@ -110,7 +110,7 @@ export default function OpengraphImage() {
               color: '#FAF7F2',
             }}
           >
-            Contenido <span style={{ color: '#E8665A', fontStyle: 'italic' }}>viral.</span>
+            Contenido <span style={{ color: '#F13030', fontStyle: 'italic' }}>viral.</span>
             <br />
             Clientes <span style={{ fontStyle: 'italic' }}>reales.</span>
           </h1>
@@ -137,7 +137,7 @@ export default function OpengraphImage() {
               display: 'flex',
               alignItems: 'center',
               gap: 10,
-              background: '#E8665A',
+              background: '#F13030',
               color: '#FFFFFF',
               borderRadius: 999,
               padding: '14px 24px',
