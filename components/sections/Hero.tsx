@@ -85,8 +85,8 @@ export function Hero() {
               lineHeight: 1.15,
             }}
           >
-            Multiplicamos <span className="text-brand-coral">x10</span> las Visitas en tus Redes Sociales...{' '}
-            <span className="text-brand-coral">Sin excusas</span>
+            Multiplicamos <span className="bg-gradient-to-b from-[#FF5C5C] to-[#D42020] bg-clip-text text-transparent">x10</span> las Visitas en tus Redes Sociales...{' '}
+            <span className="bg-gradient-to-b from-[#FF5C5C] to-[#D42020] bg-clip-text text-transparent">Sin excusas</span>
           </h1>
         </motion.div>
 
@@ -95,11 +95,14 @@ export function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease }}
-          className="font-sans mt-5 sm:mt-6 text-neutral-400 text-center max-w-sm sm:max-w-md font-normal text-balance"
-          style={{ fontSize: 'clamp(0.95rem, 1.6vw, 1.05rem)', lineHeight: 1.5 }}
+          className="font-display mt-5 sm:mt-6 text-white text-center max-w-sm sm:max-w-lg font-bold tracking-tight text-balance"
+          style={{ fontSize: 'clamp(1.1rem, 2vw, 1.35rem)', lineHeight: 1.45 }}
         >
-          Nosotros nos encargamos <span className="font-bold text-white">de todo</span>. Y te acompañamos en{' '}
-          <span className="font-bold text-white">todo momento</span>.
+          El método viral para{' '}
+          <span className="inline-block px-2.5 py-0.5 rounded-lg bg-[#F97316] text-white -rotate-1 mx-0.5" style={{ boxShadow: '0 4px 16px rgba(249,115,22,0.35)' }}>vender más</span>{' '}
+          en redes sociales sin anuncios. Nosotros{' '}
+          <span className="inline-block px-2.5 py-0.5 rounded-lg bg-[#2563EB] text-white rotate-1 mx-0.5" style={{ boxShadow: '0 4px 16px rgba(37,99,235,0.35)' }}>nos encargamos</span>{' '}
+          de todo.
         </motion.p>
 
         {/* Hueco para vídeo */}
