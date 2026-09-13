@@ -72,13 +72,19 @@ export function Hero() {
   const handleUnmute = useCallback(() => {
     const v = videoRef.current
     if (!v) return
+    v.pause()
     v.currentTime = 0
-    setProgress(0)
     v.muted = false
+    setProgress(0)
     setMuted(false)
     setShowMuteOverlay(false)
     if (overlayTimeout.current) clearTimeout(overlayTimeout.current)
     try { localStorage.removeItem(STORAGE_KEY) } catch {}
+    const onSeeked = () => {
+      v.removeEventListener('seeked', onSeeked)
+      v.play().catch(() => {})
+    }
+    v.addEventListener('seeked', onSeeked)
   }, [])
 
   const handleToggleMute = useCallback(() => {
