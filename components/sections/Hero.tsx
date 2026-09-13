@@ -70,10 +70,13 @@ export function Hero() {
   const handleUnmute = useCallback(() => {
     const v = videoRef.current
     if (!v) return
+    v.currentTime = 0
+    setProgress(0)
     v.muted = false
     setMuted(false)
     setShowMuteOverlay(false)
     if (overlayTimeout.current) clearTimeout(overlayTimeout.current)
+    try { localStorage.removeItem(STORAGE_KEY) } catch {}
   }, [])
 
   const handleToggleMute = useCallback(() => {
@@ -303,9 +306,9 @@ export function Hero() {
 
             {/* Progress bar */}
             {videoState === 'playing' && (
-              <div className="absolute bottom-0 left-0 right-0 h-1 z-10 bg-white/10">
+              <div className="absolute bottom-0 left-0 right-0 h-[6px] sm:h-2 z-10 bg-white/15">
                 <div
-                  className="h-full bg-white transition-[width] duration-300 ease-linear"
+                  className="h-full bg-white rounded-r-full transition-[width] duration-300 ease-linear"
                   style={{ width: `${progress * 100}%` }}
                 />
               </div>
