@@ -11,13 +11,7 @@ const STORAGE_KEY = 'pronovamark-hero-video'
 function easeProgress(real: number): number {
   if (real <= 0) return 0
   if (real >= 1) return 1
-  if (real < 0.01) return real * 15
-  if (real < 0.05) return 0.15 + (real - 0.01) * 2.5
-  if (real < 0.15) return 0.25 + (real - 0.05) * 2.0
-  if (real < 0.30) return 0.45 + (real - 0.15) * 1.0
-  if (real < 0.50) return 0.60 + (real - 0.30) * 0.75
-  if (real < 0.75) return 0.75 + (real - 0.50) * 0.6
-  return 0.90 + (real - 0.75) * 0.4
+  return Math.pow(real, 0.4)
 }
 
 export function Hero() {
