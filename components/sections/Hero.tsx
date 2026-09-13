@@ -11,9 +11,10 @@ const STORAGE_KEY = 'pronovamark-hero-video'
 function easeProgress(real: number): number {
   if (real <= 0) return 0
   if (real >= 1) return 1
-  if (real < 0.15) return real * 2.8
-  if (real < 0.4) return 0.42 + (real - 0.15) * 1.2
-  return 0.72 + (real - 0.4) * 0.467
+  if (real < 0.08) return real * 5.5
+  if (real < 0.2) return 0.44 + (real - 0.08) * 2.5
+  if (real < 0.4) return 0.74 + (real - 0.2) * 0.7
+  return 0.88 + (real - 0.4) * 0.2
 }
 
 export function Hero() {
@@ -308,7 +309,7 @@ export function Hero() {
             {videoState === 'playing' && (
               <div className="absolute bottom-0 left-0 right-0 h-[6px] sm:h-2 z-10 bg-white/15">
                 <div
-                  className="h-full bg-white rounded-r-full transition-[width] duration-300 ease-linear"
+                  className="h-full bg-white transition-[width] duration-300 ease-linear"
                   style={{ width: `${progress * 100}%` }}
                 />
               </div>
