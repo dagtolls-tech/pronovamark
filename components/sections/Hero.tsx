@@ -11,7 +11,8 @@ const STORAGE_KEY = 'pronovamark-hero-video'
 function easeProgress(real: number): number {
   if (real <= 0) return 0
   if (real >= 1) return 1
-  if (real < 0.08) return real * 4.125
+  if (real < 0.01) return real * 20
+  if (real < 0.08) return 0.20 + (real - 0.01) * 1.857
   if (real < 0.18) return 0.33 + (real - 0.08) * 1.7
   if (real < 0.40) return 0.50 + (real - 0.18) * 0.227
   if (real < 0.60) return 0.55 + (real - 0.40) * 0.5
@@ -327,7 +328,7 @@ export function Hero() {
             )}
 
             {/* Progress bar */}
-            {videoState === 'playing' && (
+            {videoState === 'playing' && !showMuteOverlay && (
               <div className="absolute bottom-0 left-0 right-0 h-[6px] sm:h-2 z-10 bg-white/15">
                 <div
                   className="h-full bg-white transition-[width] duration-300 ease-linear"
