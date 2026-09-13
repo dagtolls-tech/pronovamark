@@ -271,15 +271,30 @@ export function Hero() {
                 className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer"
                 onClick={handleUnmute}
               >
-                <div className="rounded-2xl border-2 border-white/30 bg-black/60 backdrop-blur-sm px-8 py-6 sm:px-10 sm:py-8 text-center">
-                  <p className="text-white font-bold text-base sm:text-lg mb-4">Tu vídeo ha comenzado</p>
-                  <svg className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 9.75L19.5 12m0 0l-2.25 2.25M19.5 12H4.5" style={{ display: 'none' }} />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor" stroke="none" />
-                    <line x1="3" y1="3" x2="21" y2="21" strokeWidth={2} />
-                  </svg>
-                  <p className="text-white font-bold text-sm sm:text-base">Haz clic para escuchar</p>
+                <style>{`
+                  @keyframes soundWave1 { 0%,100% { transform: scaleY(0.4); } 50% { transform: scaleY(1); } }
+                  @keyframes soundWave2 { 0%,100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.3); } }
+                  @keyframes soundWave3 { 0%,100% { transform: scaleY(0.3); } 50% { transform: scaleY(0.9); } }
+                `}</style>
+                <div className="rounded-2xl border-2 border-white/30 bg-black/60 backdrop-blur-sm px-10 py-7 sm:px-14 sm:py-9 text-center">
+                  <p className="text-white font-bold text-lg sm:text-xl mb-5">Tu vídeo ha comenzado</p>
+                  <div className="flex items-center justify-center gap-1 mb-5">
+                    {/* Speaker icon */}
+                    <svg className="w-12 h-12 sm:w-14 sm:h-14 text-white flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                    </svg>
+                    {/* Diagonal line through */}
+                    <svg className="w-12 h-12 sm:w-14 sm:h-14 text-white absolute" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
+                      <line x1="4" y1="4" x2="20" y2="20" />
+                    </svg>
+                    {/* Animated sound wave bars */}
+                    <div className="flex items-center gap-[3px] ml-1">
+                      <div className="w-[4px] h-8 sm:h-10 bg-white rounded-full origin-center" style={{ animation: 'soundWave1 0.8s ease-in-out infinite' }} />
+                      <div className="w-[4px] h-8 sm:h-10 bg-white rounded-full origin-center" style={{ animation: 'soundWave2 0.6s ease-in-out infinite 0.15s' }} />
+                      <div className="w-[4px] h-8 sm:h-10 bg-white rounded-full origin-center" style={{ animation: 'soundWave3 0.7s ease-in-out infinite 0.3s' }} />
+                    </div>
+                  </div>
+                  <p className="text-white font-bold text-base sm:text-lg">Haz clic para escuchar</p>
                 </div>
               </div>
             )}
