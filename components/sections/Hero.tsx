@@ -1,11 +1,115 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Play, RotateCcw } from 'lucide-react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 
 const ease = [0.22, 1, 0.36, 1] as const
+const VIDEO_DURATION = 307
+const STORAGE_KEY = 'pronovamark-hero-video'
+
+function easeProgress(real: number): number {
+  if (real <= 0) return 0
+  if (real >= 1) return 1
+  if (real < 0.15) return real * 2.8
+  if (real < 0.4) return 0.42 + (real - 0.15) * 1.2
+  return 0.72 + (real - 0.4) * 0.467
+}
 
 export function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [videoState, setVideoState] = useState<'idle' | 'playing' | 'resume'>('idle')
+  const [muted, setMuted] = useState(true)
+  const [showMuteOverlay, setShowMuteOverlay] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const [savedTime, setSavedTime] = useState(0)
+  const overlayTimeout = useRef<ReturnType<typeof setTimeout>>()
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY)
+      if (saved) {
+        const t = parseFloat(saved)
+        if (t > 3 && t < VIDEO_DURATION - 5) {
+          setSavedTime(t)
+          setVideoState('resume')
+          return
+        }
+      }
+    } catch {}
+    setVideoState('idle')
+  }, [])
+
+  useEffect(() => {
+    if (videoState !== 'idle') return
+    const v = videoRef.current
+    if (!v) return
+    v.muted = true
+    v.playsInline = true
+    v.play().then(() => {
+      setVideoState('playing')
+      setMuted(true)
+      setShowMuteOverlay(true)
+      overlayTimeout.current = setTimeout(() => setShowMuteOverlay(false), 8000)
+    }).catch(() => {})
+    return () => { if (overlayTimeout.current) clearTimeout(overlayTimeout.current) }
+  }, [videoState])
+
+  useEffect(() => {
+    const v = videoRef.current
+    if (!v) return
+    const onTime = () => {
+      const real = v.currentTime / v.duration
+      setProgress(easeProgress(real))
+      try { localStorage.setItem(STORAGE_KEY, String(v.currentTime)) } catch {}
+    }
+    v.addEventListener('timeupdate', onTime)
+    return () => v.removeEventListener('timeupdate', onTime)
+  }, [])
+
+  const handleUnmute = useCallback(() => {
+    const v = videoRef.current
+    if (!v) return
+    v.muted = false
+    setMuted(false)
+    setShowMuteOverlay(false)
+    if (overlayTimeout.current) clearTimeout(overlayTimeout.current)
+  }, [])
+
+  const handleToggleMute = useCallback(() => {
+    const v = videoRef.current
+    if (!v) return
+    v.muted = !v.muted
+    setMuted(v.muted)
+  }, [])
+
+  const handleResume = useCallback(() => {
+    const v = videoRef.current
+    if (!v) return
+    v.currentTime = savedTime
+    v.muted = true
+    v.play().then(() => {
+      setVideoState('playing')
+      setMuted(true)
+      setShowMuteOverlay(true)
+      overlayTimeout.current = setTimeout(() => setShowMuteOverlay(false), 8000)
+    }).catch(() => {})
+  }, [savedTime])
+
+  const handleRestart = useCallback(() => {
+    const v = videoRef.current
+    if (!v) return
+    v.currentTime = 0
+    v.muted = true
+    v.play().then(() => {
+      setVideoState('playing')
+      setMuted(true)
+      setShowMuteOverlay(true)
+      overlayTimeout.current = setTimeout(() => setShowMuteOverlay(false), 8000)
+    }).catch(() => {})
+    try { localStorage.removeItem(STORAGE_KEY) } catch {}
+  }, [])
+
   return (
     <section
       id="hero"
@@ -24,7 +128,7 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-5 pb-16 sm:pt-6 sm:pb-20">
-        {/* Logo PRONOVAMARK minimalista — con luz cálida pequeña detrás */}
+        {/* Logo PRONOVAMARK */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -41,7 +145,7 @@ export function Hero() {
           </span>
         </motion.div>
 
-        {/* Social proof pill — borde giratorio (igual que YTA Consulting) */}
+        {/* Social proof pill */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
@@ -57,7 +161,6 @@ export function Hero() {
             aria-hidden="true"
           />
           <div className="relative z-10 inline-flex items-center gap-3 bg-[#0c0c0c] rounded-full pl-2 pr-4 py-2">
-            {/* Avatar cliente */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/casos/cati/cati-avatar.png"
@@ -105,7 +208,7 @@ export function Hero() {
           de todo.
         </motion.p>
 
-        {/* Hueco para vídeo */}
+        {/* Video */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
@@ -116,32 +219,97 @@ export function Hero() {
             className="relative w-full rounded-2xl overflow-hidden border border-white/[0.08]"
             style={{
               aspectRatio: '16 / 9',
-              background: 'linear-gradient(145deg, #141414 0%, #0d0d0d 100%)',
+              background: '#0a0a0a',
               boxShadow:
                 '0 0 0 1px rgba(255,255,255,0.05), 0 24px 80px rgba(0,0,0,0.6), 0 0 60px rgba(241,48,48,0.08)',
             }}
           >
-            {/* Placeholder — se reemplazará con vídeo real */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <div
-                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-3"
-                  style={{
-                    background: 'rgba(241,48,48,0.15)',
-                    border: '2px solid rgba(241,48,48,0.3)',
-                  }}
-                >
-                  <svg
-                    className="w-7 h-7 sm:w-8 sm:h-8 text-brand-coral ml-1"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
+            <video
+              ref={videoRef}
+              src="/hero-video.mp4"
+              className="absolute inset-0 w-full h-full object-cover"
+              playsInline
+              muted
+              preload="auto"
+            />
+
+            {/* Resume overlay */}
+            {videoState === 'resume' && (
+              <div className="absolute inset-0 z-20 flex items-center justify-center" style={{ background: 'rgba(10,10,10,0.85)' }}>
+                <div className="rounded-2xl p-8 sm:p-10 text-center max-w-md w-full mx-4"
+                  style={{ background: 'linear-gradient(135deg, #D42020 0%, #B91C1C 100%)' }}>
+                  <h3 className="text-white font-bold text-lg sm:text-xl mb-6">
+                    Ya has comenzado a ver este vídeo
+                  </h3>
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+                    <button
+                      onClick={handleResume}
+                      className="flex items-center gap-2.5 bg-white/20 hover:bg-white/30 text-white font-semibold px-5 py-3 rounded-xl transition-colors text-sm"
+                    >
+                      <Play className="w-4 h-4 fill-white" />
+                      ¿Continuar viendo?
+                    </button>
+                    <button
+                      onClick={handleRestart}
+                      className="flex items-center gap-2.5 bg-white/10 hover:bg-white/20 text-white/90 font-semibold px-5 py-3 rounded-xl transition-colors text-sm"
+                    >
+                      <RotateCcw className="w-4 h-4" />
+                      ¿Comenzar desde el principio?
+                    </button>
+                  </div>
                 </div>
-                <p className="text-neutral-600 text-xs sm:text-sm font-medium">Vídeo próximamente</p>
               </div>
-            </div>
+            )}
+
+            {/* Mute overlay — "Tu vídeo ha comenzado" */}
+            {showMuteOverlay && videoState === 'playing' && (
+              <div
+                className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer"
+                onClick={handleUnmute}
+              >
+                <div className="rounded-2xl border-2 border-white/30 bg-black/60 backdrop-blur-sm px-8 py-6 sm:px-10 sm:py-8 text-center">
+                  <p className="text-white font-bold text-base sm:text-lg mb-4">Tu vídeo ha comenzado</p>
+                  <svg className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 9.75L19.5 12m0 0l-2.25 2.25M19.5 12H4.5" style={{ display: 'none' }} />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor" stroke="none" />
+                    <line x1="3" y1="3" x2="21" y2="21" strokeWidth={2} />
+                  </svg>
+                  <p className="text-white font-bold text-sm sm:text-base">Haz clic para escuchar</p>
+                </div>
+              </div>
+            )}
+
+            {/* Mute toggle button (after overlay dismissed) */}
+            {videoState === 'playing' && !showMuteOverlay && (
+              <button
+                onClick={handleToggleMute}
+                className="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center hover:bg-black/70 transition-colors"
+              >
+                {muted ? (
+                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                    <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
+                    <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
+                  </svg>
+                ) : (
+                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                    <path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
+                  </svg>
+                )}
+              </button>
+            )}
+
+            {/* Progress bar */}
+            {videoState === 'playing' && (
+              <div className="absolute bottom-0 left-0 right-0 h-1 z-10 bg-white/10">
+                <div
+                  className="h-full bg-white transition-[width] duration-300 ease-linear"
+                  style={{ width: `${progress * 100}%` }}
+                />
+              </div>
+            )}
           </div>
         </motion.div>
 
