@@ -272,27 +272,26 @@ export function Hero() {
                 onClick={handleUnmute}
               >
                 <style>{`
-                  @keyframes soundWave1 { 0%,100% { transform: scaleY(0.4); } 50% { transform: scaleY(1); } }
-                  @keyframes soundWave2 { 0%,100% { transform: scaleY(0.6); } 50% { transform: scaleY(0.3); } }
-                  @keyframes soundWave3 { 0%,100% { transform: scaleY(0.3); } 50% { transform: scaleY(0.9); } }
+                  @keyframes waveArc1 { 0%,100% { opacity: 0.4; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1); } }
+                  @keyframes waveArc2 { 0%,100% { opacity: 0.3; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1); } }
+                  @keyframes waveArc3 { 0%,100% { opacity: 0.2; transform: scale(0.95); } 50% { opacity: 0.9; transform: scale(1); } }
                 `}</style>
                 <div className="rounded-2xl border-2 border-white/30 bg-black/60 backdrop-blur-sm px-10 py-7 sm:px-14 sm:py-9 text-center">
                   <p className="text-white font-bold text-lg sm:text-xl mb-5">Tu vídeo ha comenzado</p>
-                  <div className="flex items-center justify-center gap-1 mb-5">
-                    {/* Speaker icon */}
-                    <svg className="w-12 h-12 sm:w-14 sm:h-14 text-white flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-5">
+                    <svg className="w-full h-full text-white" viewBox="0 0 80 80" fill="none">
+                      {/* Speaker body */}
+                      <path d="M28 30L20 36H12V44H20L28 50V30Z" fill="white" />
+                      {/* Sound wave arcs — animated */}
+                      <path d="M36 28C42 32 42 48 36 52" stroke="white" strokeWidth={3} strokeLinecap="round"
+                        style={{ animation: 'waveArc1 0.8s ease-in-out infinite', transformOrigin: '36px 40px' }} />
+                      <path d="M44 22C54 28 54 52 44 58" stroke="white" strokeWidth={3} strokeLinecap="round"
+                        style={{ animation: 'waveArc2 0.7s ease-in-out infinite 0.15s', transformOrigin: '44px 40px' }} />
+                      <path d="M52 16C66 24 66 56 52 64" stroke="white" strokeWidth={3} strokeLinecap="round"
+                        style={{ animation: 'waveArc3 0.9s ease-in-out infinite 0.3s', transformOrigin: '52px 40px' }} />
+                      {/* Diagonal slash through entire icon */}
+                      <line x1="10" y1="10" x2="70" y2="70" stroke="white" strokeWidth={3.5} strokeLinecap="round" />
                     </svg>
-                    {/* Diagonal line through */}
-                    <svg className="w-12 h-12 sm:w-14 sm:h-14 text-white absolute" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
-                      <line x1="4" y1="4" x2="20" y2="20" />
-                    </svg>
-                    {/* Animated sound wave bars */}
-                    <div className="flex items-center gap-[3px] ml-1">
-                      <div className="w-[4px] h-8 sm:h-10 bg-white rounded-full origin-center" style={{ animation: 'soundWave1 0.8s ease-in-out infinite' }} />
-                      <div className="w-[4px] h-8 sm:h-10 bg-white rounded-full origin-center" style={{ animation: 'soundWave2 0.6s ease-in-out infinite 0.15s' }} />
-                      <div className="w-[4px] h-8 sm:h-10 bg-white rounded-full origin-center" style={{ animation: 'soundWave3 0.7s ease-in-out infinite 0.3s' }} />
-                    </div>
                   </div>
                   <p className="text-white font-bold text-base sm:text-lg">Haz clic para escuchar</p>
                 </div>
