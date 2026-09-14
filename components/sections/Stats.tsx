@@ -5,7 +5,7 @@ import { AnimatedGroup, AnimatedItem } from '@/components/shared/AnimatedSection
 const STATS = [
   { value: '+3M', label: 'Views generadas' },
   { value: '+2.000€', label: 'Ingresos generados' },
-  { value: '+40', label: 'Vídeos producidos' },
+  { value: '+80', label: 'Vídeos producidos' },
   { value: '24/7', label: 'Soporte directo' },
 ]
 
