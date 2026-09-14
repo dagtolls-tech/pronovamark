@@ -125,7 +125,7 @@ function VideoPlayer({ src, poster, overlayText, className = '' }: { src: string
             <Play className="w-7 h-7 sm:w-9 sm:h-9 text-white fill-white ml-1" />
           </div>
           {overlayText && (
-            <p className="mt-3 px-4 text-center text-white font-bold text-xs sm:text-sm leading-snug drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+            <p className="mt-4 px-6 text-center text-white font-extrabold text-base sm:text-xl lg:text-2xl leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
               {overlayText}
             </p>
           )}
@@ -187,7 +187,7 @@ export function PostCallContent() {
         />
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-16 pb-20">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-16 pb-20">
         {/* Logo */}
         <div className="text-center mb-10 sm:mb-14">
           <span className="font-editorial font-bold text-brand-cream text-lg sm:text-xl tracking-[0.22em] uppercase">
@@ -244,7 +244,7 @@ export function PostCallContent() {
           </h2>
 
           {/* FAQ grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
             {FAQ_ITEMS.map((faq) => (
               <div key={faq.n} className="rounded-2xl border border-white/[0.08] overflow-hidden" style={{ background: 'linear-gradient(160deg, #131313 0%, #0A0A0A 60%)' }}>
                 <div className="relative">
@@ -254,8 +254,8 @@ export function PostCallContent() {
                   </div>
                 </div>
 
-                <div className="px-5 py-4">
-                  <p className="text-brand-cream font-bold text-sm sm:text-base leading-snug text-center">
+                <div className="px-5 py-5 sm:py-6">
+                  <p className="text-brand-cream font-bold text-base sm:text-lg leading-snug text-center">
                     {highlightKeyword(faq.question, faq.keyword)}
                   </p>
                 </div>
