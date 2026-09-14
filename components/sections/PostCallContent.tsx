@@ -6,8 +6,8 @@ import { Play, Pause, Volume2, VolumeX, Maximize } from 'lucide-react'
 const FAQ_ITEMS = [
   {
     n: 1,
-    question: '¿Necesito tener una audiencia previa construida?',
-    keyword: 'audiencia',
+    question: '¿Necesito tener ya muchos seguidores?',
+    keyword: 'seguidores',
     video: '/post-llamada/faq-1.mp4',
     poster: '/post-llamada/faq-1-poster.jpg',
   },
@@ -27,8 +27,8 @@ const FAQ_ITEMS = [
   },
   {
     n: 4,
-    question: '¿Necesito ser bueno hablando a cámara?',
-    keyword: 'a cámara',
+    question: '¿Y si no se me da bien estar frente a la cámara?',
+    keyword: 'frente a la cámara',
     video: '/post-llamada/faq-4.mp4',
     poster: '/post-llamada/faq-4-poster.jpg',
   },
