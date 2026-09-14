@@ -34,7 +34,7 @@ const FAQ_ITEMS = [
   },
 ]
 
-function VideoPlayer({ src, poster, className = '' }: { src: string; poster?: string; className?: string }) {
+function VideoPlayer({ src, poster, overlayText, className = '' }: { src: string; poster?: string; overlayText?: string; className?: string }) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [playing, setPlaying] = useState(false)
@@ -118,12 +118,17 @@ function VideoPlayer({ src, poster, className = '' }: { src: string; poster?: st
         onClick={togglePlay}
       />
 
-      {/* Big play button when paused */}
+      {/* Big play button + overlay text when paused */}
       {!playing && (
-        <div className="absolute inset-0 flex items-center justify-center z-10" onClick={togglePlay}>
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-10" onClick={togglePlay}>
           <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors">
             <Play className="w-7 h-7 sm:w-9 sm:h-9 text-white fill-white ml-1" />
           </div>
+          {overlayText && (
+            <p className="mt-3 px-4 text-center text-white font-bold text-xs sm:text-sm leading-snug drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              {overlayText}
+            </p>
+          )}
         </div>
       )}
 
@@ -243,7 +248,7 @@ export function PostCallContent() {
             {FAQ_ITEMS.map((faq) => (
               <div key={faq.n} className="rounded-2xl border border-white/[0.08] overflow-hidden" style={{ background: 'linear-gradient(160deg, #131313 0%, #0A0A0A 60%)' }}>
                 <div className="relative">
-                  <VideoPlayer src={faq.video} poster={faq.poster} />
+                  <VideoPlayer src={faq.video} poster={faq.poster} overlayText={faq.question} />
                   <div className="absolute top-3 left-3 z-30 pointer-events-none">
                     <span className="text-white/60 text-[11px] font-semibold tracking-wider uppercase">Pregunta {faq.n}</span>
                   </div>
