@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useCallback, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Mail, Phone } from 'lucide-react'
 import Cal, { getCalApi } from '@calcom/embed-react'
@@ -138,6 +139,7 @@ function CountryFlag({ iso }: { iso: string }) {
 }
 
 export function SurveyForm() {
+  const router = useRouter()
   const [current, setCurrent] = useState(0)
   const [answers, setAnswers] = useState<Record<number, string>>({})
   const [selected, setSelected] = useState<string | null>(null)
@@ -178,8 +180,15 @@ export function SurveyForm() {
         hideEventTypeDetails: false,
         layout: 'month_view',
       })
+      cal('on', {
+        action: 'bookingSuccessful',
+        callback: () => {
+          router.push('/post-llamada')
+        },
+      })
     })()
   }, [phase])
+
 
   const goNext = useCallback(() => {
     if (current < STEPS.length - 1) {

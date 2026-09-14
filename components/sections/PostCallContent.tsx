@@ -9,28 +9,32 @@ const FAQ_ITEMS = [
     question: '¿Necesito tener una audiencia previa construida?',
     keyword: 'audiencia',
     video: '/post-llamada/faq-1.mp4',
+    poster: '/post-llamada/faq-1-poster.jpg',
   },
   {
     n: 2,
     question: '¿Cómo de rápido puedo ver resultados?',
     keyword: 'resultados',
     video: '/post-llamada/faq-2.mp4',
+    poster: '/post-llamada/faq-2-poster.jpg',
   },
   {
     n: 3,
     question: '¿Qué es exactamente lo que gestionan?',
     keyword: 'gestionan',
     video: '/post-llamada/faq-3.mp4',
+    poster: '/post-llamada/faq-3-poster.jpg',
   },
   {
     n: 4,
     question: '¿Necesito ser bueno hablando a cámara?',
     keyword: 'a cámara',
     video: '/post-llamada/faq-4.mp4',
+    poster: '/post-llamada/faq-4-poster.jpg',
   },
 ]
 
-function VideoPlayer({ src, className = '' }: { src: string; className?: string }) {
+function VideoPlayer({ src, poster, className = '' }: { src: string; poster?: string; className?: string }) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [playing, setPlaying] = useState(false)
@@ -107,6 +111,7 @@ function VideoPlayer({ src, className = '' }: { src: string; className?: string 
       <video
         ref={videoRef}
         src={src}
+        poster={poster}
         className="absolute inset-0 w-full h-full object-cover"
         playsInline
         preload="metadata"
@@ -237,15 +242,13 @@ export function PostCallContent() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
             {FAQ_ITEMS.map((faq) => (
               <div key={faq.n} className="rounded-2xl border border-white/[0.08] overflow-hidden" style={{ background: 'linear-gradient(160deg, #131313 0%, #0A0A0A 60%)' }}>
-                {/* Video thumbnail / player */}
-                <div className="relative aspect-video bg-neutral-900">
-                  <VideoPlayer src={faq.video} />
+                <div className="relative">
+                  <VideoPlayer src={faq.video} poster={faq.poster} />
                   <div className="absolute top-3 left-3 z-30 pointer-events-none">
                     <span className="text-white/60 text-[11px] font-semibold tracking-wider uppercase">Pregunta {faq.n}</span>
                   </div>
                 </div>
 
-                {/* Question text */}
                 <div className="px-5 py-4">
                   <p className="text-brand-cream font-bold text-sm sm:text-base leading-snug text-center">
                     {highlightKeyword(faq.question, faq.keyword)}
