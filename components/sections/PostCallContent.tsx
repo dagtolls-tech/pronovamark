@@ -234,18 +234,18 @@ export function PostCallContent() {
     const v = videoRef.current
     if (!v) return
     v.pause()
-    v.currentTime = 0
     v.muted = false
     setProgress(0)
     setMuted(false)
     setShowMuteOverlay(false)
     if (overlayTimeout.current) clearTimeout(overlayTimeout.current)
     try { localStorage.removeItem(STORAGE_KEY) } catch {}
-    const onSeeked = () => {
-      v.removeEventListener('seeked', onSeeked)
-      v.play().catch(() => {})
+    v.currentTime = 0
+    const startPlayback = () => {
+      v.removeEventListener('seeked', startPlayback)
+      setTimeout(() => v.play().catch(() => {}), 80)
     }
-    v.addEventListener('seeked', onSeeked)
+    v.addEventListener('seeked', startPlayback)
   }, [])
 
   const handleToggleMute = useCallback(() => {
@@ -283,18 +283,40 @@ export function PostCallContent() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-brand-black">
+    <div className="min-h-screen bg-brand-black relative overflow-hidden">
       <style>{`
         @keyframes waveArc1 { 0%,100% { opacity: 0.4; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1); } }
         @keyframes waveArc2 { 0%,100% { opacity: 0.3; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1); } }
         @keyframes waveArc3 { 0%,100% { opacity: 0.2; transform: scale(0.95); } 50% { opacity: 0.9; transform: scale(1); } }
+        @keyframes pulseGlow { 0%,100% { opacity: 0.7; } 50% { opacity: 1; } }
       `}</style>
 
-      {/* Subtle glow */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      {/* Geometric pattern background */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.04 }}>
+          <defs>
+            <pattern id="hexGrid" x="0" y="0" width="120" height="104" patternUnits="userSpaceOnUse">
+              <path d="M60 0L120 26L120 78L60 104L0 78L0 26Z" fill="none" stroke="white" strokeWidth="0.5" />
+              <path d="M60 0L120 26" fill="none" stroke="white" strokeWidth="0.5" />
+              <path d="M120 26L120 78" fill="none" stroke="white" strokeWidth="0.5" />
+              <path d="M120 78L60 104" fill="none" stroke="white" strokeWidth="0.5" />
+              <circle cx="60" cy="0" r="3" fill="none" stroke="white" strokeWidth="0.5" />
+              <circle cx="120" cy="26" r="3" fill="none" stroke="white" strokeWidth="0.5" />
+              <circle cx="120" cy="78" r="3" fill="none" stroke="white" strokeWidth="0.5" />
+              <circle cx="60" cy="104" r="3" fill="none" stroke="white" strokeWidth="0.5" />
+              <circle cx="0" cy="78" r="3" fill="none" stroke="white" strokeWidth="0.5" />
+              <circle cx="0" cy="26" r="3" fill="none" stroke="white" strokeWidth="0.5" />
+              <line x1="0" y1="26" x2="120" y2="78" stroke="white" strokeWidth="0.3" />
+              <line x1="120" y1="26" x2="0" y2="78" stroke="white" strokeWidth="0.3" />
+              <line x1="60" y1="0" x2="60" y2="104" stroke="white" strokeWidth="0.3" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#hexGrid)" />
+        </svg>
+        {/* Red ambient glow from top */}
         <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-[150px]"
-          style={{ background: 'radial-gradient(ellipse, rgba(241,48,48,0.06) 0%, transparent 70%)' }}
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] rounded-full blur-[200px]"
+          style={{ background: 'radial-gradient(ellipse, rgba(212,32,32,0.08) 0%, transparent 70%)' }}
         />
       </div>
 
@@ -313,20 +335,27 @@ export function PostCallContent() {
           </div>
         </div>
 
-        {/* Último paso label */}
+        {/* Último paso label with red glow */}
         <div className="flex justify-center mb-6">
-          <span className="inline-flex items-center gap-2.5 text-brand-cream/80 text-xs font-semibold tracking-[0.25em] uppercase border border-white/10 rounded-full px-5 py-2.5">
-            <span className="w-2 h-2 rounded-full bg-brand-coral" />
-            Último paso
-          </span>
+          <div className="relative">
+            <div
+              className="absolute inset-0 rounded-full blur-xl pointer-events-none"
+              style={{ background: 'radial-gradient(ellipse, rgba(212,32,32,0.3) 0%, transparent 70%)', animation: 'pulseGlow 3s ease-in-out infinite' }}
+              aria-hidden="true"
+            />
+            <span className="relative inline-flex items-center gap-2.5 text-brand-cream/80 text-xs font-semibold tracking-[0.25em] uppercase border border-brand-coral/30 rounded-full px-5 py-2.5" style={{ boxShadow: '0 0 20px rgba(212,32,32,0.15)' }}>
+              <span className="w-2 h-2 rounded-full bg-brand-coral" style={{ boxShadow: '0 0 8px rgba(212,32,32,0.6)' }} />
+              Último paso
+            </span>
+          </div>
         </div>
 
-        {/* Title */}
+        {/* Title — large like YTA Consulting */}
         <h1
           className="text-center font-sans font-extrabold text-brand-cream tracking-[-0.02em] mb-10 sm:mb-14"
-          style={{ fontSize: 'clamp(1.6rem, 5vw, 2.8rem)', lineHeight: 1.15 }}
+          style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', lineHeight: 1.1 }}
         >
-          Mira Esta Página Antes de{' '}
+          Mira Esta Página Antes<br className="hidden sm:block" /> de{' '}
           <span className="bg-gradient-to-b from-[#FF7A7A] to-[#C41818] bg-clip-text text-transparent">Nuestra Llamada</span>
         </h1>
 
@@ -336,12 +365,19 @@ export function PostCallContent() {
             <span className="font-bold text-brand-cream">Paso 1:</span> Mira este vídeo
           </p>
 
+          {/* Red glow behind video */}
+          <div className="relative w-full max-w-3xl mx-auto">
+            <div
+              className="absolute -inset-8 sm:-inset-12 rounded-[40px] blur-[80px] pointer-events-none"
+              style={{ background: 'radial-gradient(ellipse at center, rgba(212,32,32,0.12) 0%, rgba(212,32,32,0.04) 50%, transparent 80%)' }}
+              aria-hidden="true"
+            />
           <div
-            className="relative w-full max-w-3xl mx-auto rounded-2xl overflow-hidden border border-white/[0.08]"
+            className="relative w-full rounded-2xl overflow-hidden border border-white/[0.08]"
             style={{
               aspectRatio: '16 / 9',
               background: '#0a0a0a',
-              boxShadow: '0 0 0 1px rgba(255,255,255,0.05), 0 24px 80px rgba(0,0,0,0.6), 0 0 60px rgba(241,48,48,0.08)',
+              boxShadow: '0 0 0 1px rgba(255,255,255,0.05), 0 24px 80px rgba(0,0,0,0.6), 0 0 80px rgba(212,32,32,0.1), 0 0 160px rgba(212,32,32,0.05)',
             }}
           >
             <video
@@ -436,6 +472,7 @@ export function PostCallContent() {
                 />
               </div>
             )}
+          </div>
           </div>
         </div>
 
