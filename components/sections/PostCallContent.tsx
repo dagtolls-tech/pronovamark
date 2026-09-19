@@ -289,6 +289,26 @@ export function PostCallContent() {
         @keyframes waveArc2 { 0%,100% { opacity: 0.3; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1); } }
         @keyframes waveArc3 { 0%,100% { opacity: 0.2; transform: scale(0.95); } 50% { opacity: 0.9; transform: scale(1); } }
         @keyframes pulseGlow { 0%,100% { opacity: 0.7; } 50% { opacity: 1; } }
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(24px); filter: blur(8px); }
+          to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        @keyframes fadeInScale {
+          from { opacity: 0; transform: scale(0.92); filter: blur(6px); }
+          to { opacity: 1; transform: scale(1); filter: blur(0); }
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; filter: blur(4px); }
+          to { opacity: 1; filter: blur(0); }
+        }
+        @keyframes slideInUp {
+          from { opacity: 0; transform: translateY(32px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .anim-entry { opacity: 0; animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .anim-scale { opacity: 0; animation: fadeInScale 0.7s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .anim-fade { opacity: 0; animation: fadeIn 0.5s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .anim-slide { opacity: 0; animation: slideInUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
       `}</style>
 
       {/* Geometric pattern background */}
@@ -322,7 +342,7 @@ export function PostCallContent() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-16 pb-20">
         {/* Logo */}
-        <div className="text-center mb-10 sm:mb-14">
+        <div className="text-center mb-10 sm:mb-14 anim-fade" style={{ animationDelay: '0.1s' }}>
           <div className="relative inline-block">
             <div
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] h-[70px] rounded-full blur-2xl pointer-events-none"
@@ -336,7 +356,7 @@ export function PostCallContent() {
         </div>
 
         {/* Último paso label with red glow */}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-6 anim-entry" style={{ animationDelay: '0.25s' }}>
           <div className="relative">
             <div
               className="absolute inset-0 rounded-full blur-xl pointer-events-none"
@@ -352,8 +372,8 @@ export function PostCallContent() {
 
         {/* Title — large like YTA Consulting */}
         <h1
-          className="text-center font-sans font-extrabold text-brand-cream tracking-[-0.02em] mb-10 sm:mb-14"
-          style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', lineHeight: 1.1 }}
+          className="text-center font-sans font-extrabold text-brand-cream tracking-[-0.02em] mb-10 sm:mb-14 anim-entry"
+          style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', lineHeight: 1.1, animationDelay: '0.4s' }}
         >
           Mira Esta Página Antes<br className="hidden sm:block" /> de{' '}
           <span className="bg-gradient-to-b from-[#FF7A7A] to-[#C41818] bg-clip-text text-transparent">Nuestra Llamada</span>
@@ -361,12 +381,12 @@ export function PostCallContent() {
 
         {/* Paso 1 — Main video with Hero-style player */}
         <div className="mb-16 sm:mb-20">
-          <p className="text-center text-neutral-400 text-sm sm:text-base mb-6">
+          <p className="text-center text-neutral-400 text-sm sm:text-base mb-6 anim-fade" style={{ animationDelay: '0.55s' }}>
             <span className="font-bold text-brand-cream">Paso 1:</span> Mira este vídeo
           </p>
 
           {/* Red glow behind video */}
-          <div className="relative w-full max-w-3xl mx-auto">
+          <div className="relative w-full max-w-3xl mx-auto anim-scale" style={{ animationDelay: '0.65s' }}>
             <div
               className="absolute -inset-8 sm:-inset-12 rounded-[40px] blur-[80px] pointer-events-none"
               style={{ background: 'radial-gradient(ellipse at center, rgba(212,32,32,0.12) 0%, rgba(212,32,32,0.04) 50%, transparent 80%)' }}
@@ -477,23 +497,23 @@ export function PostCallContent() {
         </div>
 
         {/* Divider */}
-        <div className="w-16 h-px bg-white/10 mx-auto mb-16 sm:mb-20" />
+        <div className="w-16 h-px bg-white/10 mx-auto mb-16 sm:mb-20 anim-fade" style={{ animationDelay: '0.8s' }} />
 
         {/* Paso 2 */}
         <div>
-          <div className="flex justify-center mb-5">
+          <div className="flex justify-center mb-5 anim-entry" style={{ animationDelay: '0.9s' }}>
             <span className="inline-flex items-center text-brand-cream/80 text-xs font-semibold tracking-[0.25em] uppercase border border-white/10 rounded-full px-5 py-2.5">
               FAQ
             </span>
           </div>
 
-          <p className="text-center text-neutral-400 text-sm sm:text-base mb-4">
+          <p className="text-center text-neutral-400 text-sm sm:text-base mb-4 anim-fade" style={{ animationDelay: '1s' }}>
             <span className="font-bold text-brand-cream">Paso 2:</span> Mira las FAQ
           </p>
 
           <h2
-            className="text-center font-sans font-extrabold text-brand-cream tracking-[-0.02em] mb-10 sm:mb-12"
-            style={{ fontSize: 'clamp(1.4rem, 4vw, 2.2rem)', lineHeight: 1.15 }}
+            className="text-center font-sans font-extrabold text-brand-cream tracking-[-0.02em] mb-10 sm:mb-12 anim-entry"
+            style={{ fontSize: 'clamp(1.4rem, 4vw, 2.2rem)', lineHeight: 1.15, animationDelay: '1.1s' }}
           >
             Preguntas Frecuentes{' '}
             <span className="bg-gradient-to-b from-[#FF7A7A] to-[#C41818] bg-clip-text text-transparent">Respondidas...</span>
@@ -502,7 +522,7 @@ export function PostCallContent() {
           {/* FAQ grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
             {FAQ_ITEMS.map((faq) => (
-              <div key={faq.n} className="rounded-2xl border border-white/[0.08] overflow-hidden" style={{ background: 'linear-gradient(160deg, #131313 0%, #0A0A0A 60%)' }}>
+              <div key={faq.n} className="rounded-2xl border border-white/[0.08] overflow-hidden anim-slide" style={{ background: 'linear-gradient(160deg, #131313 0%, #0A0A0A 60%)', animationDelay: `${1.2 + (faq.n - 1) * 0.12}s` }}>
                 <div className="relative">
                   <FaqVideoPlayer src={faq.video} poster={faq.poster} overlayText={faq.question} />
                   <div className="absolute top-3 left-3 z-30 pointer-events-none">
