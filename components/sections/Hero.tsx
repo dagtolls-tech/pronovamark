@@ -16,7 +16,7 @@ function easeProgress(real: number): number {
 
 export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [videoState, setVideoState] = useState<'idle' | 'playing' | 'resume'>('idle')
+  const [videoState, setVideoState] = useState<'idle' | 'playing' | 'resume' | 'blocked'>('idle')
   const [muted, setMuted] = useState(true)
   const [showMuteOverlay, setShowMuteOverlay] = useState(false)
   const [progress, setProgress] = useState(0)
@@ -49,7 +49,9 @@ export function Hero() {
       setMuted(true)
       setShowMuteOverlay(true)
       overlayTimeout.current = setTimeout(() => setShowMuteOverlay(false), 8000)
-    }).catch(() => {})
+    }).catch(() => {
+      setVideoState('blocked')
+    })
     return () => { if (overlayTimeout.current) clearTimeout(overlayTimeout.current) }
   }, [videoState])
 
@@ -115,6 +117,18 @@ export function Hero() {
       overlayTimeout.current = setTimeout(() => setShowMuteOverlay(false), 8000)
     }).catch(() => {})
     try { localStorage.removeItem(STORAGE_KEY) } catch {}
+  }, [])
+
+  const handleManualPlay = useCallback(() => {
+    const v = videoRef.current
+    if (!v) return
+    v.muted = true
+    v.play().then(() => {
+      setVideoState('playing')
+      setMuted(true)
+      setShowMuteOverlay(true)
+      overlayTimeout.current = setTimeout(() => setShowMuteOverlay(false), 8000)
+    }).catch(() => {})
   }, [])
 
   return (
@@ -264,6 +278,19 @@ export function Hero() {
                       ¿Comenzar desde el principio?
                     </button>
                   </div>
+                </div>
+              </div>
+            )}
+
+            {/* Autoplay blocked — manual play button */}
+            {videoState === 'blocked' && (
+              <div
+                className="absolute inset-0 z-20 flex items-center justify-center cursor-pointer"
+                style={{ background: 'rgba(10,10,10,0.6)' }}
+                onClick={handleManualPlay}
+              >
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/30 transition-colors">
+                  <Play className="w-9 h-9 sm:w-11 sm:h-11 text-white fill-white ml-1" />
                 </div>
               </div>
             )}
