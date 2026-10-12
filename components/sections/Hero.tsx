@@ -209,7 +209,7 @@ export function Hero() {
               lineHeight: 1.15,
             }}
           >
-            Multiplicamos <span className="bg-gradient-to-b from-[#FF7A7A] to-[#C41818] bg-clip-text text-transparent">x10</span> Tus Visitas y Tus Clientes en Redes Sociales... <span className="bg-gradient-to-b from-[#FF7A7A] to-[#C41818] bg-clip-text text-transparent" style={{ whiteSpace: 'nowrap' }}>O no pagas</span>
+            Multiplicamos <span className="bg-gradient-to-b from-[#FF7A7A] to-[#C41818] bg-clip-text text-transparent">x10</span> Tus Visitas y Tus Clientes en <span className="bg-gradient-to-b from-[#FF7A7A] to-[#C41818] bg-clip-text text-transparent">Redes Sociales</span>
           </h1>
         </motion.div>
 
